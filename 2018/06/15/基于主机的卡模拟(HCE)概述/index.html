@@ -6,20 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.killshadow.xyz">
-  <title>Live to change world</title>
+  <title>基于主机的卡模拟(HCE)概述 | Live to change world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="123">
-<meta name="keywords" content="CTF,PWN,Rverse,Coder">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Live to change world">
-<meta property="og:url" content="http://www.killshadow.xyz/tags/随笔/text.html">
+  <meta name="description" content="0x00 概述许多提供NFC功能的基于Android的设备已经支持NFC卡模拟。在大多数情况下，该卡由设备中的单独芯片模拟，称为安全元件(Secure Element)。无线运营商提供的许多SIM卡还包含安全元件(Secure Element)。">
+<meta name="keywords" content="Android Developer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于主机的卡模拟(HCE)概述">
+<meta property="og:url" content="http://www.killshadow.xyz/2018/06/15/基于主机的卡模拟(HCE)概述/index.html">
 <meta property="og:site_name" content="Live to change world">
-<meta property="og:description" content="123">
+<meta property="og:description" content="0x00 概述许多提供NFC功能的基于Android的设备已经支持NFC卡模拟。在大多数情况下，该卡由设备中的单独芯片模拟，称为安全元件(Secure Element)。无线运营商提供的许多SIM卡还包含安全元件(Secure Element)。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-14T17:39:58.186Z">
+<meta property="og:image" content="http://www.killshadow.xyz/source/assets/postimg/基于主机的卡模拟(HCE">
+<meta property="og:image" content="http://www.killshadow.xyz/source/assets/postimg/基于主机的卡模拟(HCE">
+<meta property="og:image" content="http://www.killshadow.xyz/source/assets/postimg/基于主机的卡模拟(HCE">
+<meta property="og:image" content="http://www.killshadow.xyz/source/image/基于主机的卡模拟(HCE">
+<meta property="og:updated_time" content="2018-06-14T18:02:06.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Live to change world">
-<meta name="twitter:description" content="123">
+<meta name="twitter:title" content="基于主机的卡模拟(HCE)概述">
+<meta name="twitter:description" content="0x00 概述许多提供NFC功能的基于Android的设备已经支持NFC卡模拟。在大多数情况下，该卡由设备中的单独芯片模拟，称为安全元件(Secure Element)。无线运营商提供的许多SIM卡还包含安全元件(Secure Element)。">
+<meta name="twitter:image" content="http://www.killshadow.xyz/source/assets/postimg/基于主机的卡模拟(HCE">
   
     <link rel="alternative" href="/atom.xml" title="Live to change world" type="application/atom+xml">
   
@@ -146,12 +151,152 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-基于主机的卡模拟(HCE)概述" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于主机的卡模拟(HCE)概述
+    </h1>
+  
+
+
+        
+        <a href="/2018/06/15/基于主机的卡模拟(HCE)概述/" class="archive-article-date">
+  	<time datetime="2018-06-14T17:23:33.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-15</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>123</p>
+        <h2 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h2><p>许多提供NFC功能的基于Android的设备已经支持NFC卡模拟。在大多数情况下，该卡由设备中的单独芯片模拟，称为<em>安全元件(Secure Element)</em>。无线运营商提供的许多SIM卡还包含安全元件(Secure Element)。<br><a id="more"></a><br>Android 4.4引入了另一种卡模拟方法，它不涉及SE，称为<em>基于主机的卡模拟</em>。这允许任何Android应用程序模拟卡并直接与NFC读卡器通话。本文档描述了基于主机的卡仿真（HCE）如何在Android上工作，以及如何使用此技术开发模拟NFC卡的应用程序。</p>
+<h2 id="0x01-卡仿真与SE"><a href="#0x01-卡仿真与SE" class="headerlink" title="0x01 卡仿真与SE"></a>0x01 卡仿真与SE</h2><p>当使用安全元件(Secure Element)提供NFC卡模拟时，将通过Android应用程序将要模拟的卡提供到设备上的安全元件(Secure Element)中。然后，当用户通过NFC终端握住设备时，设备中的NFC控制器将来自读卡器(NFC Reader)的所有数据直接路由到安全元件(Secure Element)。图1说明了这个概念。</p>
+<p><img src="/source/assets/postimg/基于主机的卡模拟(HCE" alt="图1.带有安全元件的NFC卡仿真">概述/1.png)</p>
+<p>安全元件(Secure Element)本身执行与NFC终端的通信，并且完全不涉及Android应用。交易完成后，Android应用程序可以直接查询SE的交易状态并通知用户。</p>
+<h2 id="0x02-基于主机的卡模拟"><a href="#0x02-基于主机的卡模拟" class="headerlink" title="0x02 基于主机的卡模拟"></a>0x02 基于主机的卡模拟</h2><p>当使用基于主机的卡仿真来仿真NFC卡时，数据将被路由到直接运行Android应用程序的主机CPU，而不是将NFC协议帧路由到SE。图2展示了基于主机的卡仿真如何工作。<br><img src="/source/assets/postimg/基于主机的卡模拟(HCE" alt="图2.没有安全元件的NFC卡模拟">概述/2.png)</p>
+<h2 id="0x03-支持的NFC卡和协议"><a href="#0x03-支持的NFC卡和协议" class="headerlink" title="0x03 支持的NFC卡和协议"></a>0x03 支持的NFC卡和协议</h2><p>NFC标准提供对许多不同协议的支持，并且可以模拟不同类型的卡。</p>
+<p>Android 4.4支持当今市场上常见的几种协议。许多现有的非接触式卡已经基于这些协议，例如非接触式支付卡。这些协议也得到了当今市场上众多NFC读卡器的支持，其中包括Android NFC设备可以自己作为读卡器（请参见<a href="https://developer.android.com/reference/android/nfc/tech/IsoDep.html" target="_blank" rel="noopener">IsoDep</a>课程）。这使您可以仅使用基于Android的设备在HCE周围构建和部署端到端NFC解决方案。</p>
+<p>具体而言，Android 4.4支持基于NFC-Forum ISO-DEP规范（基于ISO / IEC 14443-4）的仿真卡，并处理ISO / IEC 7816-4规范中定义的应用协议数据单元（APDU）。Android只强制在Nfc-A（ISO / IEC 14443-3 Type A）技术之上模拟ISO-DEP。支持Nfc-B（ISO / IEC 14443-4 Type B）技术是可选的。所有这些规格的分层如图3所示。</p>
+<p><img src="/source/assets/postimg/基于主机的卡模拟(HCE" alt="图3.Android的HCE协议栈">概述/3.png)</p>
+<h2 id="0x04-HCE服务"><a href="#0x04-HCE服务" class="headerlink" title="0x04 HCE服务"></a>0x04 HCE服务</h2><p>Android中的HCE体系结构基于Android <a href="https://developer.android.com/reference/android/app/Service.html" target="_blank" rel="noopener">Service</a>组件（称为“HCE服务”）。服务的一个关键优势是它可以在没有任何用户界面的情况下在后台运行。这对于许多HCE应用程序来说非常合适，例如会员卡或公交卡，用户不需要启动应用程序即可使用它。相反，通过NFC读卡器轻敲设备将启动正确的服务（如果尚未运行）并在后台执行该事务。当然，如果有意义的话，您可以自由地从您的服务中启动额外的UI（例如用户通知）。</p>
+<h3 id="4-1-服务选择"><a href="#4-1-服务选择" class="headerlink" title="4.1 服务选择"></a>4.1 服务选择</h3><p>当用户将设备连接到NFC读取器时，Android系统需要知道NFC读取器实际想要与哪个HCE服务通话。这就是ISO / IEC 7816-4规范的出处：它定义了一种选择应用程序的方式，以应用程序ID（AID）为中心。一个AID最多由16个字节组成。如果您正在模拟现有NFC读卡器基础架构的卡片，那么这些读卡器所寻找的AID通常是众所周知的并且是公开注册的（例如Visa和MasterCard等支付网络的AID）。</p>
+<p>如果您想为自己的应用程序部署新的读卡器基础结构，则需要注册您自己的AID。AID的注册程序在ISO / IEC 7816-5规范中定义。如果您要为Android部署HCE应用程序，Google建议按照7816-5注册AID，因为它可以避免与其他应用程序发生冲突。</p>
+<h3 id="4-2-AID组"><a href="#4-2-AID组" class="headerlink" title="4.2 AID组"></a>4.2 AID组</h3><p>在某些情况下，HCE服务可能需要注册多个AID才能实现某个应用程序，并且需要确保它是所有这些AID的默认处理程序（而不是组中的某些AID转到其他服务） 。</p>
+<p>一个AID组是应该被OS视为一起归属的AID列表。对于AID组中的所有AID，Android会保证以下其中一项：</p>
+<ul>
+<li>组中的所有AID都路由到此HCE服务</li>
+<li>该组中的任何AID都不会路由到此HCE服务（例如，因为用户更喜欢另一个在您的组中也请求一个或多个AID的服务）</li>
+</ul>
+<p>换句话说，没有中间状态，组中的一些AID可以路由到一个HCE服务，另一些AID可路由到另一个。</p>
+<h3 id="4-3-AID组和类别"><a href="#4-3-AID组和类别" class="headerlink" title="4.3 AID组和类别"></a>4.3 AID组和类别</h3><p>每个AID组都可以与一个类别关联。这允许Android按类别将HCE服务组合在一起，并且反过来又允许用户在类别的级别而不是AID级别设置默认值。通常，避免在应用程序的任何面向用户的部分提及AID：它们对普通用户没有任何意义。</p>
+<p>Android 4.4支持两种类别: <a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#CATEGORY_PAYMENT" target="_blank" rel="noopener">CATEGORY_PAYMENT</a>（涵盖行业标准支付应用程序）和<a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#CATEGORY_OTHER" target="_blank" rel="noopener">CATEGORY_OTHER</a>（对于所有其他HCE应用程序）。</p>
+<blockquote>
+<p><strong>注意：</strong><a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#CATEGORY_PAYMENT" target="_blank" rel="noopener">CATEGORY_PAYMENT</a>在任何给定时间，只能在系统中启用该类别中的一个AID组。通常，这将是一款了解主要信用卡付款协议并可以在任何商家工作的应用程序。</p>
+<p>对于仅适用于一个商家（如储值卡）<em>的闭环</em>支付应用程序，您应该使用<a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#CATEGORY_OTHER" target="_blank" rel="noopener">CATEGORY_OTHER</a>。此类别中的AID组可以始终处于活动状态，并且在需要时可以在AID选择期间由NFC读卡器给予优先权。</p>
+</blockquote>
+<h2 id="0x05-实施HCE服务"><a href="#0x05-实施HCE服务" class="headerlink" title="0x05 实施HCE服务"></a>0x05 实施HCE服务</h2><p>要使用基于主机的卡仿真来模拟NFC卡，您需要创建一个<a href="https://developer.android.com/reference/android/app/Service.html" target="_blank" rel="noopener">Service</a>处理NFC事务的组件。</p>
+<h3 id="5-1-检查HCE支持"><a href="#5-1-检查HCE支持" class="headerlink" title="5.1 检查HCE支持"></a>5.1 检查HCE支持</h3><p>您的应用程序可以通过检查<a href="https://developer.android.com/reference/android/content/pm/PackageManager.html#FEATURE_NFC_HOST_CARD_EMULATION" target="_blank" rel="noopener">FEATURE_NFC_HOST_CARD_EMULATION</a>功能来检查设备是否支持HCE 。您应该<a href="https://developer.android.com/guide/topics/manifest/uses-feature-element.html" target="_blank" rel="noopener"><code>&lt;uses-feature&gt;</code></a>在应用程序清单中使用该标记来声明您的应用程序使用HCE功能，以及该应用程序是否需要运行。</p>
+<h3 id="5-2-服务实施"><a href="#5-2-服务实施" class="headerlink" title="5.2 服务实施"></a>5.2 服务实施</h3><p>Android 4.4带有一个便利的<a href="https://developer.android.com/reference/android/app/Service.html" target="_blank" rel="noopener">Service</a>类，可以作为实现HCE服务的基础：<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>类。</p>
+<p>因此，第一步要扩大<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHostApduService</span> <span class="keyword">extends</span> <span class="title">HostApduService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] processCommandApdu(<span class="keyword">byte</span>[] apdu, Bundle extras) &#123;</span><br><span class="line">       ...</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDeactivated</span><span class="params">(<span class="keyword">int</span> reason)</span> </span>&#123;</span><br><span class="line">       ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>声明了两个需要重写和实现的抽象方法。</p>
+<p><a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">processCommandApdu()</a>只要NFC读卡器将应用协议数据单元（APDU）发送到您的服务，就会调用它。APDU也在ISO / IEC 7816-4规范中定义。APDU是在NFC读卡器和您的HCE服务之间交换的应用级数据包。该应用级协议是半双工的：NFC读卡器会向您发送命令APDU，并等待您发送响应APDU作为回报。</p>
+<blockquote>
+<p><strong>注：</strong> ISO / IEC 7816-4规范还定义了多个逻辑信道的概念，您可以在单独的逻辑信道上进行多个并行APDU交换。Android的HCE实现只支持单个逻辑通道，所以只有单线程交换APDU。</p>
+</blockquote>
+<p>如前所述，Android使用AID来确定读者想要与哪个HCE服务交谈。通常，NFC读卡器向您的设备发送的第一个APDU是“SELECT AID”APDU; 这个APDU包含读卡器想与之交谈的AID。Android从APDU中提取AID，将其解析为HCE服务，然后将该APDU转发给已解析的服务。</p>
+<p>您可以通过返回响应APDU的字节来发送响应APDU <a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html#processCommandApdu(byte[], android.os.Bundle" target="_blank" rel="noopener">processCommandApdu()</a>)。请注意，此方法将在应用程序的主线程中调用，该线程不应被阻止。所以如果你不能立即计算并返回一个响应APDU，那么返回null。然后，您可以在另一个线程上完成必要的工作，并<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html#sendResponseApdu(byte[]" target="_blank" rel="noopener">sendResponseApdu()</a>)在完成后使用<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>该类中定义的方法发送响应。</p>
+<p>Android会继续将新的APDU从读取器转发到您的服务，直到：</p>
+<ol>
+<li>NFC读卡器发送另一个“SELECT AID” APDU，OS将其解析为不同的服务;</li>
+<li>NFC读卡器和您的设备之间的NFC链接被破坏。</li>
+</ol>
+<p>在这两种情况下，你的类的 <a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html#onDeactivated(int" target="_blank" rel="noopener">onDeactivated()</a>)实现都是通过一个参数来调用的，这个参数指出了两者中的哪一个发生了。</p>
+<p>如果您正在使用现有的读卡器基础架构，则需要实现读卡器在您的HCE服务中期望的现有应用程序级协议。</p>
+<p>如果您正在部署您控制的新读卡器基础架构，则可以定义自己的协议和APDU序列。通常，尝试限制APDU数量和需要交换的数据大小：这样可以确保用户只需将设备通过NFC读取器持续一段时间即可。合理的上限约为1KB的数据，通常可以在<strong>300ms</strong>内交换。</p>
+<h3 id="5-3-服务清单声明和AID注册"><a href="#5-3-服务清单声明和AID注册" class="headerlink" title="5.3 服务清单声明和AID注册"></a>5.3 服务清单声明和AID注册</h3><p>您的服务必须像往常一样在清单中声明，但还必须在服务声明中添加一些附加件。</p>
+<p>首先，为了告诉平台它是一个实现<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>接口的HCE服务 ，你的服务声明必须包含一个<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html#SERVICE_INTERFACE" target="_blank" rel="noopener">SERVICE_INTERFACE</a>动作的<a href="https://blog.csdn.net/mynameishuangshuai/article/details/51673273" target="_blank" rel="noopener">Intent Filter</a>。</p>
+<p>另外，为了告知平台哪个AIDs组被这个服务请求，一个<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html#SERVICE_META_DATA" target="_blank" rel="noopener">SERVICE_META_DATA</a><code>&lt;meta-data&gt;</code>标签必须包含在服务的声明中，指向一个XML资源和关于HCE服务的附加信息。</p>
+<p>最后，您必须将该<code>android:exported</code>属性设置为true，并且<code>&quot;android.permission.BIND_NFC_SERVICE&quot;</code>在服务声明中要求权限。前者确保服务可以被外部应用程序绑定。后者然后强制只有拥有该<code>&quot;android.permission.BIND_NFC_SERVICE&quot;</code>权限的外部应用程序 才能绑定到您的服务。既然<code>&quot;android.permission.BIND_NFC_SERVICE&quot;</code>是一个系统权限，这有效地强制只有Android OS可以绑定到你的服务。</p>
+<p>这是一个<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>清单声明的例子：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">service</span> <span class="attr">android:name</span>=<span class="string">".MyHostApduService"</span> <span class="attr">android:exported</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">android:permission</span>=<span class="string">"android.permission.BIND_NFC_SERVICE"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.nfc.cardemulation.action.HOST_APDU_SERVICE"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta-data</span> <span class="attr">android:name</span>=<span class="string">"android.nfc.cardemulation.host_apdu_service"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">android:resource</span>=<span class="string">"@xml/apduservice"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这个元数据标签指向一个<code>apduservice.xml</code>文件。下面显示了具有包含两个专有AID的单个AID组声明的此类文件的示例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">host-apdu-service</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:description</span>=<span class="string">"@string/servicedesc"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:requireDeviceUnlock</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aid-group</span> <span class="attr">android:description</span>=<span class="string">"@string/aiddescription"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">android:category</span>=<span class="string">"other"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0010203040506"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0394148148100"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aid-group</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">host-apdu-service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>该<code>&lt;host-apdu-service&gt;</code>标签需要包含一个<code>&lt;android:description&gt;</code> 属性，该属性包含可能在UI中显示的用户友好的服务描述。该<code>requireDeviceUnlock</code>属性可用于指定在调用此服务来处理APDU之前必须先解锁设备。</p>
+<p>在<code>&lt;host-apdu-service&gt;</code>必须包含一个或多个<code>&lt;aid-group&gt;</code>标签。每个 <code>&lt;aid-group&gt;</code>标签都需要：</p>
+<ul>
+<li>包含一个<code>android:description</code>属性，其中包含用户友好的AID组描述，适合在UI中显示。</li>
+<li>将其<code>android:category</code>属性设置为指示AID组所属的类别，例如<a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#CATEGORY_PAYMENT" target="_blank" rel="noopener">CATEGORY_PAYMENT</a> or 定义的字符串常<a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#CATEGORY_OTHER" target="_blank" rel="noopener">CATEGORY_OTHER</a>。</li>
+<li>每个标签<code>&lt;aid-group&gt;</code>必须包含一个或多个 <code>&lt;aid-filter&gt;</code>标签，每个标签包含一个AID。AID必须以十六进制格式指定，并且包含偶数个字符。</li>
+</ul>
+<p>最后，您的应用程序还需要拥有<a href="https://developer.android.com/reference/android/Manifest.permission.html#NFC" target="_blank" rel="noopener">NFC</a>可以注册为HCE服务的 权限。</p>
+<h2 id="0x06-AID冲突解决"><a href="#0x06-AID冲突解决" class="headerlink" title="0x06 AID冲突解决"></a>0x06 AID冲突解决</h2><p>多个<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>组件可以安装在单个设备上，并且可以由多个服务注册相同的AID。Android平台根据AID属于哪个类别来解决AID冲突。每个类别可能有不同的冲突解决策略。</p>
+<p>例如，对于某些类别（如付款），用户可能能够在Android设置UI中选择默认服务。对于其他类别，策略可能总是要求用户在冲突情况下调用哪个服务。要查询特定类别的冲突解决策略，请参阅 <a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#getSelectionModeForCategory(java.lang.String" target="_blank" rel="noopener">getSelectionModeForCategory()</a>)。</p>
+<h3 id="6-1-检查您的服务是否为默认设置"><a href="#6-1-检查您的服务是否为默认设置" class="headerlink" title="6.1 检查您的服务是否为默认设置"></a>6.1 检查您的服务是否为默认设置</h3><p>应用程序可以使用<a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#isDefaultServiceForCategory(android.content.ComponentName, java.lang.String" target="_blank" rel="noopener">isDefaultServiceForCategory(ComponentName, String)</a>)API 检查其HCE服务是否是某个类别的默认服务。</p>
+<p>如果您的服务不是默认设置，则可以请求将其设置为默认设置。看<a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#ACTION_CHANGE_DEFAULT" target="_blank" rel="noopener">ACTION_CHANGE_DEFAULT</a>。</p>
+<h2 id="0x07-付款应用"><a href="#0x07-付款应用" class="headerlink" title="0x07 付款应用"></a>0x07 付款应用</h2><p>Android会将AID组为“payment”的类别，声明的HCE服务视为支付应用程序。Android 4.4版本包含一个名为“tap＆pay”的top-level设置菜单条目，它列举了所有这些支付应用程序。在此设置菜单中，用户可以选择在点按付款终端时将调用的默认支付应用程序。</p>
+<h3 id="7-1-支付应用程序所需的resource"><a href="#7-1-支付应用程序所需的resource" class="headerlink" title="7.1 支付应用程序所需的resource"></a>7.1 支付应用程序所需的resource</h3><p>为了提供更具视觉吸引力的用户体验，HCE支付应用程序需要为其服务提供额外的resource：所谓的服务标记。</p>
+<p>这个asset的大小应该是260x96 dp，并且可以在元数据(meta-data)XML文件中通过添加指向drawable resource<code>android:apduServiceBanner</code>的<code>&lt;host-apdu-service&gt;</code>标签的属性来指定 。一个例子如下所示：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">host-apdu-service</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:description</span>=<span class="string">"@string/servicedesc"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:requireDeviceUnlock</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:apduServiceBanner</span>=<span class="string">"@drawable/my_banner"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aid-group</span> <span class="attr">android:description</span>=<span class="string">"@string/aiddescription"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">android:category</span>=<span class="string">"payment"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0010203040506"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0394148148100"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aid-group</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">host-apdu-service</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="0x08-屏幕关闭和锁屏行为"><a href="#0x08-屏幕关闭和锁屏行为" class="headerlink" title="0x08 屏幕关闭和锁屏行为"></a>0x08 屏幕关闭和锁屏行为</h2><p>当设备的屏幕关闭时，当前的Android实施将NFC控制器和应用程序处理器完全关闭。因此，当屏幕关闭时，HCE服务将无法工作。</p>
+<p>然而，HCE服务可以从锁定屏幕中起作用：这由HCE服务标记中的<code>android:requireDeviceUnlock</code>属性控制<code>&lt;host-apdu-service&gt;</code>。默认情况下，不需要设备解锁，即使设备被锁定，您的服务也会被调用。</p>
+<p>如果您将<code>android:requireDeviceUnlock</code>HCE服务的属性设置为“true”，Android会提示用户在您靠近NFC读卡器时解锁设备，NFC读卡器会选择已解析为您的服务的AID。解锁后，Android会显示一个对话框，提示用户再次点击以完成交易。这是必要的，因为用户可能已经将设备从NFC读卡器移开以便解锁它。</p>
+<h2 id="0x09-与SE卡共存"><a href="#0x09-与SE卡共存" class="headerlink" title="0x09 与SE卡共存"></a>0x09 与SE卡共存</h2><p>本部分对于已经部署依赖SE进行卡模拟的应用程序的开发人员很感兴趣。Android的HCE实现旨在与其他实现卡仿真的方法并行工作，包括使用SE。</p>
+<blockquote>
+<p><strong>注意：</strong> Android不提供用于直接与SE进行通信的API。</p>
+</blockquote>
+<p>这种共存基于一种称为“AID路由”的原则：NFC控制器保留一个由（有限）路由规则列表组成的路由表。每个路由规则都包含一个AID和一个目的地。目标可以是主机CPU（Android应用程序正在运行的地方），也可以是连接的SE。</p>
+<p>当NFC读卡器发送具有“SELECT AID”的APDU时，NFC控制器解析它并检查AID是否与其路由表中的任何AID匹配。如果匹配，那么APDU和其后的所有APDU将被发送到与AID相关联的目的地，直到收到另一个“SELECT AID” APDU或NFC链路断开。</p>
+<blockquote>
+<p><strong>注意：</strong> 虽然ISO / IEC 7816-4也定义了“部分匹配”的概念，但目前Android HCE设备不支持此功能。</p>
+</blockquote>
+<p>图4说明了这种架构。</p>
+<p><img src="/source/image/基于主机的卡模拟(HCE" alt="图4.使用SE和主机卡模拟的Android操作">概述/4.png) </p>
+<p>NFC控制器通常还包含APDU的默认路由。在路由表中找不到AID时，将使用默认路由。尽管此设置可能因设备而异，但Android设备需要确保您的应用注册的AID已正确路由到主机。</p>
+<p>实现HCE服务或使用SE的Android应用程序不必担心配置路由表 - 这是由Android自动处理的。Android只需要知道哪些AID可以由HCE服务处理，哪些可以由SE处理。基于哪些服务已安装，以及哪些用户已配置为首选服务，路由表会自动配置。</p>
+<p>我们已经介绍了如何声明HCE服务的AID。以下部分说明如何为使用SE进行卡模拟的应用程序声明AID。</p>
+<h3 id="9-1-Secure-Element-AID注册"><a href="#9-1-Secure-Element-AID注册" class="headerlink" title="9.1 Secure Element AID注册"></a>9.1 Secure Element AID注册</h3><p>使用SE进行卡模拟的应用程序可以在其清单中声明所谓的“关闭主机服务”。这种服务的声明几乎与宣布HCE服务相同。以下情况例外：</p>
+<ul>
+<li><p>意图过滤器中使用的操作必须设置为 <a href="https://developer.android.com/reference/android/nfc/cardemulation/OffHostApduService.html#SERVICE_INTERFACE" target="_blank" rel="noopener">SERVICE_INTERFACE</a>。</p>
+</li>
+<li><p>元数据名称属性必须设置为 <a href="https://developer.android.com/reference/android/nfc/cardemulation/OffHostApduService.html#SERVICE_META_DATA" target="_blank" rel="noopener">SERVICE_META_DATA</a>。</p>
+</li>
+<li><p>元数据XML文件必须使用<code>&lt;offhost-apdu-service&gt;</code>根标签。</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">service</span> <span class="attr">android:name</span>=<span class="string">".MyOffHostApduService"</span> <span class="attr">android:exported</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">android:permission</span>=<span class="string">"android.permission.BIND_NFC_SERVICE"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.nfc.cardemulation.action.OFF_HOST_APDU_SERVICE"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta-data</span> <span class="attr">android:name</span>=<span class="string">"android.nfc.cardemulation.off_host_apdu_service"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">android:resource</span>=<span class="string">"@xml/apduservice"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>相应<code>apduservice.xml</code>文件注册两个AID 的示例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">offhost-apdu-service</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:description</span>=<span class="string">"@string/servicedesc"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aid-group</span> <span class="attr">android:description</span>=<span class="string">"@string/subscription"</span> <span class="attr">android:category</span>=<span class="string">"other"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0010203040506"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0394148148100"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aid-group</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">offhost-apdu-service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>该<code>android:requireDeviceUnlock</code>属性不适用于脱离主机服务，因为主机CPU不参与事务，因此无法阻止SE在设备锁定时执行事务。</p>
+<p>该<code>android:apduServiceBanner</code>属性必须用于作为支付应用程序的关闭主机服务，以便作为默认支付应用程序进行选择。</p>
+<h3 id="9-2-关闭主机服务调用"><a href="#9-2-关闭主机服务调用" class="headerlink" title="9.2 关闭主机服务调用"></a>9.2 关闭主机服务调用</h3><p>Android本身永远不会启动或绑定到声明为“脱离主机”的服务。这是因为实际交易由SE执行，而不是由Android服务本身执行。服务声明仅允许应用程序注册安全元件(Secure Element)上存在的AID。</p>
+<h2 id="0x0A-HCE和安全"><a href="#0x0A-HCE和安全" class="headerlink" title="0x0A HCE和安全"></a>0x0A HCE和安全</h2><p>HCE体系结构本身提供了一个核心安全性：因为您的服务受到<a href="https://developer.android.com/reference/android/Manifest.permission.html#BIND_NFC_SERVICE" target="_blank" rel="noopener">BIND_NFC_SERVICE</a>系统权限的保护，所以只有操作系统可以绑定到您的服务并与之通信。这可以确保您收到的任何APDU实际上都是OS从NFC控制器接收到的APDU，并且您发回的任何APDU只会发送到操作系统，而操作系统会直接将APDU转发给NFC控制器。</p>
+<p>剩下的核心部分就是您获取应用程序发送给NFC读卡器的数据的位置。这在HCE设计中有意解耦：它不关心数据来自何处，它只是确保将其安全地传送到NFC控制器并传送到NFC读取器。</p>
+<p>为了安全地存储和检索您希望从HCE服务发送的数据，例如，您可以依靠Android应用程序沙箱，将应用程序的数据与其他应用程序隔离。有关Android安全性的更多详细信息，请阅读 <a href="https://developer.android.com/training/articles/security-tips.html" target="_blank" rel="noopener">安全提示</a>。</p>
+<h2 id="0x0B-协议参数和细节"><a href="#0x0B-协议参数和细节" class="headerlink" title="0x0B 协议参数和细节"></a>0x0B 协议参数和细节</h2><p>这部分内容对于希望了解HCE设备在NFC协议的防冲突和激活阶段使用何种协议参数的开发人员很感兴趣。这允许构建与Android HCE设备兼容的读卡器基础结构。</p>
+<h3 id="11-1-Nfc-A（ISO-IEC-14443-A型）协议防冲突和激活"><a href="#11-1-Nfc-A（ISO-IEC-14443-A型）协议防冲突和激活" class="headerlink" title="11.1 Nfc-A（ISO / IEC 14443 A型）协议防冲突和激活"></a>11.1 Nfc-A（ISO / IEC 14443 A型）协议防冲突和激活</h3><p>作为Nfc-A协议激活的一部分，交换多个帧。</p>
+<p>在交换的第一部分，HCE设备将呈现其UID; HCE设备应该被假定为具有随机的UID。这意味着在每个抽头中，呈现给读卡器的UID将是随机生成的UID。因此，NFC读卡器不应依赖HCE设备的UID作为身份验证或身份验证的一种形式。</p>
+<p>NFC读取器可以随后通过发送SEL_REQ命令来选择HCE设备。HCE设备的SEL_RES响应将至少设置第6位（0x20），表示设备支持ISO-DEP。注意，SEL_RES中的其他位也可以被设置，表示例如对NFC-DEP（p2p）协议的支持。由于可以设置其他位，所以想要与HCE设备交互的读者应该明确检查第6位，并且<stront style="box-sizing: inherit;">不要将完整的SEL_RES与值0x20进行比较。</stront></p>
+<h3 id="11-2-ISO-DEP激活"><a href="#11-2-ISO-DEP激活" class="headerlink" title="11.2 ISO-DEP激活"></a>11.2 ISO-DEP激活</h3><p>Nfc-A协议激活后，NFC读取器启动ISO-DEP协议激活。它发送一个“RATS”（请求选择应答）命令。RATS响应（ATS）完全由NFC控制器生成，不能由HCE服务配置。然而，HCE实现需要满足NFC论坛对ATS响应的要求，因此NFC读卡器可以根据NFC论坛对任何HCE设备的要求设置这些参数。</p>
+<p>以下部分提供了有关NFC控制器在HCE设备上提供的ATS响应的各个字节的更多详细信息：</p>
+<ul>
+<li>TL：ATS响应的长度。不得指示大于20个字节的长度。</li>
+<li>T0：必须在所有HCE设备上设置位5,6和7，指示TA（1），TB（1）和TC（1）包含在ATS响应中。比特1至4指示FSCI，编码最大帧大小。在HCE设备上，FSCI的值必须在0h和8h之间。</li>
+<li>T（A）1：定义读卡器和模拟器之间的比特率，以及它们是否可以是不对称的。HCE设备没有比特率要求或保证。</li>
+<li>T（B）1：位1至4指示启动帧保护时间整数（SFGI）。在HCE设备上，SFGI必须&lt;= 8h。位5到8指示帧等待时间整数（FWI）并编码帧等待时间（FWT）。在HCE设备上，FWI必须&lt;= 8h。</li>
+<li>T（C）1：位5表示支持“高级协议功能”。HCE设备可能支持或不支持“高级协议功能”。位2表示对DID的支持。HCE设备可能支持DID，也可能不支持DID。位1表示支持NAD。HCE设备不能支持NAD并将位1设置为零。</li>
+<li>历史字节：HCE设备最多可以返回15个历史字节。愿意与HCE服务交互的NFC读卡器不应该假设历史字节的内容或它们的存在。</li>
+</ul>
+<p>请注意，许多HCE设备可能符合EMVCo联合的支付网络在其“非接触式通信协议”规范中指定的协议要求。尤其是：</p>
+<ul>
+<li>T0中的FSCI必须在2小时和8小时之间。</li>
+<li>T（A）1必须设置为0x80，表示仅支持106 kbit / s比特率，并且不支持读卡器和仿真器之间的非对称比特率。</li>
+<li>T（B）1中的FWI必须&lt;= 7h。</li>
+</ul>
+<h3 id="11-3-APDU数据交换"><a href="#11-3-APDU数据交换" class="headerlink" title="11.3 APDU数据交换"></a>11.3 APDU数据交换</h3><p>如前所述，HCE实现仅支持单个逻辑通道。尝试在不同的逻辑通道上选择应用程序将不适用于HCE设备。</p>
+<h2 id="0x0C-后记"><a href="#0x0C-后记" class="headerlink" title="0x0C 后记"></a>0x0C 后记</h2><p>本文<a href="https://developer.android.com/guide/topics/connectivity/nfc/hce" target="_blank" rel="noopener">翻译自</a>谷歌开发者文档，已由本人仔细校对。如有错误，请联系我，以便修改。</p>
 
       
 
@@ -191,6 +336,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android Developer</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -241,7 +397,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://www.killshadow.xyz/tags/随笔/text.html" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.killshadow.xyz/2018/06/15/基于主机的卡模拟(HCE)概述/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -253,6 +409,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/10/某aes变种题分析/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">某AES变种题分析</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -274,7 +440,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-概述"><span class="toc-number">1.</span> <span class="toc-text">0x00 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-卡仿真与SE"><span class="toc-number">2.</span> <span class="toc-text">0x01 卡仿真与SE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-基于主机的卡模拟"><span class="toc-number">3.</span> <span class="toc-text">0x02 基于主机的卡模拟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-支持的NFC卡和协议"><span class="toc-number">4.</span> <span class="toc-text">0x03 支持的NFC卡和协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-HCE服务"><span class="toc-number">5.</span> <span class="toc-text">0x04 HCE服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-服务选择"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 服务选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-AID组"><span class="toc-number">5.2.</span> <span class="toc-text">4.2 AID组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-AID组和类别"><span class="toc-number">5.3.</span> <span class="toc-text">4.3 AID组和类别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-实施HCE服务"><span class="toc-number">6.</span> <span class="toc-text">0x05 实施HCE服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-检查HCE支持"><span class="toc-number">6.1.</span> <span class="toc-text">5.1 检查HCE支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-服务实施"><span class="toc-number">6.2.</span> <span class="toc-text">5.2 服务实施</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-服务清单声明和AID注册"><span class="toc-number">6.3.</span> <span class="toc-text">5.3 服务清单声明和AID注册</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-AID冲突解决"><span class="toc-number">7.</span> <span class="toc-text">0x06 AID冲突解决</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-检查您的服务是否为默认设置"><span class="toc-number">7.1.</span> <span class="toc-text">6.1 检查您的服务是否为默认设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-付款应用"><span class="toc-number">8.</span> <span class="toc-text">0x07 付款应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-支付应用程序所需的resource"><span class="toc-number">8.1.</span> <span class="toc-text">7.1 支付应用程序所需的resource</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x08-屏幕关闭和锁屏行为"><span class="toc-number">9.</span> <span class="toc-text">0x08 屏幕关闭和锁屏行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x09-与SE卡共存"><span class="toc-number">10.</span> <span class="toc-text">0x09 与SE卡共存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-Secure-Element-AID注册"><span class="toc-number">10.1.</span> <span class="toc-text">9.1 Secure Element AID注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-关闭主机服务调用"><span class="toc-number">10.2.</span> <span class="toc-text">9.2 关闭主机服务调用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0A-HCE和安全"><span class="toc-number">11.</span> <span class="toc-text">0x0A HCE和安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0B-协议参数和细节"><span class="toc-number">12.</span> <span class="toc-text">0x0B 协议参数和细节</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-1-Nfc-A（ISO-IEC-14443-A型）协议防冲突和激活"><span class="toc-number">12.1.</span> <span class="toc-text">11.1 Nfc-A（ISO / IEC 14443 A型）协议防冲突和激活</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2-ISO-DEP激活"><span class="toc-number">12.2.</span> <span class="toc-text">11.2 ISO-DEP激活</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-3-APDU数据交换"><span class="toc-number">12.3.</span> <span class="toc-text">11.3 APDU数据交换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x0C-后记"><span class="toc-number">13.</span> <span class="toc-text">0x0C 后记</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -319,7 +485,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
@@ -352,7 +518,7 @@ var _hmt = _hmt || [];
     var yiliaConfig = {
         mathjax: false,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
