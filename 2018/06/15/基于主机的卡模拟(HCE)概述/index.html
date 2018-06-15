@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="Live to change world">
 <meta property="og:description" content="0x00 概述许多提供NFC功能的基于Android的设备已经支持NFC卡模拟。在大多数情况下，该卡由设备中的单独芯片模拟，称为安全元件(Secure Element)。无线运营商提供的许多SIM卡还包含安全元件(Secure Element)。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/%E5%9F%BA%E4%BA%8E%E4%B8%BB%E6%9C%BA%E7%9A%84%E5%8D%A1%E6%A8%A1%E6%8B%9F(HCE">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/%E5%9F%BA%E4%BA%8E%E4%B8%BB%E6%9C%BA%E7%9A%84%E5%8D%A1%E6%A8%A1%E6%8B%9F(HCE">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/%E5%9F%BA%E4%BA%8E%E4%B8%BB%E6%9C%BA%E7%9A%84%E5%8D%A1%E6%A8%A1%E6%8B%9F(HCE">
-<meta property="og:updated_time" content="2018-06-15T01:25:24.335Z">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/1.png">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/3.png">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/4.png">
+<meta property="og:updated_time" content="2018-06-15T01:29:06.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于主机的卡模拟(HCE)概述">
 <meta name="twitter:description" content="0x00 概述许多提供NFC功能的基于Android的设备已经支持NFC卡模拟。在大多数情况下，该卡由设备中的单独芯片模拟，称为安全元件(Secure Element)。无线运营商提供的许多SIM卡还包含安全元件(Secure Element)。">
-<meta name="twitter:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/%E5%9F%BA%E4%BA%8E%E4%B8%BB%E6%9C%BA%E7%9A%84%E5%8D%A1%E6%A8%A1%E6%8B%9F(HCE">
+<meta name="twitter:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Live to change world" type="application/atom+xml">
   
@@ -173,13 +173,13 @@
       
         <h2 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h2><p>许多提供NFC功能的基于Android的设备已经支持NFC卡模拟。在大多数情况下，该卡由设备中的单独芯片模拟，称为<em>安全元件(Secure Element)</em>。无线运营商提供的许多SIM卡还包含安全元件(Secure Element)。<br><a id="more"></a><br>Android 4.4引入了另一种卡模拟方法，它不涉及SE，称为<em>基于主机的卡模拟</em>。这允许任何Android应用程序模拟卡并直接与NFC读卡器通话。本文档描述了基于主机的卡仿真（HCE）如何在Android上工作，以及如何使用此技术开发模拟NFC卡的应用程序。</p>
 <h2 id="0x01-卡仿真与SE"><a href="#0x01-卡仿真与SE" class="headerlink" title="0x01 卡仿真与SE"></a>0x01 卡仿真与SE</h2><p>当使用安全元件(Secure Element)提供NFC卡模拟时，将通过Android应用程序将要模拟的卡提供到设备上的安全元件(Secure Element)中。然后，当用户通过NFC终端握住设备时，设备中的NFC控制器将来自读卡器(NFC Reader)的所有数据直接路由到安全元件(Secure Element)。图1说明了这个概念。</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/%E5%9F%BA%E4%BA%8E%E4%B8%BB%E6%9C%BA%E7%9A%84%E5%8D%A1%E6%A8%A1%E6%8B%9F(HCE" alt="图1.带有安全元件的NFC卡仿真">%E6%A6%82%E8%BF%B0/1.png)</p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/1.png" alt="图1.带有安全元件的NFC卡仿真"></p>
 <p>安全元件(Secure Element)本身执行与NFC终端的通信，并且完全不涉及Android应用。交易完成后，Android应用程序可以直接查询SE的交易状态并通知用户。</p>
-<h2 id="0x02-基于主机的卡模拟"><a href="#0x02-基于主机的卡模拟" class="headerlink" title="0x02 基于主机的卡模拟"></a>0x02 基于主机的卡模拟</h2><p>当使用基于主机的卡仿真来仿真NFC卡时，数据将被路由到直接运行Android应用程序的主机CPU，而不是将NFC协议帧路由到SE。图2展示了基于主机的卡仿真如何工作。<br>![<a href="https://github.com/killshadow/killshadow.github.io/blob/master/image/%E5%9F%BA%E4%BA%8E%E4%B8%BB%E6%9C%BA%E7%9A%84%E5%8D%A1%E6%A8%A1%E6%8B%9F(HCE)%E6%A6%82%E8%BF%B0/2.png" target="_blank" rel="noopener">https://github.com/killshadow/killshadow.github.io/blob/master/image/%E5%9F%BA%E4%BA%8E%E4%B8%BB%E6%9C%BA%E7%9A%84%E5%8D%A1%E6%A8%A1%E6%8B%9F(HCE)%E6%A6%82%E8%BF%B0/2.png</a>)</p>
+<h2 id="0x02-基于主机的卡模拟"><a href="#0x02-基于主机的卡模拟" class="headerlink" title="0x02 基于主机的卡模拟"></a>0x02 基于主机的卡模拟</h2><p>当使用基于主机的卡仿真来仿真NFC卡时，数据将被路由到直接运行Android应用程序的主机CPU，而不是将NFC协议帧路由到SE。图2展示了基于主机的卡仿真如何工作。<br>![<a href="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/2.png" target="_blank" rel="noopener">https://github.com/killshadow/killshadow.github.io/blob/master/image/002/2.png</a>)</p>
 <h2 id="0x03-支持的NFC卡和协议"><a href="#0x03-支持的NFC卡和协议" class="headerlink" title="0x03 支持的NFC卡和协议"></a>0x03 支持的NFC卡和协议</h2><p>NFC标准提供对许多不同协议的支持，并且可以模拟不同类型的卡。</p>
 <p>Android 4.4支持当今市场上常见的几种协议。许多现有的非接触式卡已经基于这些协议，例如非接触式支付卡。这些协议也得到了当今市场上众多NFC读卡器的支持，其中包括Android NFC设备可以自己作为读卡器（请参见<a href="https://developer.android.com/reference/android/nfc/tech/IsoDep.html" target="_blank" rel="noopener">IsoDep</a>课程）。这使您可以仅使用基于Android的设备在HCE周围构建和部署端到端NFC解决方案。</p>
 <p>具体而言，Android 4.4支持基于NFC-Forum ISO-DEP规范（基于ISO / IEC 14443-4）的仿真卡，并处理ISO / IEC 7816-4规范中定义的应用协议数据单元（APDU）。Android只强制在Nfc-A（ISO / IEC 14443-3 Type A）技术之上模拟ISO-DEP。支持Nfc-B（ISO / IEC 14443-4 Type B）技术是可选的。所有这些规格的分层如图3所示。</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/%E5%9F%BA%E4%BA%8E%E4%B8%BB%E6%9C%BA%E7%9A%84%E5%8D%A1%E6%A8%A1%E6%8B%9F(HCE" alt="图3.Android的HCE协议栈">%E6%A6%82%E8%BF%B0/3.png)</p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/3.png" alt="图3.Android的HCE协议栈"></p>
 <h2 id="0x04-HCE服务"><a href="#0x04-HCE服务" class="headerlink" title="0x04 HCE服务"></a>0x04 HCE服务</h2><p>Android中的HCE体系结构基于Android <a href="https://developer.android.com/reference/android/app/Service.html" target="_blank" rel="noopener">Service</a>组件（称为“HCE服务”）。服务的一个关键优势是它可以在没有任何用户界面的情况下在后台运行。这对于许多HCE应用程序来说非常合适，例如会员卡或公交卡，用户不需要启动应用程序即可使用它。相反，通过NFC读卡器轻敲设备将启动正确的服务（如果尚未运行）并在后台执行该事务。当然，如果有意义的话，您可以自由地从您的服务中启动额外的UI（例如用户通知）。</p>
 <h3 id="4-1-服务选择"><a href="#4-1-服务选择" class="headerlink" title="4.1 服务选择"></a>4.1 服务选择</h3><p>当用户将设备连接到NFC读取器时，Android系统需要知道NFC读取器实际想要与哪个HCE服务通话。这就是ISO / IEC 7816-4规范的出处：它定义了一种选择应用程序的方式，以应用程序ID（AID）为中心。一个AID最多由16个字节组成。如果您正在模拟现有NFC读卡器基础架构的卡片，那么这些读卡器所寻找的AID通常是众所周知的并且是公开注册的（例如Visa和MasterCard等支付网络的AID）。</p>
 <p>如果您想为自己的应用程序部署新的读卡器基础结构，则需要注册您自己的AID。AID的注册程序在ISO / IEC 7816-5规范中定义。如果您要为Android部署HCE应用程序，Google建议按照7816-5注册AID，因为它可以避免与其他应用程序发生冲突。</p>
@@ -252,7 +252,7 @@
 <p><strong>注意：</strong> 虽然ISO / IEC 7816-4也定义了“部分匹配”的概念，但目前Android HCE设备不支持此功能。</p>
 </blockquote>
 <p>图4说明了这种架构。</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/%E5%9F%BA%E4%BA%8E%E4%B8%BB%E6%9C%BA%E7%9A%84%E5%8D%A1%E6%A8%A1%E6%8B%9F(HCE" alt="图4.使用SE和主机卡模拟的Android操作">%E6%A6%82%E8%BF%B0/4.png) </p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/4.png" alt="图4.使用SE和主机卡模拟的Android操作"> </p>
 <p>NFC控制器通常还包含APDU的默认路由。在路由表中找不到AID时，将使用默认路由。尽管此设置可能因设备而异，但Android设备需要确保您的应用注册的AID已正确路由到主机。</p>
 <p>实现HCE服务或使用SE的Android应用程序不必担心配置路由表 - 这是由Android自动处理的。Android只需要知道哪些AID可以由HCE服务处理，哪些可以由SE处理。基于哪些服务已安装，以及哪些用户已配置为首选服务，路由表会自动配置。</p>
 <p>我们已经介绍了如何声明HCE服务的AID。以下部分说明如何为使用SE进行卡模拟的应用程序声明AID。</p>
@@ -581,10 +581,6 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android Developer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Mobile Security</a>
               </li>
              
@@ -594,6 +590,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CTF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android Developer</a>
               </li>
             
             <div class="clearfix"></div>
