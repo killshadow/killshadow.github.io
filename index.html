@@ -144,6 +144,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-NFC开发笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/09/NFC开发笔记/">NFC开发笔记</a>
+    </h1>
+  
+
+
+        
+        <a href="/2018/09/09/NFC开发笔记/" class="archive-article-date">
+  	<time datetime="2018-09-09T13:26:24.619Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h2><blockquote>
+<p>在正式开始介绍项目前，我想先介绍一下背景及一些废话，方便大家能够更好理解这个项目。这个项目起初是为了能够更好地抓取手机与IC卡之间的交互数据，以及对抓取的数据进行分析。后来在抓取数据过程当中，希望能够实现某些数据的替换（中间人）、重放、中继，以此展开了一系列的功能扩展。此外，对于数据提取这一块，也做了一些专门的优化，如：在Log中发送数据到HCE模块或者到MitM模块。文章的最后还会对希望扩展的功能进一步分析。我暂且把这个项目的整体设计模式称为：VNNC模式（View Network NFC Control，可以简单理解为MVC模式），对应的包如下图。为了加速apdu数据流的数据传输，我们还增加了多线程功能，这个方式将数据的SQLite存储与apdu数据流分离在不同线程，以保证高效、有序地对数据操作。这个设计模式是鄙人自命名的，如有纰漏，请指正。以下会对整个项目进行解释，以方便接管项目者快速理解整个项目，少走一些弯路。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2018/09/09/NFC开发笔记/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android Developer</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/09/NFC开发笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-基于主机的卡模拟(HCE)概述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -428,10 +507,6 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android Developer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Mobile Security</a>
               </li>
              
@@ -441,6 +516,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CTF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android Developer</a>
               </li>
             
             <div class="clearfix"></div>
