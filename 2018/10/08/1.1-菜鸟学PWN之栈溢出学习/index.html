@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/1538830059726.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/register.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/1538897713778.png">
-<meta property="og:updated_time" content="2018-10-08T03:09:04.834Z">
+<meta property="og:updated_time" content="2018-10-08T03:11:10.927Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1.1-菜鸟学PWN之栈溢出学习">
 <meta name="twitter:description" content="实现栈溢出的两个条件:  程序有向栈写入数据的行为 程序并不限制写入数据的长度  如果想用栈溢出来执行攻击指令, 就要在溢出数据内包含攻击指令的内容或地址, 并且要将程序控制权交给该指令. 攻击指令可以是自定义的指令, 也可以利用系统内已有的函数及指令.">
@@ -177,7 +177,7 @@
 
         
         <a href="/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/" class="archive-article-date">
-  	<time datetime="2018-10-08T03:09:04.834Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-08</time>
+  	<time datetime="2018-10-08T03:11:10.927Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-08</time>
 </a>
         
       </header>
@@ -329,27 +329,21 @@
 <li>被调用者本身压入需要保存的寄存器， 通常这些寄存器包括 EBX，ESI 和 EDI 等</li>
 </ol>
 </blockquote>
-<ol>
-<li><p>被调用函数(callee)的<strong>参数</strong>按照<strong>逆序</strong>依次压入栈内. 如果callee没有参数, 则无需此操作. 这些参数仍会保存在调用函数(caller)的函数状态内, 之后压入栈内的数据都会作为被调用函数(callee)的函数状态来保存.</p>
-<p><img src="v2-9125ba203edd2bab1308ad88db2ae197_hd.jpg" alt="img"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   0x8048552 &lt;main+68&gt;        add    esp, 0x10</span><br><span class="line">   0x8048555 &lt;main+71&gt;        mov    eax, DWORD PTR [ebp-0x18]</span><br><span class="line">   0x8048558 &lt;main+74&gt;        sub    esp, 0x8</span><br><span class="line">→  0x804855b &lt;main+77&gt;        push   eax	# $eax : 0x17(即:23,自己输入的数据)</span><br><span class="line">   0x804855c &lt;main+78&gt;        push   DWORD PTR [ebp-0x14] # ebp为main函数栈基址,-0x14便是int a的栈地址,此处是压入a的值到calc调用栈</span><br><span class="line">   0x804855f &lt;main+81&gt;        call   0x80484eb &lt;calc&gt;</span><br><span class="line">   0x8048564 &lt;main+86&gt;        add    esp, 0x10</span><br><span class="line">   0x8048567 &lt;main+89&gt;        mov    DWORD PTR [ebp-0x10], eax</span><br><span class="line">   0x804856a &lt;main+92&gt;        sub    esp, 0x8</span><br></pre></td></tr></table></figure>
-<p><img src="1538817009439.png" alt="1538817009439"></p>
-</li>
-<li><p>然后将调用函数(caller)进行调用之后的<strong>下一条指令地址作为返回地址压入栈内</strong>. 这样调用函数(caller)的eip(指令)信息得以保存.(这一操作是隐式的, 在执行call命令时就已经push了return的值了)</p>
-<p><img src="v2-9ae4f530296d4a8ec7d44443e3e6d37f_hd.jpg" alt="img"></p>
-<p>在gdb里<code>step into</code>进<code>calc</code>函数, 当执行到<code>push ebp</code>的时候, 能看到前面的两个参数和返回地址已经被push到当前函数(即<code>calc</code>)的栈帧, 如下图:</p>
-<p><img src="1538825556293.png" alt="1538825556293"></p>
-</li>
-<li><p>再将当前的<strong>ebp寄存器的值(也就是调用函数[caller]的基地址)压入栈</strong>内, 并将<strong>ebp寄存器的值更新为当前栈顶(esp)的地址</strong>. 这样调用函数(caller)的ebp(基地址)信息得以保存. 同时, ebp被更新为被调用函数(callee)的基地址. 例如下面调用calc函数时, 有<code>mov rbp, rsp</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    0x4006b1 &lt;main+61&gt;        dec    DWORD PTR [rbx+0x458bec55]</span><br><span class="line">    0x4006b7 &lt;main+67&gt;        lock   mov esi, edx</span><br><span class="line">    0x4006ba &lt;main+70&gt;        mov    edi, eax</span><br><span class="line">→   0x4006bc &lt;main+72&gt;        call   0x400646 &lt;calc&gt;</span><br><span class="line">  ↳    0x400646 &lt;calc+0&gt;         push   rbp</span><br><span class="line">       0x400647 &lt;calc+1&gt;         mov    rbp, rsp</span><br><span class="line">       0x40064a &lt;calc+4&gt;         mov    DWORD PTR [rbp-0x14], edi</span><br><span class="line">       0x40064d &lt;calc+7&gt;         mov    DWORD PTR [rbp-0x18], esi</span><br><span class="line">       0x400650 &lt;calc+10&gt;        mov    DWORD PTR [rbp-0x8], 0x0</span><br><span class="line">       0x400657 &lt;calc+17&gt;        mov    DWORD PTR [rbp-0x4], 0x2</span><br></pre></td></tr></table></figure>
-<p><img src="v2-c350a4c5e9f5bbe839606486f3100185_hd.jpg" alt="img"></p>
-<p><img src="1538826215949.png" alt="1538826215949"></p>
-</li>
-<li><p>再之后将<strong>被调用函数(callee)的局部变量等数据压入栈</strong>内.</p>
-<p><img src="v2-63f07378642e6f38197ddfb817567f6c_hd.jpg" alt="img"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   0x80484ec &lt;calc+1&gt;         mov    ebp, esp</span><br><span class="line">   0x80484ee &lt;calc+3&gt;         sub    esp, 0x10</span><br><span class="line">   0x80484f1 &lt;calc+6&gt;         mov    DWORD PTR [ebp-0x8], 0x2 # 给d赋值: d=2</span><br><span class="line">→  0x80484f8 &lt;calc+13&gt;        mov    eax, DWORD PTR [ebp+0x8] # 将参数a=5赋给eax</span><br><span class="line">   0x80484fb &lt;calc+16&gt;        imul   eax, DWORD PTR [ebp-0x8] # 5*2(有符号乘)</span><br><span class="line">   0x80484ff &lt;calc+20&gt;        mov    edx, eax</span><br><span class="line">   0x8048501 &lt;calc+22&gt;        mov    eax, DWORD PTR [ebp+0xc]</span><br><span class="line">   0x8048504 &lt;calc+25&gt;        add    eax, edx # 10 + 23</span><br><span class="line">   0x8048506 &lt;calc+27&gt;        mov    DWORD PTR [ebp-0x4], eax # 赋值给变量c</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>1) 被调用函数(callee)的<strong>参数</strong>按照<strong>逆序</strong>依次压入栈内. 如果callee没有参数, 则无需此操作. 这些参数仍会保存在调用函数(caller)的函数状态内, 之后压入栈内的数据都会作为被调用函数(callee)的函数状态来保存.</p>
+<p>   <img src="v2-9125ba203edd2bab1308ad88db2ae197_hd.jpg" alt="img"></p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   0x8048552 &lt;main+68&gt;        add    esp, 0x10</span><br><span class="line">   0x8048555 &lt;main+71&gt;        mov    eax, DWORD PTR [ebp-0x18]</span><br><span class="line">   0x8048558 &lt;main+74&gt;        sub    esp, 0x8</span><br><span class="line">→  0x804855b &lt;main+77&gt;        push   eax	# $eax : 0x17(即:23,自己输入的数据)</span><br><span class="line">   0x804855c &lt;main+78&gt;        push   DWORD PTR [ebp-0x14] # ebp为main函数栈基址,-0x14便是int a的栈地址,此处是压入a的值到calc调用栈</span><br><span class="line">   0x804855f &lt;main+81&gt;        call   0x80484eb &lt;calc&gt;</span><br><span class="line">   0x8048564 &lt;main+86&gt;        add    esp, 0x10</span><br><span class="line">   0x8048567 &lt;main+89&gt;        mov    DWORD PTR [ebp-0x10], eax</span><br><span class="line">   0x804856a &lt;main+92&gt;        sub    esp, 0x8</span><br></pre></td></tr></table></figure>
+<p>   <img src="1538817009439.png" alt="1538817009439"></p>
+<p>2) 然后将调用函数(caller)进行调用之后的<strong>下一条指令地址作为返回地址压入栈内</strong>. 这样调用函数(caller)的eip(指令)信息得以保存.(这一操作是隐式的, 在执行call命令时就已经push了return的值了)</p>
+<p>   <img src="v2-9ae4f530296d4a8ec7d44443e3e6d37f_hd.jpg" alt="img"></p>
+<p>   在gdb里<code>step into</code>进<code>calc</code>函数, 当执行到<code>push ebp</code>的时候, 能看到前面的两个参数和返回地址已经被push到当前函数(即<code>calc</code>)的栈帧, 如下图:</p>
+<p>   <img src="1538825556293.png" alt="1538825556293"></p>
+<p>3) 再将当前的<strong>ebp寄存器的值(也就是调用函数[caller]的基地址)压入栈</strong>内, 并将<strong>ebp寄存器的值更新为当前栈顶(esp)的地址</strong>. 这样调用函数(caller)的ebp(基地址)信息得以保存. 同时, ebp被更新为被调用函数(callee)的基地址. 例如下面调用calc函数时, 有<code>mov rbp, rsp</code>:</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    0x4006b1 &lt;main+61&gt;        dec    DWORD PTR [rbx+0x458bec55]</span><br><span class="line">    0x4006b7 &lt;main+67&gt;        lock   mov esi, edx</span><br><span class="line">    0x4006ba &lt;main+70&gt;        mov    edi, eax</span><br><span class="line">→   0x4006bc &lt;main+72&gt;        call   0x400646 &lt;calc&gt;</span><br><span class="line">  ↳    0x400646 &lt;calc+0&gt;         push   rbp</span><br><span class="line">       0x400647 &lt;calc+1&gt;         mov    rbp, rsp</span><br><span class="line">       0x40064a &lt;calc+4&gt;         mov    DWORD PTR [rbp-0x14], edi</span><br><span class="line">       0x40064d &lt;calc+7&gt;         mov    DWORD PTR [rbp-0x18], esi</span><br><span class="line">       0x400650 &lt;calc+10&gt;        mov    DWORD PTR [rbp-0x8], 0x0</span><br><span class="line">       0x400657 &lt;calc+17&gt;        mov    DWORD PTR [rbp-0x4], 0x2</span><br></pre></td></tr></table></figure>
+<p>   <img src="v2-c350a4c5e9f5bbe839606486f3100185_hd.jpg" alt="img"></p>
+<p>   <img src="1538826215949.png" alt="1538826215949"></p>
+<p>4) 再之后将<strong>被调用函数(callee)的局部变量等数据压入栈</strong>内.</p>
+<p>   <img src="v2-63f07378642e6f38197ddfb817567f6c_hd.jpg" alt="img"></p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   0x80484ec &lt;calc+1&gt;         mov    ebp, esp</span><br><span class="line">   0x80484ee &lt;calc+3&gt;         sub    esp, 0x10</span><br><span class="line">   0x80484f1 &lt;calc+6&gt;         mov    DWORD PTR [ebp-0x8], 0x2 # 给d赋值: d=2</span><br><span class="line">→  0x80484f8 &lt;calc+13&gt;        mov    eax, DWORD PTR [ebp+0x8] # 将参数a=5赋给eax</span><br><span class="line">   0x80484fb &lt;calc+16&gt;        imul   eax, DWORD PTR [ebp-0x8] # 5*2(有符号乘)</span><br><span class="line">   0x80484ff &lt;calc+20&gt;        mov    edx, eax</span><br><span class="line">   0x8048501 &lt;calc+22&gt;        mov    eax, DWORD PTR [ebp+0xc]</span><br><span class="line">   0x8048504 &lt;calc+25&gt;        add    eax, edx # 10 + 23</span><br><span class="line">   0x8048506 &lt;calc+27&gt;        mov    DWORD PTR [ebp-0x4], eax # 赋值给变量c</span><br></pre></td></tr></table></figure>
 <h4 id="2-函数调用出栈顺序"><a href="#2-函数调用出栈顺序" class="headerlink" title="(2) 函数调用出栈顺序"></a>(2) 函数调用出栈顺序</h4><p>1) 栈顶(ESP)会重新指向被调用函数(callee)的基地址, 因此, 被调用函数的局部变量会从站内直接弹出. 如下:</p>
 <p>   <img src="v2-4340d6c750f59519f4f87dffca03a86a_hd.jpg" alt="img"></p>
 <p>   具体汇编代码是:</p>
@@ -718,11 +712,11 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android Developer</a>
+                <a href="javascript:void(0)" class="js-tag color5">AOSP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AOSP</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android Developer</a>
               </li>
              
               <li class="article-tag-list-item">
