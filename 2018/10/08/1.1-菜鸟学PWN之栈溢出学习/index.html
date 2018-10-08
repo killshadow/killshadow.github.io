@@ -17,7 +17,6 @@
 <meta property="og:description" content="实现栈溢出的两个条件:  程序有向栈写入数据的行为 程序并不限制写入数据的长度">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/Data_stack.png">
-<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/Data_stack.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/271650059007975.jpg">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/v2-8d5649c36458080223084d77abbd554a_hd.jpg">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/v2-9125ba203edd2bab1308ad88db2ae197_hd.jpg">
@@ -33,7 +32,7 @@
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/1538830059726.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/register.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/1538897713778.png">
-<meta property="og:updated_time" content="2018-10-08T03:17:17.279Z">
+<meta property="og:updated_time" content="2018-10-08T03:19:59.428Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1.1-菜鸟学PWN之栈溢出学习">
 <meta name="twitter:description" content="实现栈溢出的两个条件:  程序有向栈写入数据的行为 程序并不限制写入数据的长度">
@@ -178,7 +177,7 @@
 
         
         <a href="/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/" class="archive-article-date">
-  	<time datetime="2018-10-08T03:17:17.279Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-08</time>
+  	<time datetime="2018-10-08T03:19:59.428Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-08</time>
 </a>
         
       </header>
@@ -196,7 +195,8 @@
 <blockquote>
 <p>如果想用栈溢出来执行攻击指令, 就要在溢出数据内包含攻击指令的内容或地址, 并且要将程序控制权交给该指令.<br>攻击指令可以是自定义的指令, 也可以利用系统内已有的函数及指令.</p>
 </blockquote>
-<img src="/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/Data_stack.png" title="This is an image">
+<p>_posts/1.1-菜鸟学PWN之栈溢出学习/Data_stack.png</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`&#123;<span class="symbol">%</span> asset_img <span class="built_in">image</span>.jpg This <span class="built_in">is</span> an <span class="built_in">image</span> <span class="symbol">%</span>&#125;`</span><br></pre></td></tr></table></figure>
 <h2 id="0x10-背景知识"><a href="#0x10-背景知识" class="headerlink" title="0x10 背景知识"></a>0x10 背景知识</h2><h3 id="0x11-栈介绍"><a href="#0x11-栈介绍" class="headerlink" title="0x11 栈介绍"></a>0x11 栈介绍</h3><p>栈是一种典型的<strong>先进后出(First in Last Out)</strong>的数据结构, 其操作主要有压栈(push)与出栈(pop)两种操作. <strong>两种操作都是操作栈顶</strong>, 当然也有栈底(位于高地址).</p>
 <p><img src="Data_stack.png" alt="基本栈操作"></p>
 <p>每个程序在运行时都有虚拟地址空间, 其中某一部分就是该程序对应的栈. 编译器使用堆栈<strong>传递函数参数、保存返回地址、临时保存寄存器原有值(即函数调用的上下文)以备恢复以及存储本地局部变量</strong>. 程序的栈都是<strong>从进程地址空间的高地址向低地址增长</strong>.</p>
