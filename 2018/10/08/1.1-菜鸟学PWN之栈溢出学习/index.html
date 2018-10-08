@@ -16,27 +16,27 @@
 <meta property="og:site_name" content="Live to change world">
 <meta property="og:description" content="实现栈溢出的两个条件:  程序有向栈写入数据的行为 程序并不限制写入数据的长度  如果想用栈溢出来执行攻击指令, 就要在溢出数据内包含攻击指令的内容或地址, 并且要将程序控制权交给该指令. 攻击指令可以是自定义的指令, 也可以利用系统内已有的函数及指令.">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/Data_stack.png">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/271650059007975.jpg">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/v2-8d5649c36458080223084d77abbd554a_hd.jpg">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/v2-9125ba203edd2bab1308ad88db2ae197_hd.jpg">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538817009439.png">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/v2-9ae4f530296d4a8ec7d44443e3e6d37f_hd.jpg">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538825556293.png">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/v2-c350a4c5e9f5bbe839606486f3100185_hd.jpg">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538826215949.png">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/v2-63f07378642e6f38197ddfb817567f6c_hd.jpg">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/v2-4340d6c750f59519f4f87dffca03a86a_hd.jpg">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538829057155.png">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538829148474.png">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538830059726.png">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/register.png">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538897713778.png">
-<meta property="og:updated_time" content="2018-10-08T02:35:13.997Z">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/Data_stack.png">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/271650059007975.jpg">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/v2-8d5649c36458080223084d77abbd554a_hd.jpg">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/v2-9125ba203edd2bab1308ad88db2ae197_hd.jpg">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538817009439.png">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/v2-9ae4f530296d4a8ec7d44443e3e6d37f_hd.jpg">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538825556293.png">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/v2-c350a4c5e9f5bbe839606486f3100185_hd.jpg">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538826215949.png">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/v2-63f07378642e6f38197ddfb817567f6c_hd.jpg">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/v2-4340d6c750f59519f4f87dffca03a86a_hd.jpg">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538829057155.png">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538829148474.png">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538830059726.png">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/register.png">
+<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538897713778.png">
+<meta property="og:updated_time" content="2018-10-08T02:54:57.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1.1-菜鸟学PWN之栈溢出学习">
 <meta name="twitter:description" content="实现栈溢出的两个条件:  程序有向栈写入数据的行为 程序并不限制写入数据的长度  如果想用栈溢出来执行攻击指令, 就要在溢出数据内包含攻击指令的内容或地址, 并且要将程序控制权交给该指令. 攻击指令可以是自定义的指令, 也可以利用系统内已有的函数及指令.">
-<meta name="twitter:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/Data_stack.png">
+<meta name="twitter:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/Data_stack.png">
   
     <link rel="alternative" href="/atom.xml" title="Live to change world" type="application/atom+xml">
   
@@ -177,7 +177,7 @@
 
         
         <a href="/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/" class="archive-article-date">
-  	<time datetime="2018-10-08T02:35:13.997Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-08</time>
+  	<time datetime="2018-10-08T02:54:57.623Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-08</time>
 </a>
         
       </header>
@@ -194,12 +194,12 @@
 </blockquote>
 <a id="more"></a>
 <h2 id="0x10-背景知识"><a href="#0x10-背景知识" class="headerlink" title="0x10 背景知识"></a>0x10 背景知识</h2><h3 id="0x11-栈介绍"><a href="#0x11-栈介绍" class="headerlink" title="0x11 栈介绍"></a>0x11 栈介绍</h3><p>栈是一种典型的<strong>先进后出(First in Last Out)</strong>的数据结构, 其操作主要有压栈(push)与出栈(pop)两种操作. <strong>两种操作都是操作栈顶</strong>, 当然也有栈底(位于高地址).</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/Data_stack.png" alt="基本栈操作"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/Data_stack.png" alt="基本栈操作"></p>
 <p>每个程序在运行时都有虚拟地址空间, 其中某一部分就是该程序对应的栈. 编译器使用堆栈<strong>传递函数参数、保存返回地址、临时保存寄存器原有值(即函数调用的上下文)以备恢复以及存储本地局部变量</strong>. 程序的栈都是<strong>从进程地址空间的高地址向低地址增长</strong>.</p>
 <hr>
 <h3 id="0x12-栈帧结构"><a href="#0x12-栈帧结构" class="headerlink" title="0x12 栈帧结构"></a>0x12 栈帧结构</h3><p>函数调用经常是<strong>嵌套</strong>的, 在同一时刻, 堆栈中会有多个函数的信息. 每个未完成运行的函数占用一个<strong>独立的连续区域</strong>, 称作<strong>栈帧(Stack Frame)</strong>. 当函数被调用时, 栈帧被压入堆栈; 当函数返回时, 栈帧从堆栈中弹出. 栈帧存放函数的参数、函数返回地址、调用者(caller)的一些寄存器状态、函数的局部变量等.</p>
 <p>栈帧的边界由栈帧基地址指针EBP和栈帧堆栈指针ESP界定(指正存放在相应寄存器中). EBP指向栈帧底部(高地址), 在当前栈帧内位置固定; ESP指向栈帧顶部(低地址), 当程序执行时ESP会随着数据的入栈和出栈而移动(如: 压入局部变量). 因此函数中对数据的访问大部分是基于EBP(对EBP取相对地址). 函数调用栈典型内存分布如下图:</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/271650059007975.jpg" alt="img"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/271650059007975.jpg" alt="img"></p>
 <blockquote>
 <p>注意: 当函数被调用时, EBP的地址是当前栈帧的基地址, 但EBP指向的是上一栈帧基地址的地址.</p>
 </blockquote>
@@ -305,7 +305,7 @@
 <h3 id="0x13-函数调用栈"><a href="#0x13-函数调用栈" class="headerlink" title="0x13 函数调用栈"></a>0x13 函数调用栈</h3><p><strong>函数调用栈</strong>是指程序运行时内存一段连续的区域, 用来保存函数运行时的状态信息, 包括函数参数与局部变量等. 称之为”栈”是因为发生函数调用时, 调用函数(caller)的被保存在栈内, 被调用函数(callee)的状态被压入调用栈的栈顶; 在函数调用结束时, 栈顶的函数(callee)状态被弹出, 栈顶恢复到调用函数(caller)的状态. 函数调用栈在内存中从高地址向低地址生长, 所以栈顶对应的内存在压栈时变小, 出栈时变大.</p>
 <blockquote>
 <p>函数调用发生和结束的调用栈帧如下图:</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/v2-8d5649c36458080223084d77abbd554a_hd.jpg" alt="img"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/v2-8d5649c36458080223084d77abbd554a_hd.jpg" alt="img"></p>
 <p>函数状态主要涉及三个寄存器–esp, ebp, eip:</p>
 <ul>
 <li>esp 用来存储函数调用栈(caller)的栈顶指针, 在压栈(入栈)和退栈(出栈)时发生变化.</li>
@@ -331,28 +331,28 @@
 </blockquote>
 <ol>
 <li><p>被调用函数(callee)的<strong>参数</strong>按照<strong>逆序</strong>依次压入栈内. 如果callee没有参数, 则无需此操作. 这些参数仍会保存在调用函数(caller)的函数状态内, 之后压入栈内的数据都会作为被调用函数(callee)的函数状态来保存.</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/v2-9125ba203edd2bab1308ad88db2ae197_hd.jpg" alt="img"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/v2-9125ba203edd2bab1308ad88db2ae197_hd.jpg" alt="img"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   0x8048552 &lt;main+68&gt;        add    esp, 0x10</span><br><span class="line">   0x8048555 &lt;main+71&gt;        mov    eax, DWORD PTR [ebp-0x18]</span><br><span class="line">   0x8048558 &lt;main+74&gt;        sub    esp, 0x8</span><br><span class="line">→  0x804855b &lt;main+77&gt;        push   eax	# $eax : 0x17(即:23,自己输入的数据)</span><br><span class="line">   0x804855c &lt;main+78&gt;        push   DWORD PTR [ebp-0x14] # ebp为main函数栈基址,-0x14便是int a的栈地址,此处是压入a的值到calc调用栈</span><br><span class="line">   0x804855f &lt;main+81&gt;        call   0x80484eb &lt;calc&gt;</span><br><span class="line">   0x8048564 &lt;main+86&gt;        add    esp, 0x10</span><br><span class="line">   0x8048567 &lt;main+89&gt;        mov    DWORD PTR [ebp-0x10], eax</span><br><span class="line">   0x804856a &lt;main+92&gt;        sub    esp, 0x8</span><br></pre></td></tr></table></figure>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538817009439.png" alt="1538817009439"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538817009439.png" alt="1538817009439"></p>
 </li>
 <li><p>然后将调用函数(caller)进行调用之后的<strong>下一条指令地址作为返回地址压入栈内</strong>. 这样调用函数(caller)的eip(指令)信息得以保存.(这一操作是隐式的, 在执行call命令时就已经push了return的值了)</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/v2-9ae4f530296d4a8ec7d44443e3e6d37f_hd.jpg" alt="img"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/v2-9ae4f530296d4a8ec7d44443e3e6d37f_hd.jpg" alt="img"></p>
 <p>在gdb里<code>step into</code>进<code>calc</code>函数, 当执行到<code>push ebp</code>的时候, 能看到前面的两个参数和返回地址已经被push到当前函数(即<code>calc</code>)的栈帧, 如下图:</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538825556293.png" alt="1538825556293"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538825556293.png" alt="1538825556293"></p>
 </li>
 <li><p>再将当前的<strong>ebp寄存器的值(也就是调用函数[caller]的基地址)压入栈</strong>内, 并将<strong>ebp寄存器的值更新为当前栈顶(esp)的地址</strong>. 这样调用函数(caller)的ebp(基地址)信息得以保存. 同时, ebp被更新为被调用函数(callee)的基地址. 例如下面调用calc函数时, 有<code>mov rbp, rsp</code>:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    0x4006b1 &lt;main+61&gt;        dec    DWORD PTR [rbx+0x458bec55]</span><br><span class="line">    0x4006b7 &lt;main+67&gt;        lock   mov esi, edx</span><br><span class="line">    0x4006ba &lt;main+70&gt;        mov    edi, eax</span><br><span class="line">→   0x4006bc &lt;main+72&gt;        call   0x400646 &lt;calc&gt;</span><br><span class="line">  ↳    0x400646 &lt;calc+0&gt;         push   rbp</span><br><span class="line">       0x400647 &lt;calc+1&gt;         mov    rbp, rsp</span><br><span class="line">       0x40064a &lt;calc+4&gt;         mov    DWORD PTR [rbp-0x14], edi</span><br><span class="line">       0x40064d &lt;calc+7&gt;         mov    DWORD PTR [rbp-0x18], esi</span><br><span class="line">       0x400650 &lt;calc+10&gt;        mov    DWORD PTR [rbp-0x8], 0x0</span><br><span class="line">       0x400657 &lt;calc+17&gt;        mov    DWORD PTR [rbp-0x4], 0x2</span><br></pre></td></tr></table></figure>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/v2-c350a4c5e9f5bbe839606486f3100185_hd.jpg" alt="img"></p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538826215949.png" alt="1538826215949"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/v2-c350a4c5e9f5bbe839606486f3100185_hd.jpg" alt="img"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538826215949.png" alt="1538826215949"></p>
 </li>
 <li><p>再之后将<strong>被调用函数(callee)的局部变量等数据压入栈</strong>内.</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/v2-63f07378642e6f38197ddfb817567f6c_hd.jpg" alt="img"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/v2-63f07378642e6f38197ddfb817567f6c_hd.jpg" alt="img"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   0x80484ec &lt;calc+1&gt;         mov    ebp, esp</span><br><span class="line">   0x80484ee &lt;calc+3&gt;         sub    esp, 0x10</span><br><span class="line">   0x80484f1 &lt;calc+6&gt;         mov    DWORD PTR [ebp-0x8], 0x2 # 给d赋值: d=2</span><br><span class="line">→  0x80484f8 &lt;calc+13&gt;        mov    eax, DWORD PTR [ebp+0x8] # 将参数a=5赋给eax</span><br><span class="line">   0x80484fb &lt;calc+16&gt;        imul   eax, DWORD PTR [ebp-0x8] # 5*2(有符号乘)</span><br><span class="line">   0x80484ff &lt;calc+20&gt;        mov    edx, eax</span><br><span class="line">   0x8048501 &lt;calc+22&gt;        mov    eax, DWORD PTR [ebp+0xc]</span><br><span class="line">   0x8048504 &lt;calc+25&gt;        add    eax, edx # 10 + 23</span><br><span class="line">   0x8048506 &lt;calc+27&gt;        mov    DWORD PTR [ebp-0x4], eax # 赋值给变量c</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h4 id="2-函数调用出栈顺序"><a href="#2-函数调用出栈顺序" class="headerlink" title="(2) 函数调用出栈顺序"></a>(2) 函数调用出栈顺序</h4><ol>
 <li><p>栈顶(ESP)会重新指向被调用函数(callee)的基地址, 因此, 被调用函数的局部变量会从站内直接弹出. 如下:</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/v2-4340d6c750f59519f4f87dffca03a86a_hd.jpg" alt="img"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/v2-4340d6c750f59519f4f87dffca03a86a_hd.jpg" alt="img"></p>
 <p>具体汇编代码是:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   0x8048505 &lt;calc+26&gt;        ror    BYTE PTR [ecx+0x458bfc45], 1</span><br><span class="line">   0x804850b &lt;calc+32&gt;        cld    </span><br><span class="line">   0x804850c &lt;calc+33&gt;        leave  </span><br><span class="line">→  0x804850d &lt;calc+34&gt;        ret    </span><br><span class="line">  ↳   0x8048564 &lt;main+86&gt;        add    esp, 0x10</span><br><span class="line">      0x8048567 &lt;main+89&gt;        mov    DWORD PTR [ebp-0x10], eax</span><br><span class="line">      0x804856a &lt;main+92&gt;        sub    esp, 0x8</span><br><span class="line">      0x804856d &lt;main+95&gt;        push   DWORD PTR [ebp-0x10]</span><br><span class="line">      0x8048570 &lt;main+98&gt;        push   0x804863a</span><br><span class="line">      0x8048575 &lt;main+103&gt;       call   0x8048390 &lt;printf@plt&gt;</span><br></pre></td></tr></table></figure>
 <p>如上图, 当执行到<code>calc</code>函数的<code>ret</code>返回语句时, 会有下面一系列的语句, 其中第一条<code>add</code>语句就是让<code>esp</code>重新指向<code>calc</code>的基址(ebp)的关键语句, 此时位于低地址的局部变量将丢弃.</p>
@@ -360,10 +360,10 @@
 <li><p>随后将基地址内存储的调用函数(caller)的ebp的值重新pop到当前的ebp中, 至此, 调用函数(caller)的基地址得以恢复. 值得注意的是, 这一操作是隐式的(与函数调用压栈的第2步作对比). 如下图:</p>
 <ul>
 <li><p>执行<code>leave</code>前:</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538829057155.png" alt="1538829057155"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538829057155.png" alt="1538829057155"></p>
 </li>
 <li><p>执行<code>leave</code>后:</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538829148474.png" alt="1538829148474"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538829148474.png" alt="1538829148474"></p>
 </li>
 <li><p><code>esp</code>存储的地址会指向返回地址(<code>0x08048564</code>):</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">─────────────────────────────────────────────────────────[ registers ]────</span><br><span class="line">$eax   : 0x21      </span><br><span class="line">$ebx   : 0x0       </span><br><span class="line">$ecx   : 0x1       </span><br><span class="line">$edx   : 0xa       </span><br><span class="line">$esp   : 0xffffcf5c  →  0x08048564  →  &lt;main+86&gt; add esp, 0x10 # 指向ret地址</span><br><span class="line">$ebp   : 0xffffcf88  →  0x00000000</span><br><span class="line">$esi   : 0xf7faf000  →  0x001b1db0</span><br><span class="line">$edi   : 0xf7faf000  →  0x001b1db0</span><br><span class="line">$eip   : 0x804850d   →  &lt;calc+34&gt; ret </span><br><span class="line">$eflags: [carry PARITY ADJUST zero sign trap INTERRUPT direction overflow resume virtualx86 identification]</span><br><span class="line">$gs: 0x0063  $fs: 0x0000  $ds: 0x002b  $cs: 0x0023  $es: 0x002b  $ss: 0x002b</span><br></pre></td></tr></table></figure>
@@ -371,7 +371,7 @@
 </ul>
 </li>
 <li><p>然后将返回地址从栈内pop出来, 并存到<code>eip</code>内. 从而调用函数(caller)的<code>eip</code>信息得以恢复, 指向下一条指令.</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538830059726.png" alt="1538830059726"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538830059726.png" alt="1538830059726"></p>
 </li>
 </ol>
 <blockquote>
@@ -381,7 +381,7 @@
 <p>通过上述描述, 可知函数调用压栈和出栈是一个互逆过程, 这也间接验证了堆栈平衡的机理.</p>
 </blockquote>
 <hr>
-<h3 id="0x14-寄存器分布"><a href="#0x14-寄存器分布" class="headerlink" title="0x14 寄存器分布"></a>0x14 寄存器分布</h3><p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/register.png" alt="img"></p>
+<h3 id="0x14-寄存器分布"><a href="#0x14-寄存器分布" class="headerlink" title="0x14 寄存器分布"></a>0x14 寄存器分布</h3><p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/register.png" alt="img"></p>
 <blockquote>
 <p>32位和64位程序的部分区别:</p>
 <ul>
@@ -400,7 +400,7 @@
 <h2 id="0x20-栈溢出原理"><a href="#0x20-栈溢出原理" class="headerlink" title="0x20 栈溢出原理"></a>0x20 栈溢出原理</h2><p>栈溢出的原理其实很简单: <strong>在程序没有判断输入长度的情况下, 当程序向申请的变量写入的字节长度超过了该变量向内存申请的字节长度, 因而导致该变量相邻的栈的内存的值被覆盖.</strong> 简而言之, 还是开篇提及的两个栈溢出条件. 由于操作系统或者程序增加了对栈溢出的保护, 而使得溢出的难度增大, 但其核心思想是不变的. 我们先用根据下图来看看溢出的效果:</p>
 <ol>
 <li><p>在执行漏洞函数之前, 我们能看到<code>ebp</code> <code>esp</code>的地址很正常, ebp的下一个地址也指向了<code>return address</code>.</p>
-<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/1.1-菜鸟学PWN之栈溢出学习.assets/1538897713778.png" alt="1538897713778"></p>
+<p><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/004/1538897713778.png" alt="1538897713778"></p>
 </li>
 <li><p>接着当我们执行到漏洞函数之时, 输入以下字符串:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aaaaaaaaaaaaaaaaaaaaaaaaaaaa33330808</span><br></pre></td></tr></table></figure>
@@ -727,6 +727,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android Developer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Mobile Security</a>
               </li>
              
@@ -736,10 +740,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CTF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android Developer</a>
               </li>
             
             <div class="clearfix"></div>
