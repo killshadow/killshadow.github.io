@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/09/1.1-菜鸟学PWN之栈溢出学习/1538830059726.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/09/1.1-菜鸟学PWN之栈溢出学习/register.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/09/1.1-菜鸟学PWN之栈溢出学习/1538897713778.png">
-<meta property="og:updated_time" content="2018-10-09T00:59:53.200Z">
+<meta property="og:updated_time" content="2018-10-09T01:03:03.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1.1-菜鸟学PWN之栈溢出学习">
 <meta name="twitter:description" content="实现栈溢出的两个条件:  程序有向栈写入数据的行为 程序并不限制写入数据的长度">
@@ -177,7 +177,7 @@
 
         
         <a href="/2018/10/09/1.1-菜鸟学PWN之栈溢出学习/" class="archive-article-date">
-  	<time datetime="2018-10-09T00:59:53.200Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-09</time>
+  	<time datetime="2018-10-09T01:03:03.159Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-09</time>
 </a>
         
       </header>
@@ -321,10 +321,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -m32 debugfunc.c -o debugfunc32 <span class="comment"># -m32表示编译成32位的程序</span></span><br></pre></td></tr></table></figure>
 <h4 id="1-函数调用压栈顺序"><a href="#1-函数调用压栈顺序" class="headerlink" title="(1) 函数调用压栈顺序"></a>(1) 函数调用压栈顺序</h4><blockquote>
 <ol>
-<li><p>调用者压入需要保存的寄存器(通常这些寄存器包括 EAX，ECX 和 EDX等)</p>
-</li>
-<li><p>按照从右往左的顺序压入参数(这个可能有特殊情况, 详情请看<a href="http://www.cnblogs.com/clover-toeic/p/3756668.html" target="_blank" rel="noopener">C语言函数调用栈(二)</a>)</p>
-</li>
+<li>调用者压入需要保存的寄存器(通常这些寄存器包括 EAX，ECX 和 EDX等)</li>
+<li>按照从右往左的顺序压入参数(这个可能有特殊情况, 详情请看<a href="http://www.cnblogs.com/clover-toeic/p/3756668.html" target="_blank" rel="noopener">C语言函数调用栈(二)</a>)</li>
 <li>返回地址</li>
 <li>调用者的 EBP</li>
 <li>局部变量</li>
