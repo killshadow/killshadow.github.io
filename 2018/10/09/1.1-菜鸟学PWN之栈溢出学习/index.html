@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/09/1.1-菜鸟学PWN之栈溢出学习/1538830059726.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/09/1.1-菜鸟学PWN之栈溢出学习/register.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/09/1.1-菜鸟学PWN之栈溢出学习/1538897713778.png">
-<meta property="og:updated_time" content="2018-10-09T01:03:03.159Z">
+<meta property="og:updated_time" content="2018-10-09T01:07:05.786Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1.1-菜鸟学PWN之栈溢出学习">
 <meta name="twitter:description" content="实现栈溢出的两个条件:  程序有向栈写入数据的行为 程序并不限制写入数据的长度">
@@ -177,7 +177,7 @@
 
         
         <a href="/2018/10/09/1.1-菜鸟学PWN之栈溢出学习/" class="archive-article-date">
-  	<time datetime="2018-10-09T01:03:03.159Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-09</time>
+  	<time datetime="2018-10-09T01:07:05.786Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-09</time>
 </a>
         
       </header>
@@ -344,12 +344,13 @@
 <p>4) 再之后将<strong>被调用函数(callee)的局部变量等数据压入栈</strong>内.</p>
 <p>   <img src="v2-63f07378642e6f38197ddfb817567f6c_hd.jpg" alt="img"></p>
    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   0x80484ec &lt;calc+1&gt;         mov    ebp, esp</span><br><span class="line">   0x80484ee &lt;calc+3&gt;         sub    esp, 0x10</span><br><span class="line">   0x80484f1 &lt;calc+6&gt;         mov    DWORD PTR [ebp-0x8], 0x2 # 给d赋值: d=2</span><br><span class="line">→  0x80484f8 &lt;calc+13&gt;        mov    eax, DWORD PTR [ebp+0x8] # 将参数a=5赋给eax</span><br><span class="line">   0x80484fb &lt;calc+16&gt;        imul   eax, DWORD PTR [ebp-0x8] # 5*2(有符号乘)</span><br><span class="line">   0x80484ff &lt;calc+20&gt;        mov    edx, eax</span><br><span class="line">   0x8048501 &lt;calc+22&gt;        mov    eax, DWORD PTR [ebp+0xc]</span><br><span class="line">   0x8048504 &lt;calc+25&gt;        add    eax, edx # 10 + 23</span><br><span class="line">   0x8048506 &lt;calc+27&gt;        mov    DWORD PTR [ebp-0x4], eax # 赋值给变量c</span><br></pre></td></tr></table></figure>
-<h4 id="2-函数调用出栈顺序"><a href="#2-函数调用出栈顺序" class="headerlink" title="(2) 函数调用出栈顺序"></a>(2) 函数调用出栈顺序</h4><p>1) 栈顶(ESP)会重新指向被调用函数(callee)的基地址, 因此, 被调用函数的局部变量会从站内直接弹出. 如下:</p>
-<p>   <img src="v2-4340d6c750f59519f4f87dffca03a86a_hd.jpg" alt="img"></p>
-<p>   具体汇编代码是:</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   0x8048505 &lt;calc+26&gt;        ror    BYTE PTR [ecx+0x458bfc45], 1</span><br><span class="line">   0x804850b &lt;calc+32&gt;        cld    </span><br><span class="line">   0x804850c &lt;calc+33&gt;        leave  </span><br><span class="line">→  0x804850d &lt;calc+34&gt;        ret    </span><br><span class="line">  ↳   0x8048564 &lt;main+86&gt;        add    esp, 0x10</span><br><span class="line">      0x8048567 &lt;main+89&gt;        mov    DWORD PTR [ebp-0x10], eax</span><br><span class="line">      0x804856a &lt;main+92&gt;        sub    esp, 0x8</span><br><span class="line">      0x804856d &lt;main+95&gt;        push   DWORD PTR [ebp-0x10]</span><br><span class="line">      0x8048570 &lt;main+98&gt;        push   0x804863a</span><br><span class="line">      0x8048575 &lt;main+103&gt;       call   0x8048390 &lt;printf@plt&gt;</span><br></pre></td></tr></table></figure>
-<p>   如上图, 当执行到<code>calc</code>函数的<code>ret</code>返回语句时, 会有下面一系列的语句, 其中第一条<code>add</code>语句就是让<code>esp</code>重新指向<code>calc</code>的基址(ebp)的关键语句, 此时位于低地址的局部变量将丢弃.</p>
-<p>2) 随后将基地址内存储的调用函数(caller)的ebp的值重新pop到当前的ebp中, 至此, 调用函数(caller)的基地址得以恢复. 值得注意的是, 这一操作是隐式的(与函数调用压栈的第2步作对比). 如下图:</p>
+<h4 id="2-函数调用出栈顺序"><a href="#2-函数调用出栈顺序" class="headerlink" title="(2) 函数调用出栈顺序"></a>(2) 函数调用出栈顺序</h4><ol>
+<li><p>栈顶(ESP)会重新指向被调用函数(callee)的基地址, 因此, 被调用函数的局部变量会从站内直接弹出. 如下:<br><img src="v2-4340d6c750f59519f4f87dffca03a86a_hd.jpg" alt="img"></p>
+<p>具体汇编代码是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   0x8048505 &lt;calc+26&gt;        ror    BYTE PTR [ecx+0x458bfc45], 1</span><br><span class="line">   0x804850b &lt;calc+32&gt;        cld    </span><br><span class="line">   0x804850c &lt;calc+33&gt;        leave  </span><br><span class="line">→  0x804850d &lt;calc+34&gt;        ret    </span><br><span class="line">  ↳   0x8048564 &lt;main+86&gt;        add    esp, 0x10</span><br><span class="line">      0x8048567 &lt;main+89&gt;        mov    DWORD PTR [ebp-0x10], eax</span><br><span class="line">      0x804856a &lt;main+92&gt;        sub    esp, 0x8</span><br><span class="line">      0x804856d &lt;main+95&gt;        push   DWORD PTR [ebp-0x10]</span><br><span class="line">      0x8048570 &lt;main+98&gt;        push   0x804863a</span><br><span class="line">      0x8048575 &lt;main+103&gt;       call   0x8048390 &lt;printf@plt&gt;</span><br></pre></td></tr></table></figure>
+<p>如上图, 当执行到<code>calc</code>函数的<code>ret</code>返回语句时, 会有下面一系列的语句, 其中第一条<code>add</code>语句就是让<code>esp</code>重新指向<code>calc</code>的基址(ebp)的关键语句, 此时位于低地址的局部变量将丢弃.</p>
+</li>
+<li><p>随后将基地址内存储的调用函数(caller)的ebp的值重新pop到当前的ebp中, 至此, 调用函数(caller)的基地址得以恢复. 值得注意的是, 这一操作是隐式的(与函数调用压栈的第2步作对比). 如下图:</p>
 <ul>
 <li><p>执行<code>leave</code>前:</p>
 <p><img src="1538829057155.png" alt="1538829057155"></p>
@@ -361,8 +362,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">─────────────────────────────────────────────────────────[ registers ]────</span><br><span class="line">$eax   : 0x21      </span><br><span class="line">$ebx   : 0x0       </span><br><span class="line">$ecx   : 0x1       </span><br><span class="line">$edx   : 0xa       </span><br><span class="line">$esp   : 0xffffcf5c  →  0x08048564  →  &lt;main+86&gt; add esp, 0x10 # 指向ret地址</span><br><span class="line">$ebp   : 0xffffcf88  →  0x00000000</span><br><span class="line">$esi   : 0xf7faf000  →  0x001b1db0</span><br><span class="line">$edi   : 0xf7faf000  →  0x001b1db0</span><br><span class="line">$eip   : 0x804850d   →  &lt;calc+34&gt; ret </span><br><span class="line">$eflags: [carry PARITY ADJUST zero sign trap INTERRUPT direction overflow resume virtualx86 identification]</span><br><span class="line">$gs: 0x0063  $fs: 0x0000  $ds: 0x002b  $cs: 0x0023  $es: 0x002b  $ss: 0x002b</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>3) 然后将返回地址从栈内pop出来, 并存到<code>eip</code>内. 从而调用函数(caller)的<code>eip</code>信息得以恢复, 指向下一条指令.</p>
-<p>   <img src="1538830059726.png" alt="1538830059726"></p>
+</li>
+<li><p>然后将返回地址从栈内pop出来, 并存到<code>eip</code>内. 从而调用函数(caller)的<code>eip</code>信息得以恢复, 指向下一条指令.<br><img src="1538830059726.png" alt="1538830059726"></p>
+</li>
+</ol>
 <blockquote>
 <p>总结一下上面的调用压栈和出栈: </p>
 <p>(1)压栈时, 先压参数, 后压返回地址, 然后再将caller的<code>ebp</code>压入, 最后将局部变量压入.</p>
