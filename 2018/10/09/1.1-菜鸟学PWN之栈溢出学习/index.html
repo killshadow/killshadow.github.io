@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/09/1.1-菜鸟学PWN之栈溢出学习/1538830059726.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/09/1.1-菜鸟学PWN之栈溢出学习/register.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/09/1.1-菜鸟学PWN之栈溢出学习/1538897713778.png">
-<meta property="og:updated_time" content="2018-10-09T01:07:05.786Z">
+<meta property="og:updated_time" content="2018-10-09T01:09:52.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1.1-菜鸟学PWN之栈溢出学习">
 <meta name="twitter:description" content="实现栈溢出的两个条件:  程序有向栈写入数据的行为 程序并不限制写入数据的长度">
@@ -177,7 +177,7 @@
 
         
         <a href="/2018/10/09/1.1-菜鸟学PWN之栈溢出学习/" class="archive-article-date">
-  	<time datetime="2018-10-09T01:07:05.786Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-09</time>
+  	<time datetime="2018-10-09T01:09:52.123Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-09</time>
 </a>
         
       </header>
@@ -352,11 +352,9 @@
 </li>
 <li><p>随后将基地址内存储的调用函数(caller)的ebp的值重新pop到当前的ebp中, 至此, 调用函数(caller)的基地址得以恢复. 值得注意的是, 这一操作是隐式的(与函数调用压栈的第2步作对比). 如下图:</p>
 <ul>
-<li><p>执行<code>leave</code>前:</p>
-<p><img src="1538829057155.png" alt="1538829057155"></p>
+<li><p>执行<code>leave</code>前:<br><img src="1538829057155.png" alt="1538829057155"></p>
 </li>
-<li><p>执行<code>leave</code>后:</p>
-<p><img src="1538829148474.png" alt="1538829148474"></p>
+<li><p>执行<code>leave</code>后:<br><img src="1538829148474.png" alt="1538829148474"></p>
 </li>
 <li><p><code>esp</code>存储的地址会指向返回地址(<code>0x08048564</code>):</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">─────────────────────────────────────────────────────────[ registers ]────</span><br><span class="line">$eax   : 0x21      </span><br><span class="line">$ebx   : 0x0       </span><br><span class="line">$ecx   : 0x1       </span><br><span class="line">$edx   : 0xa       </span><br><span class="line">$esp   : 0xffffcf5c  →  0x08048564  →  &lt;main+86&gt; add esp, 0x10 # 指向ret地址</span><br><span class="line">$ebp   : 0xffffcf88  →  0x00000000</span><br><span class="line">$esi   : 0xf7faf000  →  0x001b1db0</span><br><span class="line">$edi   : 0xf7faf000  →  0x001b1db0</span><br><span class="line">$eip   : 0x804850d   →  &lt;calc+34&gt; ret </span><br><span class="line">$eflags: [carry PARITY ADJUST zero sign trap INTERRUPT direction overflow resume virtualx86 identification]</span><br><span class="line">$gs: 0x0063  $fs: 0x0000  $ds: 0x002b  $cs: 0x0023  $es: 0x002b  $ss: 0x002b</span><br></pre></td></tr></table></figure>
