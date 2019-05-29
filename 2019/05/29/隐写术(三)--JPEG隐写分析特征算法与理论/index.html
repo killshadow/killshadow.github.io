@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/8343187-9cfd3b1c3aa58b1b.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559128502282.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559130220786.png">
-<meta property="og:updated_time" content="2019-05-29T13:12:21.405Z">
+<meta property="og:updated_time" content="2019-05-29T13:19:46.573Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="隐写术(三)--JPEG隐写分析特征算法与理论">
 <meta name="twitter:description" content="0x00 前言  前面介绍的内容着重于阐述传统的数字图像隐写算法，实际上与图像隐写对立的数字图像隐写分析，而这一方向也随着图像隐写的发展而发展，形成一种对抗的博弈。数字图像隐写分析分类如下图所示:">
@@ -175,15 +175,14 @@
 <blockquote>
 前面介绍的内容着重于阐述传统的数字图像隐写算法，实际上与图像隐写对立的数字图像隐写分析，而这一方向也随着图像隐写的发展而发展，形成一种对抗的博弈。数字图像隐写分析分类如下图所示:<a id="more"></a>
 <div style="text-align: center;">
-
-</div></blockquote>
 <figure>
 <img src="/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/8343187-9cfd3b1c3aa58b1b.png" alt="隐写分析算法分类"><figcaption>隐写分析算法分类</figcaption>
 </figure>
-
+</div>
+</blockquote>
 <p>​ 下面会介绍三个重要的隐写分析算法以展开隐写分析的研究，而这三个算法属于通用盲检测算法范畴，此类算法根据JPEG图像的像素点或者DCT系数的特性，提取出JPEG图像的共生矩和直方图特征，利用这些特征作为分类器的输入，分类器根据这些特征训练可得到检测器，以检测图片是否嵌入了秘密信息。</p>
 <blockquote>
-<p>hexo解析公式不正常, <a href="https://www.jianshu.com/p/e75b4baa93f1" target="_blank" rel="noopener">请转移到简书看</a></p>
+<p>若hexo解析公式不正常, <a href="https://www.jianshu.com/p/e75b4baa93f1" target="_blank" rel="noopener">请转移到简书看</a></p>
 </blockquote>
 <hr>
 <h2 id="x10-残差图像的离散余弦变换">0x10 残差图像的离散余弦变换</h2>
@@ -220,7 +219,7 @@ u=\sum_{k=0}^{7} \sum_{l=0}^{7} Q_{k l}\left[A_{k l} R_{a, b}^{(i, j)(k, l)}+B_{
 综上，DCTR算法的流程如图:
 <div style="text-align: center;">
 <figure>
-<img src="/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559128502282.png" alt="1559128502282"><figcaption>1559128502282</figcaption>
+<img src="/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559128502282.png" alt="DCTR算法的流程"><figcaption>DCTR算法的流程</figcaption>
 </figure>
 </div>
 <hr>
@@ -258,7 +257,7 @@ u=\sum_{k=0}^{7} \sum_{l=0}^{7} Q_{k l}\left[A_{k l} R_{a, b}^{(i, j)(k, l)}+B_{
 综上，GFR的过程与DCTR过程最大区别在于选取的64个卷积核不一样，GFR更能代表图像的整体纹理特征，其步骤如下图:
 <div style="text-align: center;">
 <figure>
-<img src="/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559130220786.png" alt="1559130220786"><figcaption>1559130220786</figcaption>
+<img src="/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559130220786.png" alt="GFR算法流程"><figcaption>GFR算法流程</figcaption>
 </figure>
 </div>
 <hr>
@@ -635,11 +634,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android Developer</a>
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android Developer</a>
               </li>
              
               <li class="article-tag-list-item">
