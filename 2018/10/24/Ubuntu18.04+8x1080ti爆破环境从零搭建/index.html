@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -35,7 +35,7 @@
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
-  </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </style>
   
 
   
@@ -44,7 +44,7 @@
 </head>
 
 <body>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container" q-class="show:isCtnShow">
+  <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
@@ -263,13 +263,13 @@
 <li><p>我们的攻击目标是<code>iPhone</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks<span class="comment"># airodump-ng wlan0mon</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="1540284494095.png" alt="img"></p>
+<p><img src="/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540284494095.png" alt="img"></p>
 <p>上图可看到它的mac是<code>74:D2:1D:AE:3F:94</code>, 信道(CH)是<code>1</code>. (记住这两个信息下面有用)</p>
 </li>
 <li><p>接下来我们开两个shell, 一个shell负责监听握手包, 另一个shell负责洪荒攻击两个正常连接的WiFi设备, 我们先看看第一个shell:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airodump-ng --bssid 74:D2:1D:AE:3F:94 -c 1 -w <span class="built_in">test</span> wlan0mon</span><br></pre></td></tr></table></figure>
 
-<p><img src="1540286260611.png" alt="img"></p>
+<p><img src="/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540286260611.png" alt="img"></p>
 <p>可以看出来已经抓到了握手包703个. 对命令参数解释如下:</p>
 <blockquote>
 <p>–bssid: 表示WiFi热点的mac</p>
@@ -2754,23 +2754,6 @@ var _hmt = _hmt || [];
     </div>
 
 </div>
-  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </div>
 </body>
 </html>
