@@ -16,13 +16,14 @@
 <meta property="og:site_name" content="Live to change world">
 <meta property="og:description" content="0x00 前言 前面介绍的内容着重于阐述传统的数字图像隐写算法，实际上与图像隐写对立的数字图像隐写分析，而这一方向也随着图像隐写的发展而发展，形成一种对抗的博弈。数字图像隐写分析分类如下图所示:">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/8343187-9cfd3b1c3aa58b1b.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559128502282.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559130220786.png">
-<meta property="og:updated_time" content="2019-05-29T13:08:10.245Z">
+<meta property="og:updated_time" content="2019-05-29T13:12:21.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="隐写术(三)--JPEG隐写分析特征算法与理论">
 <meta name="twitter:description" content="0x00 前言 前面介绍的内容着重于阐述传统的数字图像隐写算法，实际上与图像隐写对立的数字图像隐写分析，而这一方向也随着图像隐写的发展而发展，形成一种对抗的博弈。数字图像隐写分析分类如下图所示:">
-<meta name="twitter:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559128502282.png">
+<meta name="twitter:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/8343187-9cfd3b1c3aa58b1b.png">
   
     <link rel="alternative" href="/atom.xml" title="Live to change world" type="application/atom+xml">
   
@@ -174,10 +175,11 @@
 <p>前面介绍的内容着重于阐述传统的数字图像隐写算法，实际上与图像隐写对立的数字图像隐写分析，而这一方向也随着图像隐写的发展而发展，形成一种对抗的博弈。数字图像隐写分析分类如下图所示:<a id="more"></a></p>
 </blockquote>
 <div style="text-align: center;">
-![隐写分析算法分类](8343187-9cfd3b1c3aa58b1b.png) 
-</div>
-​    下面会介绍三个重要的隐写分析算法以展开隐写分析的研究，而这三个算法属于通用盲检测算法范畴，此类算法根据JPEG图像的像素点或者DCT系数的特性，提取出JPEG图像的共生矩和直方图特征，利用这些特征作为分类器的输入，分类器根据这些特征训练可得到检测器，以检测图片是否嵌入了秘密信息。
 
+<p><img src="/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/8343187-9cfd3b1c3aa58b1b.png" alt="隐写分析算法分类"> </p>
+</div>
+
+<p>​    下面会介绍三个重要的隐写分析算法以展开隐写分析的研究，而这三个算法属于通用盲检测算法范畴，此类算法根据JPEG图像的像素点或者DCT系数的特性，提取出JPEG图像的共生矩和直方图特征，利用这些特征作为分类器的输入，分类器根据这些特征训练可得到检测器，以检测图片是否嵌入了秘密信息。</p>
 <blockquote>
 <p>hexo解析公式不正常, <a href="https://www.jianshu.com/p/e75b4baa93f1" target="_blank" rel="noopener">请转移到简书看</a></p>
 </blockquote>
