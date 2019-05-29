@@ -6,16 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.killshadow.xyz">
-  <title>Tag: CTF | Live to change world</title>
+  <title>隐写术(三)--JPEG隐写分析特征算法与理论 | Live to change world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="CTF,PWN,Rverse,Coder">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Live to change world">
-<meta property="og:url" content="http://www.killshadow.xyz/tags/CTF/index.html">
+  <meta name="description" content="0x00 前言 前面介绍的内容着重于阐述传统的数字图像隐写算法，实际上与图像隐写对立的数字图像隐写分析，而这一方向也随着图像隐写的发展而发展，形成一种对抗的博弈。数字图像隐写分析分类如下图所示:">
+<meta name="keywords" content="CTF,MISC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="隐写术(三)--JPEG隐写分析特征算法与理论">
+<meta property="og:url" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/index.html">
 <meta property="og:site_name" content="Live to change world">
+<meta property="og:description" content="0x00 前言 前面介绍的内容着重于阐述传统的数字图像隐写算法，实际上与图像隐写对立的数字图像隐写分析，而这一方向也随着图像隐写的发展而发展，形成一种对抗的博弈。数字图像隐写分析分类如下图所示:">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559128502282.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559130220786.png">
+<meta property="og:updated_time" content="2019-05-29T13:08:10.245Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Live to change world">
+<meta name="twitter:title" content="隐写术(三)--JPEG隐写分析特征算法与理论">
+<meta name="twitter:description" content="0x00 前言 前面介绍的内容着重于阐述传统的数字图像隐写算法，实际上与图像隐写对立的数字图像隐写分析，而这一方向也随着图像隐写的发展而发展，形成一种对抗的博弈。数字图像隐写分析分类如下图所示:">
+<meta name="twitter:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559128502282.png">
   
     <link rel="alternative" href="/atom.xml" title="Live to change world" type="application/atom+xml">
   
@@ -142,37 +149,154 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-隐写术(三)--JPEG隐写分析特征算法与理论" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      隐写术(三)--JPEG隐写分析特征算法与理论
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/" class="archive-article-date">
+
+
+        
+        <a href="/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/" class="archive-article-date">
   	<time datetime="2019-05-29T12:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-29</time>
 </a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><blockquote>
+<p>前面介绍的内容着重于阐述传统的数字图像隐写算法，实际上与图像隐写对立的数字图像隐写分析，而这一方向也随着图像隐写的发展而发展，形成一种对抗的博弈。数字图像隐写分析分类如下图所示:<a id="more"></a></p>
+</blockquote>
+<div style="text-align: center;">
+![隐写分析算法分类](8343187-9cfd3b1c3aa58b1b.png) 
+</div>
+​    下面会介绍三个重要的隐写分析算法以展开隐写分析的研究，而这三个算法属于通用盲检测算法范畴，此类算法根据JPEG图像的像素点或者DCT系数的特性，提取出JPEG图像的共生矩和直方图特征，利用这些特征作为分类器的输入，分类器根据这些特征训练可得到检测器，以检测图片是否嵌入了秘密信息。
+
+<blockquote>
+<p>hexo解析公式不正常, <a href="https://www.jianshu.com/p/e75b4baa93f1" target="_blank" rel="noopener">请转移到简书看</a></p>
+</blockquote>
+<hr>
+<h2 id="0x10-残差图像的离散余弦变换"><a href="#0x10-残差图像的离散余弦变换" class="headerlink" title="0x10 残差图像的离散余弦变换"></a>0x10 残差图像的离散余弦变换</h2><p>残差图像的离散余弦变换（DCTR）[1]是通用的盲检测算法。该算法用JPEG中的DCT基来获得残差直方图，因此特征提取只需要计算64个8x8核DCT基，利用这些卷积核与解压JPEG图像卷积得到一个二维矩阵，然后将这个二维矩阵量化、截断得到子图像，最后根据这些子图像提取出直方图特征，再将这些直方图特征通过对称性原则对其进一步压缩，融合成8000维的特征向量。DCTR较于一般的通用盲检测算法，最大的优势在于效率非常高，提取出的特征的维数也相对较低，本小节将详细解释DCTR的每个步骤。</p>
+<p>给定一个像素为 $M × N$（M,N均为8的倍数）的灰度图像，$\mathrm{X} \in \mathrm{R}^{\mathrm{M} \times \mathrm{N}}$, 64个$8 × 8$非抽取的DCT基定义为$B^{(k,l)}$，则有：<br>$$<br>\begin{split}<br>\mathrm{U}^{(\mathrm{k}, \mathrm{I})}&amp;=\mathrm{X} \star \mathrm{B}^{(\mathrm{k} 1)}\<br>,{u(\mathrm{X})}&amp;=\mathrm{U}^{(\mathrm{k}, 1)} | 0 \leq \mathrm{k}, 1 \leq 7<br>\end{split}<br>\tag{1}<br>$$</p>
+<p>其中，$\mathrm{U}^{(\mathrm{k}, 1)} \in \mathrm{R}^{(\mathrm{M}-\overline{7}) \times(\mathrm{N}-7)}$，“$\star$”表示无填充卷积。为提高可读性，定义$i,j$和$k,l$为DCT模型下空域的索引，即像素点的下标，他们的取值范围为${i, j, k, l \in[0,7]}$。经过上面这一步，我们会得到多个   的矩阵，下面我们会看到未抽样DCT的值$u(X)$是如何受$X$的单个DCT系数细微的改变而发生巨大的影响的。</p>
+<p>假设二次采样后每$8 × 8$的矩阵为$\mathrm{U}^{(\mathrm{i}, \mathrm{j})}=\mathrm{X} \star \mathrm{B}^{(\mathrm{i}, \mathrm{j})}$，这些矩阵的四个顶点为：<br>$$<br>\begin{equation}<br>\mathcal{G}_{8 \times 8}={0,7,15, \ldots, \mathrm{M}-9} \times{0,7,15, \ldots, \mathrm{N}-9}<br>\end{equation}<br>\tag{2}<br>$$</p>
+<p>$(m, n) \in \mathcal{G}<em>{8\times 8}$是对应的JPEG图像上的一个修改的系数，这个系数存在于$(k,l)$矩阵中。$(m,n)$位置上DCT系数的变化将影响一整块$8 × 8$矩阵中的所有像素，以及在$\mathbf{U}^{(\mathbf{i}, \mathbf{j})}$中以$(m, n) \in \mathcal{G}</em>{8 \times 8}$这个点为中心的整个15 × 15的领域。特别地，这些值的修改有下面的“单元响应” $\mathbf{R}^{(\mathbf{i}, \mathbf{j})(\mathbf{k}, \mathbf{l})}$来完成：<br>$$<br>\mathrm{R}^{(\mathrm{i}, \mathrm{j})(\mathrm{k}, 1)}=\mathrm{B}^{(\mathrm{i}, \mathrm{j})} \otimes \mathrm{B}^{(\mathrm{k}, 1)}<br>\tag{3}<br>$$<br>由公式$(3)$假设我们已知某个二次采样后的$8 × 8$矩阵的四个顶点分别定义为：A、B、C、D，对于一个特定的值$u \in \mathrm{U}^{(\mathrm{i}, \mathrm{j})}$，即$u$为$8 × 8$矩阵中的其中一个元素，它的位置为$(a,b)$，$a, b \in [0,7]$. 我们以8x8左上角的顶点为参照点，则其他B-D的点分别为：$(a,b-8), (a-8,b), (a-8,b-8)$，这个8x8的矩阵为构成为量化DCT系数的$\mathcal{A}$块。并设定$\mathcal{A}$块右、下、右下的8x8块分别为$\mathcal{A}, \mathcal{B}, \mathcal{C}, \mathcal{D}$区域，则分别有四个矩阵：$A_{k l}, B_{k 1}, C_{k l}, D_{k l}$，$(k,l)$分别表示横向和纵向的空域坐标轴的位置，由上所述可得：<br>$$<br>u=\sum_{k=0}^{7} \sum_{l=0}^{7} Q_{k l}\left[A_{k l} R_{a, b}^{(i, j)(k, l)}+B_{k l} R_{a, b-8}^{(i, j)(k, l)}+C_{k l} R_{a-8, b}^{(i, j)(k, l)}+D_{k l} R_{a-8, b-8}^{(i, j)(k, l)}\right]<br>\tag{4}<br>$$<br>由公式$(4)$我们可知$u$在$(a,b)$的变化，不见影响$\mathcal{A}$区域的$8 × 8$矩阵每个像素点$(i,j)$，还会影响其他三个相邻区域的$\mathrm{B}<em>{\mathrm{k} 1}, \mathrm{C}</em>{\mathrm{k} 1}, \mathrm{D}<em>{\mathrm{kl}}$三个8x8矩阵的DCT系数。由此我们可以通过两个坐标准确定位一个像素点：$(k,l)$确定了$8 × 8$矩阵的位置，$(a,b)$确定了$8 × 8$矩阵里元素的相对位置，因此我们可以准确定义一个二维矩阵$\mathrm{U}</em>{\mathrm{a}, \mathrm{b}}^{(\mathrm{k}, 1)} \in R^{(M-8) / 8 \times(N-8) / 8}$作为$\mathrm{U}^{(\mathrm{k}, 1)}$的子矩阵（$\mathcal{G}<em>{8 \times 8}$网格中以左上角顶点为参考对象，相对坐标为$a,b$）。由此，邻接矩阵的关系为：<br>$$<br>\begin{split}<br>\mathrm{U}^{(\mathrm{k}, 1)}=\bigcup</em>{\mathrm{a}, \mathrm{b}=0}^{7} \mathrm{U}<em>{\mathrm{a}, \mathrm{b}}^{(\mathrm{k}, 1)} \quad 当(a, b) \neq\left(a^{\prime}, b^{\prime}\right)时,有\mathrm{U}</em>{\mathrm{a}, \mathrm{b}}^{(\mathrm{k}, 1)} \cap \mathrm{U}<em>{\mathrm{a}^{\prime}, \mathrm{b}^{\prime}}^{(\mathrm{k}, 1)}<br>\end{split}<br>\tag{5}<br>$$<br>因此特征向量由$0 \leq \mathrm{k}, 1 \leq 7,0 \leq \mathrm{a}, \mathrm{b} \leq 7$归一化的直方图构成：<br>$$<br>\mathrm{h}</em>{\mathrm{a}, \mathrm{b}}^{(\mathrm{k} 1 \mathrm{l})}(\mathrm{r})=\frac{1}{\left|\mathrm{U}<em>{\mathrm{a}, \mathrm{b}}^{(\mathrm{k}, 1)}\right|} \sum</em>{\mathrm{u} \in \mathrm{U}<em>{\mathrm{a}, \mathrm{b}}^{(\mathrm{kl})}}\left[\mathrm{Q}</em>{\mathrm{T}}(|\mathrm{u}| / \mathrm{q})=\mathrm{r}\right]<br>\tag{6}<br>$$<br>其中，$Q_{T}$质心为${0,1, \ldots, \mathrm{T}}$的整数，实际上就是每个直方图的bins，$q$是量化步长，$\left[\mathrm{Q}_{\mathrm{T}}(|\mathrm{u}| / \mathrm{q})=\mathrm{r}\right]$中的$[P]$是一个判决器，当等式成立时为1，否则为0。</p>
+<p>综上，DCTR算法的流程如图:</p>
+<div style="text-align: center;">
+
+<p><img src="/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559128502282.png" alt="1559128502282"></p>
+</div>
+
+<hr>
+<h2 id="0x20-自适应二维Gabor过滤器"><a href="#0x20-自适应二维Gabor过滤器" class="headerlink" title="0x20 自适应二维Gabor过滤器"></a>0x20 自适应二维Gabor过滤器</h2><p>GFR全称Gabor Filter Residual[2]，这里我们把它称为二维Gabor残差过滤器。GFR能够从不同的尺度和方向准确地描述图像纹理和边缘特征，可以从丰富的图像中抽象出统计特征，以此来更有效地反映JPEG图像被嵌入秘密信息后的变化，提高数字图像隐写分析的性能。GFR利用不同尺度和方向的二维Gabor滤波器[3]对解压后的JPEG图像进行分解，然后从图像滤波系数中提取隐写分析特征。其中二维的Gabor过滤器作为本地带通滤波器在空间域和变换域具有一定的最优联合定位的特性，其能够有效地描述图像纹理和边缘特征。相比于利用64个DCT核对图像滤波的DCTR，二维Gabor过滤器可以捕获嵌入变化更多的尺度和方向，所以GFR可以更能利用自适应隐写的特性。</p>
+<p>Gabor变换属于短时傅里叶变换（STFT），其在傅里叶变换中加入了高斯窗，实现了空间域和变换域的局部分析。当使用二维Gabor滤波器进行图像处理和分析时，首先对图像进行二维Gabor滤波器滤波，然后对其特征提取、边缘检测、去噪等处理或分析。首先，将输入的图像$I(\mathrm{x},\mathrm{y})$与二维Gabor函数$\mathrm{g}(\mathrm{x},\mathrm{y})$卷积，得到一个Gabor特征图$\mathrm{u}(\mathrm{x}, \mathrm{y})$：<br>$$<br>\mathrm{u}(\mathrm{x}, \mathrm{y})=\iint_{\Omega} \mathrm{I}(\xi, \eta) \mathrm{g}(\mathrm{x}-\xi, \mathrm{y}-\eta) \mathrm{d} \xi \mathrm{d}<br>\tag{7}<br>$$<br>其中，$(\mathrm{x}, \mathrm{y}) \in \Omega$，$\Omega$表示图像像素点集。公式$(7)$中的$\mathrm{g}(\mathrm{x},\mathrm{y})$函数采用文献[4]的Gabor函数族，它是高斯函数和余弦函数的乘积：<br>$$<br>\mathrm{g}_{\lambda, \theta, \phi}(\mathrm{x}, \mathrm{y})=\mathrm{e}^{-\left(\left(\mathrm{x}^{\prime} 2+\gamma^{2} \mathrm{y}^{\prime} 2\right) / 2 \sigma^{2}\right)} \cos \left(2 \pi \frac{\mathrm{x}}{\lambda}+\phi\right)<br>\tag{8}<br>$$<br>其中，$\mathrm{x}^{\prime}=\mathrm{x} \cos \theta+\mathrm{y} \sin \theta, \mathrm{y}^{\prime}=-\mathrm{x} \sin \theta+\mathrm{y} \cos \theta, \sigma=0.56 \lambda, \gamma=0.5$。σ越小，表示空间分辨率越高，图像滤波系数反应的局部属性在小尺度；反之，意味着空间分辨率越低，反映再图像的大尺度。最后，所以Gabor滤波器均中心化，其所有元素减去核均值，行成高通滤波器。</p>
+<p>提取特征时，GFR隐写分析算法的步骤如下：</p>
+<ul>
+<li><p>步骤一：将JPEG图像解压缩到空间域，且不将像素值量化为   ，以避免信息丢失。</p>
+</li>
+<li><p>步骤二：将通过公式$(7)$生成不同尺度和方向的二维Gabor滤波组   ，其过程类似于DCTR过程中的公式$(3)$。</p>
+</li>
+<li><p>步骤三：将步骤一生成的解压后的JPEG图像与步骤二生成的每个8x8二维Gabor滤波器卷积，滤波后的图像为$\mathbf{U}_{\mathbf{a}, \mathbf{b}}^{\boldsymbol{s}, \mathbf{l}}$，有：</p>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li><p>根据64个8x8的DCT块，对滤波后的图像$\mathbf{U}^{\mathbf{S}, \mathbf{I}}$按步长为8进行子采样，得到64个子图像$\mathbf{U}_{\mathbf{a}, \mathbf{b}}^{\boldsymbol{s}, \mathbf{l}}$；</p>
+</li>
+<li><p>对于每个子图像$\mathbf{U}<em>{\mathbf{a}, \mathbf{b}}^{\boldsymbol{s}, \mathbf{l}}$，其直方图特征$\mathbf{h}</em>{\mathbf{a}, \mathbf{b}}^{\mathbf{s . 1}}(x)$如公式$(9)$：<br>$$<br>\mathbf{h}<em>{\mathbf{a}, \mathbf{b}}^{s .1}(x)=\frac{1}{\left|\mathbf{U}</em>{\mathbf{a}, \mathbf{b}}^{s .1}\right|} \sum_{u \in \mathbf{U}<em>{\mathbf{a}, b}^{s .1}}\left[Q</em>{T}(|u| / q)=x\right]<br>\tag{9}<br>$$</p>
+</li>
+</ol>
+<p>​        式中各项变量的说明，如公式$(6)$所说。</p>
+<ol start="3">
+<li>根据文献[4]的方法，这里将64个子图像$\mathbf{U}_{\mathbf{a}, \mathbf{b}}^{\boldsymbol{s}, \mathbf{l}}$的直方图特征全部合并，得到滤波后图像$\mathbf{U}^{\mathbf{S}, \mathbf{I}}$的直方图特征$\mathrm{h}^{\mathrm{S}, 1}$。</li>
+</ol>
+</blockquote>
+<ul>
+<li>步骤四：对具有相同参数σ的二维Gabor过滤器过滤后生成的图像，其相应的直方图特征进行对称合并，这一点也与DCTR相似。例如，假设方向参数$\theta={0, \pi / 8,2 \pi / 8, \cdots, 6 \pi / 8,7 \pi / 8}$，生成的滤波图像的直方图特征$\theta=\pi / 8,7 \pi / 8$和$\theta=2 \pi / 8,6 \pi / 8$两两合并。</li>
+</ul>
+<p>综上，GFR的过程与DCTR过程最大区别在于选取的64个卷积核不一样，GFR更能代表图像的整体纹理特征，其步骤如下图:</p>
+<div style="text-align: center;">
+
+<p><img src="/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559130220786.png" alt="1559130220786"></p>
+</div>
+
+<hr>
+<h2 id="0x30-相位感知投影模型"><a href="#0x30-相位感知投影模型" class="headerlink" title="0x30 相位感知投影模型"></a>0x30 相位感知投影模型</h2><p>​    相位感知投影模型（PHARM）[5]使用基于小内核的像素预测器来避免混合具有不同系谱的随机变量，该方法没有是用大量的像素预测器来实现特征的多样化，而是使用了少量的Small-Support线性像素预测器，并采用了与投影空间富模型（PSRM）类似的方式来实现模型的多样化。下面会粗略介绍一下SRM[6]和PSRM[7]来引出PHARM。</p>
+<p>​    假定两个符号$\mathrm{X}, \mathrm{Y} \in{0, \ldots, 255}^{\mathrm{n}<em>{1} \times \mathrm{n}</em>{2}}$，分别表示$n_{1} \times n_{2}$维的灰度Cover图像和灰度Stego载体图像中的二维像素值数组，$n_1,n_2$均为8的倍数。无论是SRM还是PSRM都是从45个不同的像素预测器估计给定图像的噪声成分开始的。像素预测器分两种类型：线性和非线性。每个线性预测器都是一个由核矩阵$K$描述的移不变有限脉冲响应线性滤波器。通过将预测图像从原始图像中减去，得到噪声残差$\mathrm{Z}=\left(\mathrm{z}<em>{\mathrm{k} \mathrm{l}}\right)$，（$\mathrm{k},\mathrm{l}$在接下来的公式中表示一个$n</em>{1} \times n_{2}$矩阵的索引）它是一个与$X$的维数相同的矩阵:<br>$$<br>\mathrm{Z}=\mathrm{K} * \mathrm{X}-\mathrm{X}<br>\tag{10}<br>$$<br>    由此，我们得到了基本的噪声残差$Z$，其中“$*$”表示$K$和$X$ 镜面填充卷积，使得这两个矩阵卷积后的维数保持不变。 举一个最简单的线性残差的例子：$<br>\mathrm{z}<em>{\mathrm{kl}}=\mathrm{x}</em>{\mathrm{k}, \mathrm{l}+1}-\mathrm{x}_{\mathrm{k}, \mathrm{l}}<br>$表示邻接横向残差，其预测器$K = (0 \  1)$，则表示将像素值估算为水平相邻的像素值。</p>
+<p>​    SRM中的非线性预测器通过取两个或两个以上的残差的最小值或最大值来得到的。例如，分别对$X_{i,j}$像素在水平和垂直方向上预测，得到水平和垂直方向上的残差$\mathbf{Z}^{h}=\left(\mathrm{z}<em>{\mathrm{kl}}^{(\mathrm{h})}\right), \mathbf{Z}^{(v)}=\left(\mathrm{z}</em>{\mathrm{kl}}^{(\mathrm{v})}\right)$:<br>$$<br>\begin{aligned} \mathrm{z}<em>{\mathrm{kl}}^{(\mathrm{h})} &amp;=\mathrm{x}</em>{\mathrm{k}, \mathrm{l}+1}-\mathrm{x}<em>{\mathrm{kl}} \ \mathrm{z}</em>{\mathrm{kl}}^{(\mathrm{v})} &amp;=\mathrm{x}<em>{\mathrm{k}+1,\mathrm{l}}-\mathrm{x}</em>{\mathrm{kl}} \end{aligned}<br>\tag{11}<br>$$<br>则非线性的最值残差如下：<br>$$<br>\begin{aligned} \mathrm{z}<em>{\mathrm{kl}}^{(\mathrm{min})} &amp;=\min \left{\mathrm{z}</em>{\mathrm{kl}}^{(\mathrm{h})}, \mathrm{z}<em>{\mathrm{kl}}^{(\mathrm{v})}\right} \ \mathrm{z}</em>{\mathrm{kl}}^{(\mathrm{max})} &amp;=\max \left{\mathrm{z}<em>{\mathrm{kl}}^{(\mathrm{h})}, \mathrm{z}</em>{\mathrm{kl}}^{(\mathrm{v})}\right} \end{aligned}<br>\tag{12}<br>$$<br>    与SRM通过四个方向来捕获残差的统计特性不同的是，PSRMQ3是用残差投影到多个随机方向的一阶统计量。给定噪声残差$Z$，这里直接列出量化值的直方图函数[3]：<br>$$<br>\begin{aligned}<br>\mathrm{h}<em>{\mathrm{j}}^{(\mathrm{i})}&amp;=\left|\left{(\mathrm{k}, 1)| | \mathrm{p}</em>{\mathrm{kl}}^{(\mathrm{i})} |=\mathrm{j}+1 / 2\right}\right|, \mathrm{j} \in{0,1, \ldots, \mathrm{T}-1}, \mathrm{i} \in{1, \ldots, v}, 线性极差\<br>\mathrm{h}<em>{\mathrm{j}}^{(\mathrm{i})}&amp;=\left|\left{(\mathrm{k}, 1) | \mathrm{p}</em>{\mathrm{kl}}^{(\mathrm{i})}=\mathrm{j}+1 / 2\right}\right|, \mathrm{j} \in{-\mathrm{T}, \ldots, \mathrm{T}-1}, \mathrm{i} \in{1, \ldots, \mathrm{v}}, 非线性极差<br>\end{aligned}<br>\tag{13}<br>$$<br>    其中，$\mathrm{p}<em>{\mathrm{kl}}^{(\mathrm{i})} \leftarrow \mathrm{Q}</em>{\mathrm{T}}\left(\mathrm{p}<em>{\mathrm{kl}}^{(\mathrm{i})} / \mathrm{q}\right)$，而$p</em>{k l}^{(i)}=\mathrm{P}^{(\mathrm{i})} \triangleq \mathrm{Z} * \Pi^{(\mathrm{i})}$，$\boldsymbol{\Pi}^{(\mathrm{i})}$是随机矩阵：$\Pi^{(\mathrm{i})} \in \mathrm{R}^{\mathrm{r\times s}}, \mathrm{i} \in{1, \ldots, v}$ 。</p>
+<p>​    在PHARM中，仅使用线性（“spam”类）残差和以下7个内核：<br>$$<br>\left(\begin{matrix}-1&amp;1\\end{matrix}\right)\ \ \ \left(\begin{matrix}-1\1\\end{matrix}\right)\ \ \ \left(\begin{matrix}1&amp;-3&amp;3&amp;-1\\end{matrix}\right)\ \ \ \left(\begin{matrix}1\-3\3\-1\\end{matrix}\right)\ \ \ \left(\begin{matrix}1&amp;1\-1&amp;-1\\end{matrix}\right)\ \ \ \left(\begin{matrix}-1&amp;1\-1&amp;1\\end{matrix}\right)\ \ \ \left(\begin{matrix}1&amp;-1\-1&amp;1\\end{matrix}\right)<br>$$<br>​    这些核使用贪心正向特征选择算法获得最佳互补核，该算法使用下面列出的25个预测核的检测误差的OOB（Out-of-bag）估计，其中下面列出的第一、第二和第三阶内核使用的预测器与面向相应方向的SRM中使用的预测器相同：</p>
+<ul>
+<li><p>1 x 2一阶的水平、垂直、主次对角线（4个预测核）；</p>
+</li>
+<li><p>1 x 3二阶的水平、垂直、主次对角线（4个预测核）；</p>
+</li>
+<li><p>1 x 4三阶的水平、垂直、主次对角线（4个预测核）；</p>
+</li>
+<li><p>2 x 2水平   、垂直   、对角线   （主次对角线相同）（3个预测核）；</p>
+</li>
+<li><p>3 x 3核和它的4个EDGE（2 x 3）版本的核，如SRM（5个预测核）；</p>
+</li>
+<li><p>5 x 5在SRM中用在SQUARE子模型的核，以及它的4个EDGE（3x5）版本的核（5个预测核）</p>
+</li>
+</ul>
+<p>​    上面6种类型的预测核不需要都使用，在后续提取JPEG图像的PHARM特征时，使用了一阶、二阶和$2 \times 2$核。</p>
+<hr>
+<h2 id="0x40-总结"><a href="#0x40-总结" class="headerlink" title="0x40 总结"></a>0x40 总结</h2><p>本章详细介绍了DCTR、GFR、PHARM三种隐写分析算法的原理和具体步骤.</p>
+<hr>
+<h2 id="0x50-参考文献"><a href="#0x50-参考文献" class="headerlink" title="0x50 参考文献"></a>0x50 参考文献</h2><blockquote>
+<p>[1] Holub V ,  Fridrich J . Low-Complexity Features for JPEG Steganalysis Using Undecimated DCT[J]. IEEE Transactions on Information Forensics and Security, 2015, 10(2):219-228.</p>
+<p>[2] Song X ,  Liu F ,  Yang C , et al. Steganalysis of Adaptive JPEG Steganography Using 2D Gabor Filters[C]// the 3rd ACM Workshop. ACM, 2015</p>
+<p>[3] augman J G . Uncertainty relation for resolution in space, spatial frequency, and orientation optimized by two-dimensional visual cortical filters[J]. Journal of the Optical Society of America. A, Optics and image science, 1985, 2(7):1160-1169.</p>
+<p>[4] Grigorescu S E , Petkov N , Kruizinga P . Comparison of texture features based on Gabor filters.[J]. IEEE Transactions on Image Processing A Publication of the IEEE Signal Processing Society, 2002, 11(10):1160-7.</p>
+<p>[5] Alattar A M ,  Memon N D ,  Heitzenrater C D , et al. SPIE Proceedings [SPIE IS&amp;T/SPIE Electronic Imaging - San Francisco, California, United States (Sunday 8 February 2015)] Media Watermarking, Security, and Forensics 2015 - Phase-aware projection model for steganalysis of JPEG images[J]. Proceedings of SPIE - The International Society for Optical Engineering, 2015, 9409:94090T.</p>
+<p>[6] Fridrich J , Kodovsky J . Rich Models for Steganalysis of Digital Images[J]. IEEE Transactions on Information Forensics and Security, 2012, 7(3):868—882.</p>
+<p>[7] Fridrich J . Statistically undetectable jpeg steganography:dead ends challenges, and opportunities[C]// Workshop on Multimedia &amp; Security. DBLP, 2007.</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thanks for your appreciation<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/">隐写术(三)--JPEG隐写分析特征算法与理论</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -188,205 +312,122 @@
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/29/隐写术(二)--传统数字图像隐写算法/" class="archive-article-date">
-  	<time datetime="2019-05-29T04:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/29/隐写术(二)--传统数字图像隐写算法/">隐写术(二)--传统数字图像隐写算法</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MISC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/29/隐写术(一)--简介/" class="archive-article-date">
-  	<time datetime="2019-05-29T03:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/29/隐写术(一)--简介/">隐写术(一)--简介</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MISC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/10/1.1-菜鸟学PWN之栈溢出学习/" class="archive-article-date">
-  	<time datetime="2018-10-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/10/1.1-菜鸟学PWN之栈溢出学习/">1.1-菜鸟学PWN之栈溢出学习</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/" alt="微信分享二维码">
+    </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PWN</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/10/某aes变种题分析/" class="archive-article-date">
-  	<time datetime="2018-05-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-10</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/29/隐写术(二)--传统数字图像隐写算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">隐写术(二)--传统数字图像隐写算法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/10/某aes变种题分析/">某AES变种题分析</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mobile Security</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-前言"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x10-残差图像的离散余弦变换"><span class="toc-number">2.</span> <span class="toc-text">0x10 残差图像的离散余弦变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x20-自适应二维Gabor过滤器"><span class="toc-number">3.</span> <span class="toc-text">0x20 自适应二维Gabor过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x30-相位感知投影模型"><span class="toc-number">4.</span> <span class="toc-text">0x30 相位感知投影模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x40-总结"><span class="toc-number">5.</span> <span class="toc-text">0x40 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x50-参考文献"><span class="toc-number">6.</span> <span class="toc-text">0x50 参考文献</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+  
+   
+
+  
+  
+
+  
 
 
           </div>
@@ -409,9 +450,9 @@
 	var yiliaConfig = {
 		mathjax: [object Object],
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -463,9 +504,9 @@ var _hmt = _hmt || [];
     var yiliaConfig = {
         mathjax: [object Object],
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         open_in_new: false,
         toc_hide_index: true,
