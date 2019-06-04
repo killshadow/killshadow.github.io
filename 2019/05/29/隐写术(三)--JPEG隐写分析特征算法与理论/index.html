@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/8343187-9cfd3b1c3aa58b1b.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559128502282.png">
 <meta property="og:image" content="http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/1559130220786.png">
-<meta property="og:updated_time" content="2019-06-04T05:53:53.525Z">
+<meta property="og:updated_time" content="2019-06-04T10:31:24.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="隐写术(三)--JPEG隐写分析特征算法与理论">
 <meta name="twitter:description" content="0x00 前言  前面介绍的内容着重于阐述传统的数字图像隐写算法，实际上与图像隐写对立的数字图像隐写分析，而这一方向也随着图像隐写的发展而发展，形成一种对抗的博弈。数字图像隐写分析分类如下图所示:">
@@ -339,9 +339,9 @@ u=\sum_{k=0}^{7} \sum_{l=0}^{7} Q_{k l}\left[A_{k l} R_{a, b}^{(i, j)(k, l)}+B_{
 \]</span> 其中，<span class="math inline">\(\mathrm{x}^{\prime}=\mathrm{x} \cos \theta+\mathrm{y} \sin \theta, \mathrm{y}^{\prime}=-\mathrm{x} \sin \theta+\mathrm{y} \cos \theta, \sigma=0.56 \lambda, \gamma=0.5\)</span>。σ越小，表示空间分辨率越高，图像滤波系数反应的局部属性在小尺度；反之，意味着空间分辨率越低，反映再图像的大尺度。最后，所以Gabor滤波器均中心化，其所有元素减去核均值，行成高通滤波器。</p>
 <p>提取特征时，GFR隐写分析算法的步骤如下：</p>
 <ul>
-<li><p>步骤一：将JPEG图像解压缩到空间域，且不将像素值量化为 ，以避免信息丢失。</p></li>
-<li><p>步骤二：将通过公式<span class="math inline">\((7)\)</span>生成不同尺度和方向的二维Gabor滤波组 ，其过程类似于DCTR过程中的公式<span class="math inline">\((3)\)</span>。</p></li>
-<li><p>步骤三：将步骤一生成的解压后的JPEG图像与步骤二生成的每个8x8二维Gabor滤波器卷积，滤波后的图像为<span class="math inline">\(\mathbf{U}_{\mathbf{a}, \mathbf{b}}^{\boldsymbol{s}, \mathbf{l}}\)</span>，有：</p></li>
+<li>步骤一：将JPEG图像解压缩到空间域，且不将像素值量化为 ，以避免信息丢失。</li>
+<li>步骤二：将通过公式<span class="math inline">\((7)\)</span>生成不同尺度和方向的二维Gabor滤波组 ，其过程类似于DCTR过程中的公式<span class="math inline">\((3)\)</span>。</li>
+<li>步骤三：将步骤一生成的解压后的JPEG图像与步骤二生成的每个8x8二维Gabor滤波器卷积，滤波后的图像为<span class="math inline">\(\mathbf{U}_{\mathbf{a}, \mathbf{b}}^{\boldsymbol{s}, \mathbf{l}}\)</span>，有：</li>
 </ul>
 <blockquote>
 <ol type="1">
@@ -389,12 +389,12 @@ u=\sum_{k=0}^{7} \sum_{l=0}^{7} Q_{k l}\left[A_{k l} R_{a, b}^{(i, j)(k, l)}+B_{
 \left(\begin{matrix}-1&amp;1\\\end{matrix}\right)\ \ \ \left(\begin{matrix}-1\\1\\\end{matrix}\right)\ \ \ \left(\begin{matrix}1&amp;-3&amp;3&amp;-1\\\end{matrix}\right)\ \ \ \left(\begin{matrix}1\\-3\\3\\-1\\\end{matrix}\right)\ \ \ \left(\begin{matrix}1&amp;1\\-1&amp;-1\\\end{matrix}\right)\ \ \ \left(\begin{matrix}-1&amp;1\\-1&amp;1\\\end{matrix}\right)\ \ \ \left(\begin{matrix}1&amp;-1\\-1&amp;1\\\end{matrix}\right)
 \]</span> ​ 这些核使用贪心正向特征选择算法获得最佳互补核，该算法使用下面列出的25个预测核的检测误差的OOB（Out-of-bag）估计，其中下面列出的第一、第二和第三阶内核使用的预测器与面向相应方向的SRM中使用的预测器相同：</p>
 <ul>
-<li><p>1 x 2一阶的水平、垂直、主次对角线（4个预测核）；</p></li>
-<li><p>1 x 3二阶的水平、垂直、主次对角线（4个预测核）；</p></li>
-<li><p>1 x 4三阶的水平、垂直、主次对角线（4个预测核）；</p></li>
-<li><p>2 x 2水平 、垂直 、对角线 （主次对角线相同）（3个预测核）；</p></li>
-<li><p>3 x 3核和它的4个EDGE（2 x 3）版本的核，如SRM（5个预测核）；</p></li>
-<li><p>5 x 5在SRM中用在SQUARE子模型的核，以及它的4个EDGE（3x5）版本的核（5个预测核）</p></li>
+<li>1 x 2一阶的水平、垂直、主次对角线（4个预测核）；</li>
+<li>1 x 3二阶的水平、垂直、主次对角线（4个预测核）；</li>
+<li>1 x 4三阶的水平、垂直、主次对角线（4个预测核）；</li>
+<li>2 x 2水平 、垂直 、对角线 （主次对角线相同）（3个预测核）；</li>
+<li>3 x 3核和它的4个EDGE（2 x 3）版本的核，如SRM（5个预测核）；</li>
+<li>5 x 5在SRM中用在SQUARE子模型的核，以及它的4个EDGE（3x5）版本的核（5个预测核）</li>
 </ul>
 <p>​ 上面6种类型的预测核不需要都使用，在后续提取JPEG图像的PHARM特征时，使用了一阶、二阶和<span class="math inline">\(2 \times 2\)</span>核。</p>
 <hr>
@@ -423,7 +423,7 @@ u=\sum_{k=0}^{7} \sum_{l=0}^{7} Q_{k l}\left[A_{k l} R_{a, b}^{(i, j)(k, l)}+B_{
         <p><span>本文标题:</span><a href="/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/">隐写术(三)--JPEG隐写分析特征算法与理论</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 killshadow 的个人博客">killshadow</a></p>
         <p><span>发布时间:</span>2019年05月29日 - 20时28分</p>
-        <p><span>最后更新:</span>2019年06月04日 - 13时53分</p>
+        <p><span>最后更新:</span>2019年06月04日 - 18时31分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/" title="隐写术(三)--JPEG隐写分析特征算法与理论">http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.killshadow.xyz/2019/05/29/隐写术(三)--JPEG隐写分析特征算法与理论/　　作者: killshadow" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
