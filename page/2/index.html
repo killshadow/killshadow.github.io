@@ -3,12 +3,12 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Archives: 2018/9 | Live to change world</title>
+  <title>Live to change world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="CTF,PWN,Rverse,Coder">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Live to change world">
-<meta property="og:url" content="http://www.killshadow.xyz/archives/2018/09/index.html">
+<meta property="og:url" content="http://www.killshadow.xyz/page/2/index.html">
 <meta property="og:site_name" content="Live to change world">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -26,6 +26,9 @@
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
+    
+    
+  
   
       <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   
@@ -37,9 +40,9 @@
           rootUrl: '/',
           fancybox: true,
           animate: true,
-          isHome: false,
+          isHome: true,
           isPost: false,
-          isArchive: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false
@@ -231,52 +234,76 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-某aes变种题分析" class="article article-type-post" itemscope itemprop="blogPost">
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/09/09/NFC开发笔记/" class="archive-article-date">
-      <time datetime="2018-09-08T16:00:00.000Z" itemprop="datePublished">09-09</time>
+    <div class="article-meta">
+      <a href="/2018/05/10/某aes变种题分析/" class="article-date">
+      <time datetime="2018-05-09T16:00:00.000Z" itemprop="datePublished">2018-05-10</time>
 </a>
-        </div>
-         
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/09/NFC开发笔记/">NFC开发笔记</a>
+      <a class="article-title" href="/2018/05/10/某aes变种题分析/">某AES变种题分析</a>
     </h1>
   
 
-        <div class="article-info info-on-archive">
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
           
+              <p><a href="https://github.com/killshadow/CTFTopic/tree/master/reverse/Android/GAESAndroid" target="_blank" rel="noopener">源码</a></p>
+<h3 id="一脱壳">一、脱壳</h3>
+<p>1.使用jeb打开下载的apk文件，发现代码十分混乱，很明显是加固混淆过的代码，所以需要先将其脱壳。</p>
+          
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
 
-          
+      
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Developer/">Android Developer</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mobile-Security/">Mobile Security</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reverse/">Reverse</a></li></ul>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      
+        <p class="article-more-link">
+          <a  href="/2018/05/10/某aes变种题分析/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
+  </div>
+  
+</article>
 
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
+  
 </div>
       <footer id="footer">
     <div class="outer">
@@ -361,17 +388,6 @@ MathJax.Hub.Queue(function() {
         };
     })
 </script>
-
-    <button class="hide-labels">TAG 开关</button>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js">
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("button").click(function() {
-                $(".article-info").toggle(200);
-            });
-        });
-    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
