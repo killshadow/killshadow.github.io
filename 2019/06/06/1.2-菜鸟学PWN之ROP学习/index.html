@@ -6,24 +6,24 @@
   <title>1.2-菜鸟学PWN之ROP学习 | Live to change world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="实现ROP的两个条件:  程序存在栈溢出, 并可控制返回地址. 可以找到所需的gadgets以及它所在的地址.">
-<meta name="keywords" content="CTF,PWN,Rverse,Coder">
+<meta name="keywords" content="CTF,PWN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1.2-菜鸟学PWN之ROP学习">
-<meta property="og:url" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/index.html">
+<meta property="og:url" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之ROP学习/index.html">
 <meta property="og:site_name" content="Live to change world">
 <meta property="og:description" content="实现ROP的两个条件:  程序存在栈溢出, 并可控制返回地址. 可以找到所需的gadgets以及它所在的地址.">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/Selection_032.png">
-<meta property="og:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/1533549062535.png">
-<meta property="og:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/1533553264967.png">
-<meta property="og:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/Selection_034.png">
-<meta property="og:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/15136516601572.jpg">
-<meta property="og:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/417527177.jpg">
+<meta property="og:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之ROP学习/Selection_032.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之ROP学习/1533549062535.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之ROP学习/1533553264967.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之ROP学习/Selection_034.png">
+<meta property="og:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之ROP学习/15136516601572.jpg">
+<meta property="og:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之ROP学习/417527177.jpg">
 <meta property="og:updated_time" content="2019-06-06T07:43:17.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1.2-菜鸟学PWN之ROP学习">
 <meta name="twitter:description" content="实现ROP的两个条件:  程序存在栈溢出, 并可控制返回地址. 可以找到所需的gadgets以及它所在的地址.">
-<meta name="twitter:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/Selection_032.png">
+<meta name="twitter:image" content="http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之ROP学习/Selection_032.png">
   
     <link rel="alternative" href="/atom.xml" title="Live to change world" type="application/atom+xml">
   
@@ -240,10 +240,10 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-1.2-菜鸟学PWN之栈溢出学习" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-1.2-菜鸟学PWN之ROP学习" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/" class="article-date">
+      <a href="/2019/06/06/1.2-菜鸟学PWN之ROP学习/" class="article-date">
       <time datetime="2019-06-06T07:23:00.000Z" itemprop="datePublished">2019-06-06</time>
 </a>
     </div>
@@ -267,6 +267,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWN/">PWN</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -290,7 +294,7 @@
 <p>32位x86架构下的寄存器分类如下:</p>
 <div style="text-align: center;">
 <figure>
-<img src="/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/Selection_032.png" alt="x86寄存器分类"><figcaption>x86寄存器分类</figcaption>
+<img src="/2019/06/06/1.2-菜鸟学PWN之ROP学习/Selection_032.png" alt="x86寄存器分类"><figcaption>x86寄存器分类</figcaption>
 </figure>
 </div>
 <p>64位86_x64架构下的寄存器分类如下:</p>
@@ -401,13 +405,13 @@
 <li>32位模式下进程内存经典布局:
 <div style="text-align: center;">
 <figure>
-<img src="/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/1533549062535.png" alt="32位模式下进程内存"><figcaption>32位模式下进程内存</figcaption>
+<img src="/2019/06/06/1.2-菜鸟学PWN之ROP学习/1533549062535.png" alt="32位模式下进程内存"><figcaption>32位模式下进程内存</figcaption>
 </figure>
 </div></li>
 <li>64位模式下进程内存经典布局(简略版):
 <div style="text-align: center;">
 <figure>
-<img src="/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/1533553264967.png" alt="64位模式下进程内存布局(简略)"><figcaption>64位模式下进程内存布局(简略)</figcaption>
+<img src="/2019/06/06/1.2-菜鸟学PWN之ROP学习/1533553264967.png" alt="64位模式下进程内存布局(简略)"><figcaption>64位模式下进程内存布局(简略)</figcaption>
 </figure>
 </div></li>
 </ul>
@@ -460,7 +464,7 @@
 <p>关于Linux系统调用号, 请到<a href="https://syscalls.kernelgrok.com/" target="_blank" rel="noopener">这里</a>查看. 我们能查到<code>execve</code>的系统调用号为<code>0x0b</code>, 如下图:</p>
 <div style="text-align: center;">
 <figure>
-<img src="/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/Selection_034.png" alt="execve系统调用号"><figcaption>execve系统调用号</figcaption>
+<img src="/2019/06/06/1.2-菜鸟学PWN之ROP学习/Selection_034.png" alt="execve系统调用号"><figcaption>execve系统调用号</figcaption>
 </figure>
 </div>
 <p>可知, 有三个参数, 分别对应<code>ebx</code>, <code>ecx</code>, <code>edx</code>. 我们需要使得:</p>
@@ -610,7 +614,7 @@
 <p>Stack pivoting 劫持栈指针, 目的是将栈劫持到攻击者能够控制的内存上去, 再做ROP. 原理如下:</p>
 <div style="text-align: center;">
 <figure>
-<img src="/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/15136516601572.jpg" alt="Stack Pivoting原理"><figcaption>Stack Pivoting原理</figcaption>
+<img src="/2019/06/06/1.2-菜鸟学PWN之ROP学习/15136516601572.jpg" alt="Stack Pivoting原理"><figcaption>Stack Pivoting原理</figcaption>
 </figure>
 </div>
 <p>)</p>
@@ -676,7 +680,7 @@
 <p>假设最开始的示例代码<code>test.c</code>增加一个write_file函数，在该函数里面调用glibc的write实现写文件操作。根据前面讨论的PLT和GOT原理，test在运行过程中，调用方（如print_banner和write_file)是如何通过PLT和GOT穿针引线之后，最终调用到glibc的printf和write函数的？</p>
 <div style="text-align: center;">
 <figure>
-<img src="/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/417527177.jpg" alt="got&amp;plt关系"><figcaption>got&amp;plt关系</figcaption>
+<img src="/2019/06/06/1.2-菜鸟学PWN之ROP学习/417527177.jpg" alt="got&amp;plt关系"><figcaption>got&amp;plt关系</figcaption>
 </figure>
 </div>
 <p>)</p>
@@ -689,13 +693,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/">1.2-菜鸟学PWN之ROP学习</a></p>
+        <p><span>本文标题:</span><a href="/2019/06/06/1.2-菜鸟学PWN之ROP学习/">1.2-菜鸟学PWN之ROP学习</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 killshadow 的个人博客">killshadow</a></p>
         <p><span>发布时间:</span>2019年06月06日 - 15时23分</p>
         <p><span>最后更新:</span>2019年06月06日 - 15时43分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/" title="1.2-菜鸟学PWN之ROP学习">http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/　　作者: killshadow" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/06/06/1.2-菜鸟学PWN之ROP学习/" title="1.2-菜鸟学PWN之ROP学习">http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之ROP学习/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.killshadow.xyz/2019/06/06/1.2-菜鸟学PWN之ROP学习/　　作者: killshadow" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -708,18 +712,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/06/06/1.2-菜鸟学PWN之ROP学习/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          1.2-菜鸟学PWN之ROP学习
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/06/0.1-菜鸟学PWN之工具篇/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">0.1-菜鸟学PWN之工具篇</div>
+    <a href="/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1.2-菜鸟学PWN之ROP学习</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -781,13 +776,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/06/06/1.2-菜鸟学PWN之ROP学习/" title="上一篇: 1.2-菜鸟学PWN之ROP学习">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2019/06/06/0.1-菜鸟学PWN之工具篇/" title="下一篇: 0.1-菜鸟学PWN之工具篇">
+            <a href="/2019/06/06/1.2-菜鸟学PWN之栈溢出学习/" title="下一篇: 1.2-菜鸟学PWN之ROP学习">
                 <i class="fa fa-angle-right"></i>
             </a>
         
